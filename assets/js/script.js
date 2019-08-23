@@ -18,6 +18,7 @@ $(document).ready(function () {
     };
 
     var navbarSite = $('.navbar-site');
+    var navbarSite2 = $('.navbar-site2');
 
     // check if RTL or LTR
     var ifrtl = false;
@@ -357,13 +358,16 @@ $(document).ready(function () {
             if (windowScroll > intialscroll) {
                 // downward-scrolling
                 navbarSite.addClass('stuck');
+                navbarSite2.addClass('stuck2');
             } else {
                 // upward-scrolling
                 navbarSite.removeClass('stuck');
+                navbarSite2.removeClass('stuck2');
             }
             if (windowScroll < 450) {
                 // downward-scrolling
                 navbarSite.removeClass('stuck');
+                navbarSite2.removeClass('stuck2');
             }
             intialscroll = windowScroll;
         });
@@ -376,6 +380,3 @@ $(document).ready(function () {
     } // end Desktop else
 
 }); // end Ready
-
-
-	

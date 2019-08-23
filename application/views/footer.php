@@ -1,12 +1,12 @@
 <?php
-$ceks = $this->session->userdata('ordodev@2017'); ?>
+$ceks = $this->session->userdata('un_member'); ?>
 <div class="page-bottom-info">
 		<div class="page-bottom-info-inner">
 
 				<div class="page-bottom-info-content text-center">
 						<h1>Jika Anda memiliki pertanyaan, komentar atau masalah, silahkan hubungi kami</h1>
-						<a class="btn  btn-lg btn-primary-dark" href="tel:+000000000">
-								<i class="icon-mobile"></i> <span class="hide-xs color50">No. HP/WA:</span> 0812-xxxx-xxxx </a>
+						<a class="btn  btn-lg btn-primary-dark" href="tel:<?php echo $this->Mcrud->get_web('no_hp'); ?>">
+								<i class="icon-mobile"></i> <span class="hide-xs color50">No. HP/WA:</span> <?php echo $this->Mcrud->get_web('no_hp'); ?> </a>
 				</div>
 
 		</div>
@@ -92,7 +92,7 @@ $ceks = $this->session->userdata('ordodev@2017'); ?>
             <img alt="img" src="assets/images/site/payment/google_wallet.png">
           </div>
           <div class="copy-info text-center">
-            &copy; <?php echo date('Y'); ?> Marketplace. All Rights Reserved.
+            &copy; <?php echo date('Y'); ?> <?php echo $this->Mcrud->nama_app(); ?>. All Rights Reserved.
           </div>
 
         </div>
@@ -107,7 +107,7 @@ $ceks = $this->session->userdata('ordodev@2017'); ?>
   <!-- Placed at the end of the document so the pages load faster -->
 
   <script src="assets/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="assets/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+  <script src="assets/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
   <script src="assets/bootstrap/js/bootstrap.min.js"></script>
   <script src="assets/js/vendors.min.js"></script>
 
@@ -121,11 +121,5 @@ $ceks = $this->session->userdata('ordodev@2017'); ?>
 	    });
 
 	</script>
-
-  <!-- include jquery autocomplete plugin  -->
-  <script type="text/javascript" src="assets/plugins/autocomplete/jquery.mockjax.js"></script>
-  <script type="text/javascript" src="assets/plugins/autocomplete/jquery.autocomplete.js"></script>
-  <script type="text/javascript" src="assets/plugins/autocomplete/usastates.js"></script>
-  <script type="text/javascript" src="assets/plugins/autocomplete/autocomplete-demo.js"></script>
 
 </html>

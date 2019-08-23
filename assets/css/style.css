@@ -15,7 +15,25 @@ html {
 
 body {
   margin: 0; }
+  /* width */
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
 
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #888;
+  }
+
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
 article,
 aside,
 footer,
@@ -1410,11 +1428,18 @@ label {
           transition: all 0.25s ease-out 0s;
   margin-top: 0;
   z-index: 100; }
+.navbar-site2{
+  background:#333;position:fixed;width:100%;z-index:999;
+}
   .navbar-site.navbar.stuck {
     margin-top: -80px; }
+    .navbar-site2.stuck2 {
+      top: 0px; }
     @media (max-width: 767px) {
       .navbar-site.navbar.stuck {
-        margin-top: 0; } }
+        margin-top: 0; }
+        .navbar-site2.stuck2 {
+          top: 0; } }
   .navbar-site.navbar .navbar-nav > li.postadd a.nav-link {
     color: #fff; }
     .navbar-site.navbar .navbar-nav > li.postadd a.nav-link:focus, .navbar-site.navbar .navbar-nav > li.postadd a.nav-link:hover {
@@ -5875,8 +5900,8 @@ a.bg-inverse:focus, a.bg-inverse:hover {
   }
 
   .topnav > .active {
-  background-color: #4CAF50;
-  color: white;
+  background-color: #f1f1f1;
+  color: #222;
   }
 
   .topnav .icon {
@@ -5983,8 +6008,8 @@ a.bg-inverse:focus, a.bg-inverse:hover {
 
   .pagination a.active {
     background-color: #333;
-    color: white;
-    border: 1px solid #4CAF50;
+    color: #f1f1f1;
+    border: 1px solid #f1f1f1;
   }
 
   .pagination a:hover:not(.active) {background-color: #ddd;}

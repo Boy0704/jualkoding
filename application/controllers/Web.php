@@ -10,11 +10,12 @@ class Web extends CI_Controller {
 
 	public function page($offset=0)
 	{
-		$ceks = $this->session->userdata('ordodev@2017');
+		$ceks = $this->session->userdata('un_member');
 
 		$data['web'] 					= $this->Mcrud->get_web_id(1);
-		$data['judul']				= 'Jual Koding : Situs Gudang Download Source Code Aplikasi Terlengkap dan Termurah Tersedia juga private belajar pemrograman';
+		$data['judul']				= $this->Mcrud->get_web('nama_web').' : Situs Gudang Download Source Code Aplikasi Terlengkap dan Termurah Tersedia juga private belajar pemrograman';
 
+		$this->db->join('tbl_kat','tbl_kat.id_kat=tbl_app.id_kat');
 		$jml = $this->db->get('tbl_app');
 		$config['base_url'] = base_url().'web/page';
 
@@ -51,7 +52,7 @@ class Web extends CI_Controller {
 
 	public function panduan()
 	{
-		$ceks = $this->session->userdata('ordodev@2017');
+		$ceks = $this->session->userdata('un_member');
 
 		$data['web'] 		= $this->Mcrud->get_web_id(1);
 		$data['judul']	= 'Panduan | '.$data['web']->nama_web;
@@ -62,7 +63,7 @@ class Web extends CI_Controller {
 
 	public function registrasi()
 	{
-		$ceks = $this->session->userdata('ordodev@2017');
+		$ceks = $this->session->userdata('un_member');
 		if (isset($ceks)) {
 			redirect('');
 		}
@@ -133,7 +134,7 @@ class Web extends CI_Controller {
 																	<strong>Sukses!</strong> Silahkan cek email Anda untuk Aktivasi akun anda agar bisa download semua file ini.
 															</div>'
 														);
-														$this->session->set_userdata('ordodev@2017', "$username");
+														$this->session->set_userdata('un_member', "$username");
 														if ($this->db->get_where('tbl_user', "username='$username'")->row()->aktif == 'no') {
 															redirect('panduan');
 														}else {
@@ -200,7 +201,7 @@ class Web extends CI_Controller {
 
 	public function download($url='', $d='')
 	{
-		$ceks = $this->session->userdata('ordodev@2017');
+		$ceks = $this->session->userdata('un_member');
 
 		$data['web'] 		= $this->Mcrud->get_web_id(1);
 		$data['judul']	= 'Download | '.$data['web']->nama_web;
@@ -208,11 +209,12 @@ class Web extends CI_Controller {
 		$data['app'] 		= $this->Mcrud->get_app()->result();
 
 		if($url=='' || $url== 'page'){
+			$this->db->join('tbl_kat','tbl_kat.id_kat=tbl_app.id_kat');
 			$jml = $this->db->get('tbl_app');
 			$config['base_url'] = base_url().'download/page';
 
 			$config['total_rows'] = $jml->num_rows();
-			$config['per_page'] = 20; /*Jumlah data yang dipanggil perhalaman*/
+			$config['per_page'] = 15; /*Jumlah data yang dipanggil perhalaman*/
 			$config['uri_segment'] = 3; /*data selanjutnya di parse diurisegmen 2*/
 
 			/*Class bootstrap pagination yang digunakan*/
@@ -233,10 +235,11 @@ class Web extends CI_Controller {
 
 			$this->pagination->initialize($config);
 
-			$data['offset'] = $url;
-			$data['v_data'] = $this->Mcrud->view_app($config['per_page'], $url);
+			$data['offset'] = $d;
+			$data['v_data'] = $this->Mcrud->view_app($config['per_page'], $d);
 			$data['halaman']  = $this->pagination->create_links();
 
+			$data['path'] = "d";
 				$this->load->view('header', $data);
 				$this->load->view('download', $data);
 				$this->load->view('footer', $data);
@@ -285,18 +288,19 @@ class Web extends CI_Controller {
 
 	public function aplikasi($url='', $d='')
 	{
-		$ceks = $this->session->userdata('ordodev@2017');
+		$ceks = $this->session->userdata('un_member');
 
 		$data['web'] 		= $this->Mcrud->get_web_id(1);
 		$data['judul']	= 'Aplikasi | '.$data['web']->nama_web;
 											$this->db->order_by('id_app', 'DESC');
 		$data['app'] 		= $this->Mcrud->get_app()->result();
 
-			$jml = $this->db->get('tbl_app');
+		$this->db->join('tbl_kat','tbl_kat.id_kat=tbl_app.id_kat');
+		$jml = $this->db->get('tbl_app');
 			$config['base_url'] = base_url().'app/page';
 
 			$config['total_rows'] = $jml->num_rows();
-			$config['per_page'] = 20; /*Jumlah data yang dipanggil perhalaman*/
+			$config['per_page'] = 15; /*Jumlah data yang dipanggil perhalaman*/
 			$config['uri_segment'] = 3; /*data selanjutnya di parse diurisegmen 2*/
 
 			/*Class bootstrap pagination yang digunakan*/
@@ -317,10 +321,10 @@ class Web extends CI_Controller {
 
 			$this->pagination->initialize($config);
 
-			$data['offset'] = $url;
-			$data['v_data'] = $this->Mcrud->view_app($config['per_page'], $url, 'RANDOM');
+			$data['offset'] = $d;
+			$data['v_data'] = $this->Mcrud->view_app($config['per_page'], $d, 'RANDOM');
 			$data['halaman']  = $this->pagination->create_links();
-
+			$data['path'] = "app_d";
 				$this->load->view('header', $data);
 				$this->load->view('download', $data);
 				$this->load->view('footer', $data);
@@ -329,7 +333,7 @@ class Web extends CI_Controller {
 
 	function ambil($url){
 
-		$ceks = $this->session->userdata('ordodev@2017');
+		$ceks = $this->session->userdata('un_member');
 		if($ceks){
 				$download 	= $this->Mcrud->get_app_by_id($url)->row();
 
@@ -348,7 +352,7 @@ $data = array(
 
 	public function d($url='')
 	{
-		$ceks = $this->session->userdata('ordodev@2017');
+		$ceks = $this->session->userdata('un_member');
 		if ($url == '') {
 			redirect('');
 		}
@@ -375,7 +379,7 @@ $data = array(
 
 	public function judul_ta()
 	{
-		$ceks = $this->session->userdata('ordodev@2017');
+		$ceks = $this->session->userdata('un_member');
 
 		$data['web'] 		= $this->Mcrud->get_web_id(1);
 		$data['judul']	= 'Judul TA | '.$data['web']->nama_web;
@@ -386,7 +390,7 @@ $data = array(
 
 	public function pesan()
 	{
-		$ceks = $this->session->userdata('ordodev@2017');
+		$ceks = $this->session->userdata('un_member');
 
 		$data['web'] 		= $this->Mcrud->get_web_id(1);
 		$data['judul']	= 'Hubungi | '.$data['web']->nama_web;
@@ -408,7 +412,7 @@ $data = array(
 	public function article($offset=0)
 	{
 
-		$ceks = $this->session->userdata('ordodev@2017');
+		$ceks = $this->session->userdata('un_member');
 
 		//$offset = strtolower($this->uri->segment(2));
 
@@ -427,20 +431,20 @@ $data = array(
 				   $config['uri_segment'] = 2; /*data selanjutnya di parse diurisegmen 3*/
 
 				   /*Class bootstrap pagination yang digunakan*/
-				   $config['full_tag_open'] = "<ul class='pagination pagination-sm' style='position:relative; top:-25px;'>";
-				   $config['full_tag_close'] ="</ul>";
-				   $config['num_tag_open'] = '<li>';
-				   $config['num_tag_close'] = '</li>';
-				   $config['cur_tag_open'] = "<li class='disabled'><li class='active'><a >";
-				   $config['cur_tag_close'] = "<span class='sr-only'></span></a></li>";
-				   $config['next_tag_open'] = "<li>";
-				   $config['next_tagl_close'] = "</li>";
-				   $config['prev_tag_open'] = "<li>";
-				   $config['prev_tagl_close'] = "</li>";
-				   $config['first_tag_open'] = "<li>";
-				   $config['first_tagl_close'] = "</li>";
-				   $config['last_tag_open'] = "<li>";
-				   $config['last_tagl_close'] = "</li>";
+					  $config['full_tag_open'] = "<div class='center'><ul class='pagination'>";
+			 			$config['full_tag_close'] ="</ul></div>";
+			 			$config['num_tag_open'] = '';
+			 			$config['num_tag_close'] = '';
+			 			$config['cur_tag_open'] = "<a class='disabled active'>";
+			 			$config['cur_tag_close'] = "</a>";
+			 			$config['next_tag_open'] = "";
+			 			$config['next_tagl_close'] = "";
+			 			$config['prev_tag_open'] = "";
+			 			$config['prev_tagl_close'] = "";
+			 			$config['first_tag_open'] = "";
+			 			$config['first_tagl_close'] = "";
+			 			$config['last_tag_open'] = "";
+			 			$config['last_tagl_close'] = "";
 
 				   $this->pagination->initialize($config);
 
@@ -448,7 +452,7 @@ $data = array(
 				   /*membuat variable halaman untuk dipanggil di view nantinya*/
 				   $data['offset'] = $offset;
 					 										$this->db->order_by('id_article', 'DESC');
-				   $data['article'] = $this->Mcrud->view_article($config['per_page'], $offset);
+				   $data['v_data'] = $this->Mcrud->view_article($config['per_page'], $offset);
 
 					$this->load->view('header', $data);
 					$this->load->view('article', $data);
@@ -458,7 +462,7 @@ $data = array(
 
 	public function article_detail($url='')
 	{
-		$ceks = $this->session->userdata('ordodev@2017');
+		$ceks = $this->session->userdata('un_member');
 		if ($url == '') {
 			redirect('article');
 		}else{
@@ -485,50 +489,61 @@ $data = array(
 	}
 	public function hubungi()
 	{
-		$ceks = $this->session->userdata('ordodev@2017');
-
-		$data['web'] 		= $this->Mcrud->get_web_id(1);
-		$data['judul']	= 'Hubungi | '.$data['web']->nama_web;
-		if (isset($ceks)) {
-			$data['ceks'] 	= $ceks;
-			$data['user'] 	= $this->Mcrud->get_user_by_un($ceks)->row();
-		}else{
-			$data['ceks'] 	= '';
-			$data['user'] 	= '';
-		}
-			$this->load->view('header', $data);
-			$this->load->view('hubungi', $data);
-			$this->load->view('footer', $data);
+		$ceks = $this->session->userdata('un_member');
 
 			if (isset($_POST['btnkirim'])) {
-					$email  			= htmlentities(strip_tags($this->input->post('email')));
-					$no_hp  			= htmlentities(strip_tags($this->input->post('no_hp')));
-					$pesan   		  = addslashes(htmlentities($_POST['pesan']));
+					$nama  	= htmlentities(strip_tags($this->input->post('nama')));
+					$email  = htmlentities(strip_tags($this->input->post('email')));
+					$no_hp  = htmlentities(strip_tags($this->input->post('no_hp')));
+					$pesan  = addslashes(htmlentities($_POST['pesan']));
 
 					date_default_timezone_set('Asia/Jakarta');
 					$waktu	 = date('Y-m-d H:i:s');
 
 					$data = array(
+						'nama'				=> $nama,
 						'email'				=> $email,
 						'no_hp'				=> $no_hp,
 						'pesan'				=> $pesan,
 						'tgl_hubungi'	=> $waktu
 					);
-					$this->Mcrud->save_hubungi($data);
-					$this->session->set_flashdata('msg',
-	 				 '
-	 				 <div class="alert alert-success">
-	 							<strong>Sukses!</strong> Pesan berhasil dikirim.
-	 				 </div>'
-	 			 );
-				 redirect('hubungi');
+					$kirim=$this->Mcrud->save_hubungi($data);
+					if ($kirim) {
+						$msg = '<br>
+						 <div class="alert alert-success">
+							 <span class="closebtn" onclick="tutup_err();">&times;</span>
+							 <strong>Sukses!</strong> Pesan berhasil dikirim.
+						 </div>';
+						 $status = 'sukses';
+				 }else {
+					 $msg = '<br>
+					 <div class="alert alert-warning">
+						 <span class="closebtn" onclick="tutup_err();">&times;</span>
+						 <strong>Gagal!</strong> Pesan gagal dikirim, silahkan cek koneksi internet Anda.
+					 </div>';
+					 $status = 'gagal';
+				 }
+					echo json_encode(array($status => $msg));
+			}else {
+				$data['web'] 		= $this->Mcrud->get_web_id(1);
+				$data['judul']	= 'Hubungi | '.$data['web']->nama_web;
+				if (isset($ceks)) {
+					$data['ceks'] 	= $ceks;
+					$data['user'] 	= $this->Mcrud->get_user_by_un($ceks)->row();
+				}else{
+					$data['ceks'] 	= '';
+					$data['user'] 	= '';
+				}
+				$this->load->view('header', $data);
+				$this->load->view('hubungi', $data);
+				$this->load->view('footer', $data);
 			}
 	}
 
 
 	public function login()
 	{
-		$ceks = $this->session->userdata('ordodev@2017');
+		$ceks = $this->session->userdata('un_member');
 		if(isset($ceks)) {
 			redirect('');
 		}
@@ -578,7 +593,7 @@ $data = array(
 											 date_default_timezone_set('Asia/Jakarta');
 											 $waktu	 = date('Y-m-d H:i:s');
 
-																$this->session->set_userdata('ordodev@2017', "$cekun");
+																$this->session->set_userdata('un_member', "$cekun");
 
 																$data = array(
 											 					 'waktu_login'		=> $waktu,
@@ -611,7 +626,7 @@ $data = array(
 
 	public function lp()
 	{
-		$ceks = $this->session->userdata('ordodev@2017');
+		$ceks = $this->session->userdata('un_member');
 		if(isset($ceks)) {
 			redirect('');
 		}
@@ -718,7 +733,7 @@ $data = array(
   }
 
 	public function logout() {
-     if ($this->session->has_userdata('ordodev@2017')) {
+     if ($this->session->has_userdata('un_member')) {
          $this->session->sess_destroy();
          redirect('');
      }
@@ -728,7 +743,7 @@ $data = array(
 
 	public function profile()
 	{
-		$ceks = $this->session->userdata('ordodev@2017');
+		$ceks = $this->session->userdata('un_member');
 		if (!isset($ceks)) {
 			redirect('');
 		}

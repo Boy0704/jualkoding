@@ -1,31 +1,30 @@
-<div class="container">
-		<div class="row">
-				<div class="col-md-12"> <br>
-					<nav aria-label="breadcrumb" role="navigation" class="pull-left">
-							<ol class="breadcrumb">
-									<li class="breadcrumb-item"><a href="<?php echo base_url(); ?>"><i class="icon-home fa"></i></a></li>
-									<li class="breadcrumb-item"><a href="kategori/p/<?php echo url_title($download->kat); ?>"><?php echo $download->kat; ?></a></li>
-									<li class="breadcrumb-item active" aria-current="page"><?php echo $download->nama_app; ?></li>
-							</ol>
-					</nav>
-				</div>
-		</div>
-</div>
 
-
-				<div class="container">
+				<div class="container" style="margin-top:60px;">
 					<?php
 					echo $this->session->flashdata('msg_download');?>
 						<div class="row">
 							<div class="col-md-9 page-content col-thin-right">
+									<div class="content-footer text-left">
+										<div class="row">
+											<div class="col-md-3">
+												<a href="tel:<?php echo $web->no_hp; ?>" class="btn  btn-info btn-block"><i class=" fa fa-phone"></i> <?php echo $web->no_hp; ?> </a>
+											</div>
+											<div class="col-md-3"></div>
+											<div class="col-md-3">
+												<a href="download/<?php echo $download->id_app; ?>" class="btn  btn-danger btn-block" target="_blank"><i class=" fa fa-cloud-download"></i> DOWNLOAD </a>
+											</div>
+											<div class="col-md-3">
+												<a href="<?php echo $download->url_demo; ?>" class="btn  btn-primary btn-block" target="_blank"><i class=" fa fa-desktop"></i> DEMO </a>
+											</div>
+										</div>
+									</div>
 									<div class="inner inner-box ads-details-wrapper">
 											<h2> <?php echo $download->nama_app; ?>
-													<small class="label label-default adlistingtype"><?php echo $download->kode_app; ?></small>
+													<!-- <small class="label label-default adlistingtype"><?php echo $download->kode_app; ?></small> -->
 											</h2>
 											<span class="info-row">
 												<span class="date"><i class=" icon-clock"> </i> <?php echo date('d F Y',strtotime($download->tanggal)); ?> </span>
-												- <span class="category">Aplikasi </span>
-												- <span class="item-location"><i class="fa fa-map-marker"></i> Jambi, Indonesia </span>
+												- <span class="category"><?php echo $download->kat; ?> </span>
 											</span>
 
 											<div class="ads-image">
@@ -72,10 +71,19 @@
 													<hr>
 													<b>Keyword:</b> <i><?php echo $download->url; ?></i>
 													<hr>
-													<div class="content-footer text-left">
-														<a class="btn  btn-info"><i class=" icon-phone-1"></i> <?php echo $web->no_hp; ?> </a>
-														<a href="download/<?php echo $download->id_app; ?>" class="btn  btn-success" target="_blank"><i class=" icon-clipboard"></i> DOWNLOAD </a>
-														<a href="<?php echo $download->url_demo; ?>" class="btn  btn-warning" target="_blank"><i class=" icon-desktop"></i> DEMO </a>
+													<div class="content-footer text-left" style="overflow:hidden">
+														<div class="row">
+															<div class="col-md-3">
+																<a href="tel:<?php echo $web->no_hp; ?>" class="btn  btn-info btn-block"><i class=" fa fa-phone"></i> <?php echo $web->no_hp; ?> </a>
+															</div>
+															<div class="col-md-3"></div>
+															<div class="col-md-3">
+																<a href="download/<?php echo $download->id_app; ?>" class="btn  btn-danger btn-block" target="_blank"><i class=" fa fa-cloud-download"></i> DOWNLOAD </a>
+															</div>
+															<div class="col-md-3">
+																<a href="<?php echo $download->url_demo; ?>" class="btn  btn-primary btn-block" target="_blank"><i class=" fa fa-desktop"></i> DEMO </a>
+															</div>
+														</div>
 													</div>
 											</div>
 									</div>
@@ -89,30 +97,65 @@
 											<div class="card sidebar-card  bg-contact-seller">
 													<!-- <div class="card-header"></div> -->
 													<div class="card-content user-info">
-															<div class="card-body text-center">
-																	<!-- <div class="seller-info">
-																			<h3 class="no-margin"></h3>
-																			<p>Location: <strong>Jambi</strong>
-																			</p>
-																	</div> -->
-																	<div class="user-ads-action">
-																		<a href="download/<?php echo $download->id_app; ?>" class="btn   btn-success btn-block" target="_blank">
-																			<i class=" icon-clipboard"></i> DOWNLOAD
-																		</a>
-																		<a href="<?php echo $download->url_demo; ?>" class="btn  btn-warning btn-block" target="_blank">
-																			<i class=" icon-desktop"></i> DEMO
-																		</a>
-																		<hr>
-																		<b>Download:</b> <?php echo number_format($download->download,0,",","."); ?>
-																		<br>
-																		<b>Dilihat:</b> <?php echo number_format($download->view,0,",","."); ?>
-																	</div>
+															<div class="card-body text-left">
+																<b>Download:</b> <label style="float:right"><?php echo number_format($download->download,0,",","."); ?>x</label>
+																<hr>
+																<b>Dilihat:</b> <label style="float:right"><?php echo number_format($download->view,0,",","."); ?>x</label>
 															</div>
 													</div>
 											</div>
 
 											<!--/.categories-list-->
 									</aside>
+
+									<aside>
+											<div class="inner-box" style="padding-top:0px;">
+													<div class="locations-list  list-filter">
+															<h5 class="list-title"><strong><a href="javascript:void(0);">Aplikasi Terbaru</a></strong></h5>
+															<ul class="browse-list list-unstyled long-list">
+																	<?php
+																	$this->db->order_by('id_app', 'DESC');
+									                $this->db->limit(5);
+									                $v_list = $this->db->get('tbl_app');
+																	foreach ($v_list->result() as $key => $value): ?>
+																		<li>
+																			<a href="d/<?php echo $value->url; ?>"><strong><?php echo $value->nama_app; ?></strong>
+																				(<span class="count"><?php echo $value->view; ?></span>)
+																			</a>
+																			<hr>
+																		</li>
+																	<?php endforeach; ?>
+															</ul>
+													</div>
+													<div style="clear:both"></div>
+											</div>
+											<!--/.categories-list-->
+									</aside>
+
+									<aside>
+											<div class="inner-box" style="padding-top:0px;">
+													<div class="locations-list  list-filter">
+															<h5 class="list-title"><strong><a href="javascript:void(0);">Artikel Terbaru</a></strong></h5>
+															<ul class="browse-list list-unstyled long-list">
+																	<?php
+																	$this->db->order_by('id_article', 'DESC');
+									                $this->db->limit(5);
+									                $v_list = $this->db->get('tbl_article');
+																	foreach ($v_list->result() as $key => $value): ?>
+																		<li>
+																			<a href="article_detail/<?php echo $value->url; ?>"><strong><?php echo $value->judul; ?></strong>
+																				(<span class="count"><?php echo $value->dibaca; ?></span>)
+																			</a>
+																			<hr>
+																		</li>
+																	<?php endforeach; ?>
+															</ul>
+													</div>
+													<div style="clear:both"></div>
+											</div>
+											<!--/.categories-list-->
+									</aside>
+
 							</div>
 
 

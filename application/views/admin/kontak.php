@@ -17,6 +17,7 @@
           <thead>
             <tr>
               <th width="10">No</th>
+              <th width="200">Nama</th>
               <th width="200">Email</th>
               <th width="150">No HP</th>
               <th>Pesan</th>
@@ -28,7 +29,8 @@
             $i = 1;
             foreach ($kontak as $baris) {?>
               <tr class="gradeX">
-                <td><?php echo $i; ?></td>
+                <td><?php echo $i++; ?></td>
+                <td><?php echo $baris->nama; ?></td>
                 <td><?php echo $baris->email; ?></td>
                 <td><?php echo $baris->no_hp; ?></td>
                 <td><?php echo $baris->pesan; ?></td>

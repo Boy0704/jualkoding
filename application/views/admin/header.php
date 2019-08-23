@@ -1,5 +1,5 @@
 <?php
-$ceks = $this->session->userdata('admin_ordodev@2017');
+$ceks = $this->session->userdata('un_admin');
 $menu = strtolower($this->uri->segment(1));
 $sub_menu = strtolower($this->uri->segment(2));
 ?>

@@ -1,10 +1,9 @@
 <div class="main-container">
-		<div class="container">
+		<div class="container" style="margin-top:40px;">
 				<div class="row">
-						<!-- this (.mobile-filter-sidebar) part will be position fixed in mobile version -->
 						<div class="col-md-3 page-sidebar mobile-filter-sidebar">
 								<aside>
-										<div class="inner-box">
+										<div class="inner-box" style="padding-top:0px;">
 												<div class="categories-list  list-filter">
 														<h5 class="list-title"><strong><a href="kategori/p">Semua Kategori</a></strong></h5>
 														<ul class=" list-unstyled">
@@ -14,8 +13,9 @@
 																foreach ($v_kat->result() as $key => $value): ?>
 																	<li>
 																		<a href="kategori/p/<?php echo url_title($value->kat); ?>">
-																			<span class="title"><?php echo $value->kat; ?></span><span class="count">&nbsp; <?php echo $this->db->get_where('tbl_app', array('id_kat'=>$value->id_kat))->num_rows(); ?></span>
+																			<span class="title"><?php echo $value->kat; ?></span> (<span class="count"><?php echo $this->db->get_where('tbl_app', array('id_kat'=>$value->id_kat))->num_rows(); ?></span>)
 																		</a>
+																		<hr style="padding:0px;margin:5px;">
 																	</li>
 																<?php endforeach; ?>
 														</ul>
@@ -31,12 +31,12 @@
 								<!-- IKLAN -->
 
 								<aside>
-										<div class="inner-box">
+										<div class="inner-box" style="padding-top:0px;">
 												<div class="locations-list  list-filter">
-														<h5 class="list-title"><strong><a href="javascript:void(0);">List Judul Aplikasi</a></strong></h5>
+														<h5 class="list-title"><strong><a href="javascript:void(0);">List Aplikasi</a></strong></h5>
 														<ul class="browse-list list-unstyled long-list">
 																<?php
-																$this->db->order_by('id', 'RANDOM');
+																$this->db->order_by('id_app', 'RANDOM');
 								                $this->db->limit(5);
 								                $v_list = $this->db->get('tbl_app');
 																foreach ($v_list->result() as $key => $value): ?>
@@ -56,55 +56,44 @@
 								</aside>
 						</div>
 						<!--/.page-side-bar-->
-						<style>
-						#box_page{width: 100%;}
-						@media (min-width: 768px) {
-						  #box_page{width: 166px;}
-						}
-						</style>
-						<div class="col-md-9 page-content col-thin-left">
-								<div class="category-list">
-										<div class="adds-wrapper">
+
+						<div class="col-md-9">
+							<div class="row">
 											<?php
 											foreach ($v_data->result() as $key => $baris):
-												$link_kat = 'd/'.$baris->url;
+												$link_kat = $path.'/'.$baris->url;
 												$toko = '';
 												$jml_foto = '';?>
-												<div id="box_page" style="float:left;border-bottom:1px solid #f1f1f1;">
-													<div class="item-list">
-														<div class="cornerRibbons topAds">
-																<!-- <a href="#"> Top Ads</a> -->
-														</div>
+												<div class="col-md-4">
+													<div class="item-list content-box" style="cursor:pointer;padding:0px;">
 														<div class="row">
 																<div class="col-md-12 no-padding photobox">
 																		<div class="add-image"><span class="photo-count"><i class="fa fa-camera"></i> <?php echo $jml_foto; ?> </span>
-																			<a href="<?php echo $link_kat; ?>"><img class="thumbnail no-margin" src="images/app/<?php echo $baris->img; ?>" title="<?php echo ucwords($baris->nama_app); ?>" alt="<?php echo ucwords($baris->nama_app); ?>" width="50" height="100"></a>
+																			<a href="<?php echo $link_kat; ?>"><img class="thumbnail no-margin" src="images/app/<?php echo $baris->img; ?>" title="<?php echo ucwords($baris->nama_app); ?>" alt="<?php echo ucwords($baris->nama_app); ?>" width="50" height="150"></a>
 																		</div>
 																</div>
 														<!--/.photobox-->
 																<div class="col-sm-12 add-desc-box">
 																		<div class="ads-details">
-																				<h5 class="add-title" style="height:60px;">
-																					<a href="<?php echo $link_kat; ?>"> <?php echo substr($baris->nama_app,0,30); ?> </a>
+																			<span class="info-row" style="margin-left:-10px;">
+																				<span class="date"><i class=" icon-clock"> </i> <?php echo date('d F Y', strtotime($baris->tanggal)); ?> </span> -
+																				<span class="category"><?php echo substr($baris->kat,0,18); ?> </span>-
+																			</span>
+																				<h5 class="add-title" style="height:45px;">
+																					<a href="<?php echo $link_kat; ?>" title="<?php echo ucwords($baris->nama_app); ?>">  <?php echo substr($baris->nama_app,0,50); ?>... </a>
 																				</h5>
-																				<span class="info-row">
-																					<!-- <span class="add-type business-ads tooltipHere" data-toggle="tooltip" data-placement="right" title="Business Ads"> </span> -->
-																					<span class="date"><i class=" icon-clock"> </i> <?php echo date('d/m/Y', strtotime($baris->tanggal)); ?> </span> -
-																					<span class="category"><?php echo substr($baris->kode_app,0,46); ?> </span>-
-																					<span class="item-location"><i class="fa fa-map-marker"></i> <?php echo substr($toko,0,30); ?> </span> </span></div>
+																		</div>
 																</div>
 														<!--/.add-desc-box-->
 																<div class="col-md-12 text-right  price-box">
-																		<h2 class="item-price"> Rp. <?php echo number_format($baris->harga,0,",","."); ?> </h2>
-																		<!-- <a class="btn btn-danger  btn-sm make-favorite"> <i class="fa fa-certificate"></i> <span>Top Ads</span> </a>  -->
-																		<a href="<?php echo $link_kat; ?>" class="btn btn-default  btn-sm make-favorite"> <i class="fa fa-heart"></i> <b>Beli</b> </a>
+																		<h4 class="item-price text-center" style="font-weight:bold"> Rp. <?php echo number_format($baris->harga,0,",","."); ?> </h4>
 																</div>
+																<a href="<?php echo $link_kat; ?>" class="btn btn-danger  btn-block make-favorite " style="border-radius:0px;" title="<?php echo ucwords($baris->nama_app); ?>"> <i class="fa fa-cloud-download"></i> <b>Download</b> </a>
 														<!--/.add-desc-box-->
 															</div>
 													</div>
 												</div>
 											<?php endforeach; ?>
-										</div>
 								</div>
 								<div class="pagination-bar text-center">
 									<?php echo $halaman; ?>

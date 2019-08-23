@@ -1,4 +1,4 @@
-<div class="intro" style="background-image: url(images/bg.jpg);">
+<div class="intro" style="background-image: url(images/bg.gif);">
     <div class="dtable hw100">
         <div class="dtable-cell hw100">
             <div class="container text-center">

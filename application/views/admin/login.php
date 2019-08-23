@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Panel Admin Ordodev</title><meta charset="UTF-8" />
+    <title>Panel Admin <?php echo $this->Mcrud->get_web('nama_web'); ?></title><meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <base href="<?php echo base_url();?>"/>
@@ -20,7 +20,7 @@
           echo $this->session->flashdata('msg_login');
           ?>
           <form id="loginform" class="form-vertical" action="" method="post">
-				        <div class="control-group normal_text"> <h3><img src="images/logo.png" alt="Logo" /></h3></div>
+				        <div class="control-group normal_text"> <h3><img src="images/<?php echo $web->logo; ?>" alt="Logo" width="100"/></h3></div>
                 <div class="control-group">
                     <div class="controls">
                         <div class="main_input_box">

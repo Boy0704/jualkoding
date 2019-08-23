@@ -1,119 +1,81 @@
+<div class="main-container">
+		<div class="container" style="margin-top:40px;">
+				<div class="row">
 
-
-
-				<div class="container">
-
-						<div class="page-header">
-								<div class="wrap-title">
-										<div class="icon">
-												<span class="ico-arrow-right"></span>
-										</div>
-										<h1>Article <small><a href="<?php echo base_url(); ?>">Home</a> / Article</small></h1>
-								</div>
-								<!--
-								<ul class="breadcrumb">
-										<li class="active">Home</li>
-								</ul>-->
-								<div class="clear"></div>
-						</div>
-
-						<div class="row">
-							<div class="row-fluid">
-									<div class="span12">
-											<div class="block">
-													<article class="container_12">
-
-														<div class="col-md-8">
-															<?php
-															foreach ($article as $baris) {?>
-															<div class="panel panel-default">
-															  <div class="panel-body">
-																		<img src="images/article/<?php echo $baris->gambar; ?>" class="img-polaroid img-responsive" title="<?php echo ucwords($baris->judul); ?>" alt="<?php echo ucwords($baris->judul); ?>" align="left" style="margin-right:10px;width:300px;height:300px;"/>
-																			<p>
-																				<a href="article/<?php echo $baris->url; ?>">
-																				<b style="font-size:20px;"><?php echo ucwords($baris->judul); ?></b>
-																				</a>
-																				<span style="float:right;color:#a1a1a1;"><span class="ico-calendar"></span> <?php echo $baris->tgl_article; ?></span>
-																				<hr style="margin-bottom:0px;">
-																			</p>
-																			<p>
-																				<?php echo substr($baris->isi, 0, 100); ?> . . .
-																			</p>
-																		 <a href="article_detail/<?php echo $baris->url; ?>" type="submit" class="btn btn-default" style="float:right;"><span class="ico-eye-open"></span> Baca Selengkapnya</a>
+						<div class="col-md-9">
+							<div class="row">
+											<?php
+											foreach ($v_data as $key => $baris):
+												$link_kat = 'article_detail/'.$baris->url;
+												$toko = '';
+												$jml_foto = '';?>
+												<div class="col-md-12">
+													<div class="item-list content-box" style="cursor:pointer;padding:0px;">
+														<div class="row">
+																<div class="col-md-3 no-padding photobox">
+																		<div class="add-image"><span class="photo-count"><i class="fa fa-camera"></i> <?php echo $jml_foto; ?> </span>
+																			<a href="<?php echo $link_kat; ?>"><img class="thumbnail no-margin" src="images/app/<?php echo $baris->gambar; ?>" title="<?php echo ucwords($baris->judul); ?>" alt="<?php echo ucwords($baris->judul); ?>" width="50" height="150"></a>
+																		</div>
 																</div>
+														<!--/.photobox-->
+																<div class="col-sm-9 add-desc-box">
+																		<div class="ads-details">
+																				<h5 class="add-title" style="height:20px;margin-top:10px;">
+																					<a href="<?php echo $link_kat; ?>" title="<?php echo ucwords($baris->judul); ?>">  <?php echo substr($baris->judul,0,150); ?>... </a>
+																				</h5>
+																				<span class="info-row">
+																					<span class="date"><i class=" icon-clock"> </i> <?php echo date('d F Y', strtotime($baris->tgl_article)); ?> </span>
+																				</span>
+																				<p>
+																					<?php echo substr(htmlentities(strip_tags($baris->isi)), 0, 150); ?> . . .
+																				</p>
+																				<a href="<?php echo $link_kat; ?>" class="btn btn-primary  make-favorite " style="border-radius:0px;" title="<?php echo ucwords($baris->judul); ?>"> <i class="fa fa-list"></i> <b>Baca Selengkapnya</b> </a>
+																		</div>
+																</div>
+														<!--/.add-desc-box-->
+														<!--/.add-desc-box-->
 															</div>
-															<?php
-															} ?>
-
-															 <!--
-															<ul class="pagination">
-			                            <li class="disabled"><a href="#">&laquo;</a></li>
-			                            <li class="active"><a href="#">1</a></li>
-			                            <li><a href="#">2</a></li>
-			                            <li><a href="#">3</a></li>
-			                            <li><a href="#">4</a></li>
-			                            <li><a href="#">5</a></li>
-			                            <li class="disabled"><span>...</span></li>
-			                            <li><a href="#">56</a></li>
-			                            <li><a href="#">57</a></li>
-			                            <li><a href="#">58</a></li>
-			                            <li><a href="#">59</a></li>
-			                            <li><a href="#">&raquo;</a></li>
-			                        </ul>-->
-															<center>
-																<?php echo $halaman ?> <!--Memanggil variable pagination-->
-															</center>
-														</div>
-
-
-														<div class="col-md-4">
-															<a class="swidget blue">
-																<?php
-																if ($jml_member > 999 & $jml_member <= 9999) {
-																	$font = "font-size:50px;";
-																}elseif ($jml_member > 99999) {
-																	$font = "font-size:20px;";
-																}else{
-																	$font = "";
-																} ?>
-																	<div class="value" style="<?php echo $font; ?>">
-																			<?php echo number_format($jml_member, 0, ",","."); ?>
-																	</div>
-																	<div class="bottom">
-																			<div class="text">Member</div>
-																			<div class="value"><span class="ico-user"></span></div>
-																	</div>
-															</a>
-
-															<a class="swidget green">
-																<?php
-																if ($jml_app > 999 & $jml_app <= 9999) {
-																	$font2 = "font-size:50px;";
-																}elseif ($jml_app > 99999) {
-																	$font2 = "font-size:20px;";
-																}else{
-																	$font2 = "";
-																} ?>
-																	<div class="value" style="<?php echo $font2; ?>">
-																			<?php echo number_format($jml_app, 0, ",","."); ?>
-																	</div>
-																	<div class="bottom">
-																			<div class="text">Aplikasi</div>
-																			<div class="value"><span class="ico-box"></span></div>
-																	</div>
-															</a>
-
-															<hr>
-
-															<p>
-															IKLAN</p>
-														</div>
-
-													</article>
-											</div>
-									</div>
-							</div>
+													</div>
+												</div>
+											<?php endforeach; ?>
+								</div>
+								<div class="pagination-bar text-center">
+									<?php echo $halaman; ?>
+								</div>
+								<!--/.pagination-bar -->
 
 						</div>
+						<!--/.page-content-->
+
+						<div class="col-md-3 page-sidebar mobile-filter-sidebar">
+
+								<aside>
+										<div class="inner-box" style="padding-top:0px;">
+												<div class="locations-list  list-filter">
+														<h5 class="list-title"><strong><a href="javascript:void(0);">List Aplikasi</a></strong></h5>
+														<ul class="browse-list list-unstyled long-list">
+																<?php
+																$this->db->order_by('id_app', 'RANDOM');
+								                $this->db->limit(5);
+								                $v_list = $this->db->get('tbl_app');
+																foreach ($v_list->result() as $key => $value): ?>
+																	<li>
+																		<a href="d/<?php echo $value->url; ?>"><strong><?php echo $value->nama_app; ?></strong>
+																			(<span class="count"><?php echo $value->view; ?></span>)
+																		</a>
+																		<hr>
+																	</li>
+																<?php endforeach; ?>
+														</ul>
+												</div>
+												<div style="clear:both"></div>
+										</div>
+
+										<!--/.categories-list-->
+								</aside>
+						</div>
+						<!--/.page-side-bar-->
 
 				</div>
+		</div>
+</div>

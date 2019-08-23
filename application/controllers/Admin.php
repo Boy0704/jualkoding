@@ -8,9 +8,9 @@ class Admin extends CI_Controller {
 		redirect('404');
 	}
 
-	public function panel_ordodev()
+	public function panel_jualkoding()
 	{
-		$ceks = $this->session->userdata('admin_ordodev@2017');
+		$ceks = $this->session->userdata('un_admin');
 		if (!isset($ceks)) {
 				$data['web'] 					= $this->Mcrud->get_web_id(1);
 				$this->load->view('admin/login', $data);
@@ -46,7 +46,7 @@ class Admin extends CI_Controller {
 											 date_default_timezone_set('Asia/Jakarta');
 											 $waktu	 = date('Y-m-d H:i:s');
 
-																$this->session->set_userdata('admin_ordodev@2017', "$cekun");
+																$this->session->set_userdata('un_admin', "$cekun");
 
 																$data = array(
 											 					 'waktu_login'		=> $waktu,
@@ -63,7 +63,7 @@ class Admin extends CI_Controller {
 										 }
 						 }
 
-						 redirect('panel_ordodev');
+						 redirect('panel_jualkoding');
 				}
 
 		}else{
@@ -108,7 +108,7 @@ class Admin extends CI_Controller {
  		 									<strong>Gagal Upload!</strong> '.$error.'.
  		 							 </div>'
  		 						 );
- 								 redirect('panel_ordodev');
+ 								 redirect('panel_jualkoding');
  		 					 }else{
 
  								 $cek = $this->Mcrud->get_web_id(1);
@@ -158,13 +158,13 @@ class Admin extends CI_Controller {
 
  					 }
 
-					 redirect('panel_ordodev');
+					 redirect('panel_jualkoding');
 				}
 		}
 	}
 
 	public function profile() {
-		$ceks = $this->session->userdata('admin_ordodev@2017');
+		$ceks = $this->session->userdata('un_admin');
 		if (!isset($ceks)) {
 			redirect('404_content');
 		}
@@ -230,8 +230,8 @@ class Admin extends CI_Controller {
 				 							<strong>Sukses!</strong> Profile berhasil diupdate.
 				 					</div>'
 				 				);
-								$this->session->has_userdata('admin_ordodev@2017');
-					      $this->session->set_userdata('admin_ordodev@2017', "$username");
+								$this->session->has_userdata('un_admin');
+					      $this->session->set_userdata('un_admin', "$username");
 
 								redirect('profile');
 						 }else{
@@ -252,9 +252,9 @@ class Admin extends CI_Controller {
 	}
 
 	public function aplikasi() {
-		$ceks = $this->session->userdata('admin_ordodev@2017');
+		$ceks = $this->session->userdata('un_admin');
 		if (!isset($ceks)) {
-			redirect('panel_ordodev');
+			redirect('panel_jualkoding');
 		}
 
 		 	 $data['web'] 					= $this->Mcrud->get_web_id(1);
@@ -405,9 +405,9 @@ class Admin extends CI_Controller {
 
 
 	public function edit_app($id) {
-		$ceks = $this->session->userdata('admin_ordodev@2017');
+		$ceks = $this->session->userdata('un_admin');
 		if (!isset($ceks)) {
-			redirect('panel_ordodev');
+			redirect('panel_jualkoding');
 		}
 		if ($id == '') {
 			redirect('aplikasi');
@@ -555,9 +555,9 @@ class Admin extends CI_Controller {
 
 
 	public function hapus_app($id) {
-		$ceks = $this->session->userdata('admin_ordodev@2017');
+		$ceks = $this->session->userdata('un_admin');
 		if (!isset($ceks)) {
-			redirect('panel_ordodev');
+			redirect('panel_jualkoding');
 		}
 		if ($id == '') {
 			redirect('aplikasi');
@@ -584,9 +584,9 @@ class Admin extends CI_Controller {
 	}
 
 	public function hapus_app1($id) {
-		$ceks = $this->session->userdata('admin_ordodev@2017');
+		$ceks = $this->session->userdata('un_admin');
 		if (!isset($ceks)) {
-			redirect('panel_ordodev');
+			redirect('panel_jualkoding');
 		}
 		if ($id == '') {
 			redirect('aplikasi');
@@ -608,9 +608,9 @@ class Admin extends CI_Controller {
 
 
 	public function member($id='', $bln_thn='') {
-		$ceks = $this->session->userdata('admin_ordodev@2017');
+		$ceks = $this->session->userdata('un_admin');
 		if (!isset($ceks)) {
-			redirect('panel_ordodev');
+			redirect('panel_jualkoding');
 		}
 
 		if ($id == '' or $id == 'tgl') {
@@ -665,9 +665,9 @@ class Admin extends CI_Controller {
 
 
 	public function transaksi($aksi='',$bln_thn='') {
-		$ceks = $this->session->userdata('admin_ordodev@2017');
+		$ceks = $this->session->userdata('un_admin');
 		if (!isset($ceks)) {
-			redirect('panel_ordodev');
+			redirect('panel_jualkoding');
 		}
 		if ($bln_thn == '') {
 			$bln = date('m');
@@ -722,9 +722,9 @@ class Admin extends CI_Controller {
   }
 
 	public function hapus_transaksi($id) {
-		$ceks = $this->session->userdata('admin_ordodev@2017');
+		$ceks = $this->session->userdata('un_admin');
 		if (!isset($ceks)) {
-			redirect('panel_ordodev');
+			redirect('panel_jualkoding');
 		}
 		if ($id == '') {
 			redirect('transaksi');
@@ -742,9 +742,9 @@ class Admin extends CI_Controller {
 	}
 
 	public function article() {
-		$ceks = $this->session->userdata('admin_ordodev@2017');
+		$ceks = $this->session->userdata('un_admin');
 		if (!isset($ceks)) {
-			redirect('panel_ordodev');
+			redirect('panel_jualkoding');
 		}
 
 		 	 $data['web'] 					= $this->Mcrud->get_web_id(1);
@@ -827,9 +827,9 @@ class Admin extends CI_Controller {
   }
 
 	public function edit_article($id) {
-		$ceks = $this->session->userdata('admin_ordodev@2017');
+		$ceks = $this->session->userdata('un_admin');
 		if (!isset($ceks)) {
-			redirect('panel_ordodev');
+			redirect('panel_jualkoding');
 		}
 		if ($id == '') {
 			redirect('data_article');
@@ -936,9 +936,9 @@ class Admin extends CI_Controller {
 	}
 
 	public function hapus_article($id) {
-		$ceks = $this->session->userdata('admin_ordodev@2017');
+		$ceks = $this->session->userdata('un_admin');
 		if (!isset($ceks)) {
-			redirect('panel_ordodev');
+			redirect('panel_jualkoding');
 		}
 		if ($id == '') {
 			redirect('data_article');
@@ -959,9 +959,9 @@ class Admin extends CI_Controller {
 	}
 
 	public function kontak() {
-		$ceks = $this->session->userdata('admin_ordodev@2017');
+		$ceks = $this->session->userdata('un_admin');
 		if (!isset($ceks)) {
-			redirect('panel_ordodev');
+			redirect('panel_jualkoding');
 		}
 
 		 	 $data['web'] 					= $this->Mcrud->get_web_id(1);
@@ -978,10 +978,10 @@ class Admin extends CI_Controller {
   }
 
 	public function logout() {
-     if ($this->session->has_userdata('admin_ordodev@2017')) {
+     if ($this->session->has_userdata('un_admin')) {
          $this->session->sess_destroy();
-         redirect('panel_ordodev');
+         redirect('panel_jualkoding');
      }
-     redirect('panel_ordodev');
+     redirect('panel_jualkoding');
   }
 }

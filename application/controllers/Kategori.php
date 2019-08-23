@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Kategori extends CI_Controller {
 
 	public function index() {
-		$ceks = $this->session->userdata('admin_ordodev@2017');
+		$ceks = $this->session->userdata('un_admin');
 		if (!isset($ceks)) {
 			redirect('panel_ordodev');
 		}
@@ -39,7 +39,7 @@ class Kategori extends CI_Controller {
 
 
 	public function edit($id='') {
-		$ceks = $this->session->userdata('admin_ordodev@2017');
+		$ceks = $this->session->userdata('un_admin');
 		if (!isset($ceks)) {
 			redirect('panel_ordodev');
 		}
@@ -79,7 +79,7 @@ class Kategori extends CI_Controller {
 
 
 	public function hapus($id='') {
-		$ceks = $this->session->userdata('admin_ordodev@2017');
+		$ceks = $this->session->userdata('un_admin');
 		if (!isset($ceks)) {
 			redirect('panel_ordodev');
 		}

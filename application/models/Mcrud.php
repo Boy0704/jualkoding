@@ -410,6 +410,7 @@ public function get_kat_by_id($id)
 
 	function view_app($num, $offset, $stt='')
 	{
+		$this->db->join('tbl_kat','tbl_kat.id_kat=tbl_app.id_kat');
 		if ($stt=='RANDOM') {
 			$this->db->order_by('id_app', $stt);
 		}else {
@@ -421,8 +422,8 @@ public function get_kat_by_id($id)
 
 		public function nama_app($stt1='',$stt2='')
 		{
-			$ket1 = "ORDO";
-			$ket2 = "DEV";
+			$ket1 = "JUAL";
+			$ket2 = "KODING";
 			if ($stt1==1) {
 				return $ket1;
 			}elseif ($stt1==2) {
@@ -430,6 +431,15 @@ public function get_kat_by_id($id)
 			}else {
 				return "$ket1$ket2";
 			}
+		}
+
+		public function get_web($aksi='')
+		{
+			$web = $this->db->get('tbl_web')->row()->$aksi;
+			if (empty($web)) {
+				$web='';
+			}
+			return $web;
 		}
 
 }

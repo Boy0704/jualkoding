@@ -12,6 +12,7 @@ $route['download/(:any)']= 'web/download/$1';
 $route['download/(:any)/(:any)']= 'web/download/$1/$2';
 $route['detail/(:any)']= 'web/detail/$1';
 $route['d/(:any)']= 'web/d/$1';
+$route['app_d/(:any)']= 'web/d/$1';
 $route['judul_ta']     = 'web/judul_ta';
 $route['article']      = 'web/article';
 $route['article/(:any)'] = 'web/article/$1';
@@ -30,7 +31,7 @@ $route['konfirm_pass/(:any)/(:any)'] = 'web/konfirm_pass/$1/$2';
 $route['pesan']        = 'web/pesan';
 
 
-$route['panel_ordodev'] = 'admin/panel_ordodev';
+$route['panel_jualkoding'] = 'admin/panel_jualkoding';
 $route['profile']       = 'admin/profile';
 $route['admin_logout']  = 'admin/logout';
 $route['aplikasi']      = 'admin/aplikasi';

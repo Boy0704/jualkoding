@@ -1,45 +1,38 @@
 <!DOCTYPE html>
 <?php
-$ceks = $this->session->userdata('ordodev@2017'); ?>
+$ceks = $this->session->userdata('un_member');
+$url_1 = $this->uri->segment(1);
+$url_2 = $this->uri->segment(2);
+$url_3 = $this->uri->segment(3);
+?>
 <html lang="en">
 <meta http-equiv="content-type" content="text/html;charset=utf-8" />
 <head>
-        <meta name="description" content="Situs Gudang Download Source Code Aplikasi Terlengkap Download Aplikasi Script PHP, Download Sistem Pakar, Download Sistem Pendukung Keputusan, Download web Portal Berita,Download Source code Data Mining,Download Source Code  E-Learning, E-Discussion, Toko Online, Website, Bootstrap, Minimarket, Absensi, Aplikasi Penggajian, Download Sistem Informasi Akademik, Download aplikasi berbasis web, Download aplikasi Perpustakaan, Download aplikasi pendaftaran online  Jasa Pembuatan Website dan Jasa Pembuatan Program Aplikasi PHP, TA, Skripsi, Batam, Jambi, Medan, Padang, Pekanbaru, Jakarta, Bandung, Surabaya ">
+   <meta name="description" content="Situs Gudang Download Source Code Aplikasi Terlengkap Download Aplikasi Script PHP, Download Sistem Pakar, Download Sistem Pendukung Keputusan, Download web Portal Berita,Download Source code Data Mining,Download Source Code  E-Learning, E-Discussion, Toko Online, Website, Bootstrap, Minimarket, Absensi, Aplikasi Penggajian, Download Sistem Informasi Akademik, Download aplikasi berbasis web, Download aplikasi Perpustakaan, Download aplikasi pendaftaran online  Jasa Pembuatan Website dan Jasa Pembuatan Program Aplikasi PHP, TA, Skripsi, Batam, Jambi, Medan, Padang, Pekanbaru, Jakarta, Bandung, Surabaya ">
    <meta name="keywords" content="PHP,Download,Program,Script,Aplikasi, Jasa, Skripsi, Website,download code php, script php, belajar php, tutorial php, cara mudah belajar php, Download script php, Sistem Pakar, Sistem Pendukung Keputusan, Jasa Website, Bootstrap, Portal Berita, Data Mining, E-Learning, E-Discussion, Toko Online, Minimarket, Absensi, Aplikasi Penggajian, Sistem Informasi Akademik, Jasa Pembuatan Website di Batam, Jambi, Medan, Padang, Pekanbaru, Jakarta, Bandung, Surabaya, Jasa Pembauatn Program Aplikasi PHP, Tugas Akhir, Skripsi, Murah">
+   <meta name="description" content=" Situs Gudang Download Source Code Aplikasi Terlengkap gudang download aplikasi berbasis web gratis | member | premium tempatnya source code dari berbagai file hanya di jualkoding ...!!!">
+   <meta name="keywords" content=" Situs Gudang Download Source Code Aplikasi Terlengkap download aplikasi berbasis web | download aplikasi gratis |  HTML,CSS,XML,JavaScript | Download | Aplikasi | gratis " >
+   <meta name="author" content="Admin Jual Koding">
+   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+   <base href="<?php echo base_url();?>"/>
+   <title><?php echo $judul; ?></title>
+   <link rel="icon" type="image/ico" href="images/<?php echo $web->favicon; ?>"/>
+   <!-- Bootstrap core CSS -->
+   <link href="assets/bootstrap/css/bootstrap.css" rel="stylesheet">
+   <link href="assets/css/style.css" rel="stylesheet">
+   <!-- styles needed for carousel slider -->
+   <link href="assets/plugins/owl-carousel/owl.carousel.css" rel="stylesheet">
+   <link href="assets/plugins/owl-carousel/owl.theme.css" rel="stylesheet">
+   <!-- bxSlider CSS file -->
+   <link href="assets/plugins/bxslider/jquery.bxslider.css" rel="stylesheet"/>
 
-    <meta name="description" content=" Situs Gudang Download Source Code Aplikasi Terlengkap gudang download aplikasi berbasis web gratis | member | premium tempatnya source code dari berbagai file hanya di jualkoding ...!!!">
-    <meta name="keywords" content=" Situs Gudang Download Source Code Aplikasi Terlengkap download aplikasi berbasis web | download aplikasi gratis |  HTML,CSS,XML,JavaScript | Download | Aplikasi | gratis " >
-    <meta name="author" content="Admin Jual Koding">
-
-
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
-
-				<base href="<?php echo base_url();?>"/>
-
-        <title><?php echo $judul; ?></title>
-
-        <link rel="icon" type="image/ico" href="images/<?php echo $web->favicon; ?>"/>
-
-        <!-- Bootstrap core CSS -->
-        <link href="assets/bootstrap/css/bootstrap.css" rel="stylesheet">
-
-
-        <link href="assets/css/style.css" rel="stylesheet">
-
-        <!-- styles needed for carousel slider -->
-        <link href="assets/plugins/owl-carousel/owl.carousel.css" rel="stylesheet">
-        <link href="assets/plugins/owl-carousel/owl.theme.css" rel="stylesheet">
-
-        <!-- bxSlider CSS file -->
-        <link href="assets/plugins/bxslider/jquery.bxslider.css" rel="stylesheet"/>
-
-        <!-- Just for debugging purposes. -->
-        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-        <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
-        <![endif]-->
+    <!-- Just for debugging purposes. -->
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
 
         <!-- include pace script for automatic web page progress bar  -->
         <script>
@@ -64,7 +57,7 @@ $ceks = $this->session->userdata('ordodev@2017'); ?>
       		<div class="container">
               <div class="navbar-identity">
           			<a href="" class="navbar-brand logo logo-title">
-            			<img src="images/ordodev.png" alt="" width="50">
+            			<img src="images/<?php echo $this->Mcrud->get_web('logo'); ?>" alt="" width="50" style="margin-top:-10px;">
             			</span><?php echo $this->Mcrud->nama_app('1'); ?><span><?php echo $this->Mcrud->nama_app('2'); ?> </span>
                 </a>
                 <button data-target="#menu1" data-toggle="collapse" class="navbar-toggler pull-right" type="button">
@@ -100,8 +93,11 @@ $ceks = $this->session->userdata('ordodev@2017'); ?>
       						</ul>
       					</li>
         <?php }else{?>
-      					<li class="no-arrow nav-item">
-  								<a class="btn btn-block btn-border btn-post btn-secondary nav-link" href="login" style="color:#222;">Login</a>
+          <style>
+            .btn-login.btn-secondary:hover{background:#f1f1f1;}
+          </style>
+      					<li class="lang-menu nav-item">
+  								<a class="btn btn-block btn-border btn-login btn-secondary nav-link" href="login" style="color:#222;">Login</a>
       					</li>
                 <li class="lang-menu nav-item">
       						<a class="btn btn-block btn-border btn-post btn-danger nav-link" href="registrasi" style="color:#f1f1f1;">
@@ -115,15 +111,15 @@ $ceks = $this->session->userdata('ordodev@2017'); ?>
       		</div>
       		<!-- /.container-fluid -->
       	</nav>
-        <nav style="background:#333;">
+        <nav class="navbar-site2">
           <div class="container topnav" id="myTopnav">
-            <a class="active" href="<?php echo base_url(); ?>"><i class="fa fa-home"></i> HOME <span class="sr-only">(current)</span></a>
-            <a class="" href="panduan"><i class="fa fa-book"></i> PANDUAN</a>
-            <a class="" href="download"><i class="fa fa-code"></i> SOURCE CODE</a>
-            <a class="" href="judul_ta"><i class="fa fa-bookmark"></i> JUDUL TA</a>
-            <a class="" href="article"><i class="fa fa-globe"></i> ARTIKEL</a>
-            <a class="" href="app"><i class="fa fa-dropbox"></i> APLIKASI</a>
-            <a class="" href="hubungi"><i class="fa fa-phone"></i> KONTAK</a>
+            <a<?php if($url_1=='' || $url_1=='web' && $url_2==''){echo ' class="active"';} ?> href="<?php echo base_url(); ?>"><i class="fa fa-home"></i> HOME <span class="sr-only">(current)</span></a>
+            <a<?php if($url_1=='download' || $url_1=='d'){echo ' class="active"';} ?> href="download"><i class="fa fa-code"></i> DOWNLOAD SOURCE CODE</a>
+            <a<?php if($url_1=='app' || $url_1=='app_d'){echo ' class="active"';} ?> href="app"><i class="fa fa-inbox"></i> APLIKASI</a>
+            <a<?php if($url_1=='judul_ta'){echo ' class="active"';} ?> href="judul_ta"><i class="fa fa-desktop"></i> JUDUL TA</a>
+            <a<?php if($url_1=='panduan'){echo ' class="active"';} ?> href="panduan"><i class="fa fa-briefcase"></i> PANDUAN</a>
+            <a<?php if($url_1=='article' || $url_1=='article_detail'){echo ' class="active"';} ?> href="article"><i class="fa fa-globe"></i> ARTIKEL</a>
+            <a<?php if($url_1=='hubungi'){echo ' class="active"';} ?> href="hubungi"><i class="fa fa-envelope"></i> KONTAK</a>
             <!-- <div class="dropdown">
               <button class="dropbtn">Dropdown
                 <i class="fa fa-caret-down"></i>
@@ -140,10 +136,10 @@ $ceks = $this->session->userdata('ordodev@2017'); ?>
         <script>
         function myFunction() {
           var x = document.getElementById("myTopnav");
-          if (x.className === "topnav") {
+          if (x.className === "container topnav") {
             x.className += " responsive";
           } else {
-            x.className = "topnav";
+            x.className = "container topnav";
           }
         }
         </script>
