@@ -13,7 +13,7 @@ class Web extends CI_Controller {
 		$ceks = $this->session->userdata('ordodev@2017');
 
 		$data['web'] 					= $this->Mcrud->get_web_id(1);
-		$data['judul']				= 'Ordodev : Situs Gudang Download Source Code Aplikasi Terlengkap';
+		$data['judul']				= 'Jual Koding : Situs Gudang Download Source Code Aplikasi Terlengkap dan Termurah Tersedia juga private belajar pemrograman';
 
 		$jml = $this->db->get('tbl_app');
 		$config['base_url'] = base_url().'web/page';
