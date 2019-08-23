@@ -1,0 +1,41 @@
+HTTrack3.49-2+htsswf+htsjava launched on Sun, 25 Mar 2018 07:40:22 at http://templatecycle.com/bootclassified/v4.2/dist/index.html +*.png +*.gif +*.jpg +*.jpeg +*.css +*.js -ad.doubleclick.net/* -mime:application/foobar
+(winhttrack -qwC2%Ps2u1%s%uN0%I0p3DaK0H0%kf2A25000%f#f -F "Mozilla/4.5 (compatible; HTTrack 3.0x; Windows 98)" -%F "<!-- Mirrored from %s%s by HTTrack Website Copier/3.x [XR&CO'2014], %s -->" -%l "en, *" http://templatecycle.com/bootclassified/v4.2/dist/index.html -O1 "C:\wamp\www\mediakus" +*.png +*.gif +*.jpg +*.jpeg +*.css +*.js -ad.doubleclick.net/* -mime:application/foobar )
+
+Information, Warnings and Errors reported for this mirror:
+note:	the hts-log.txt file, and hts-cache folder, may contain sensitive information,
+	such as username/password authentication for websites mirrored in this project
+	do not share these files/folders if you want these information to remain private
+
+07:45:18	Warning: 	Retry after error -2 (Receive Time Out) at link templatecycle.com/bootclassified/v4.2/dist/assets/ico/apple-touch-icon-144-precomposed.png (from templatecycle.com/bootclassified/v4.2/dist/index.html)
+07:45:18	Warning: 	File seems complete (same size), but there was a cache read error (4294967295): templatecycle.com/bootclassified/v4.2/dist/assets/ico/apple-touch-icon-144-precomposed.png
+07:48:57	Warning: 	Retry after error -2 (Receive Time Out) at link templatecycle.com/bootclassified/v4.2/dist/images/bg3.jpg (from templatecycle.com/bootclassified/v4.2/dist/index.html)
+07:48:57	Warning: 	Retry after error -2 (Receive Time Out) at link templatecycle.com/bootclassified/v4.2/dist/images/category/car-2.jpg (from templatecycle.com/bootclassified/v4.2/dist/index.html)
+07:48:57	Warning: 	Retry after error -2 (Receive Time Out) at link templatecycle.com/bootclassified/v4.2/dist/images/category/laptop-2.jpg (from templatecycle.com/bootclassified/v4.2/dist/index.html)
+07:48:57	Warning: 	File seems complete (same size), but there was a cache read error (4294967295): templatecycle.com/bootclassified/v4.2/dist/images/bg3.jpg
+07:48:57	Warning: 	File seems complete (same size), but there was a cache read error (4294967295): templatecycle.com/bootclassified/v4.2/dist/images/category/car-2.jpg
+07:48:57	Warning: 	File seems complete (same size), but there was a cache read error (4294967295): templatecycle.com/bootclassified/v4.2/dist/images/category/laptop-2.jpg
+07:49:20	Warning: 	Retry after error -2 (Receive Time Out) at link templatecycle.com/bootclassified/v4.2/dist/images/category/Home-Electronics-Appliances-2.jpg (from templatecycle.com/bootclassified/v4.2/dist/index.html)
+07:49:21	Warning: 	File seems complete (same size), but there was a cache read error (4294967295): templatecycle.com/bootclassified/v4.2/dist/images/category/Home-Electronics-Appliances-2.jpg
+07:55:29	Error: 	"Not Found" (404) at link templatecycle.com/bootclassified/v4.2/dist/fb.com (from templatecycle.com/bootclassified/v4.2/dist/account-home.html)
+07:55:33	Error: 	"Not Found" (404) at link templatecycle.com/bootclassified/v4.2/dist/help.html (from templatecycle.com/bootclassified/v4.2/dist/post-ads.html)
+07:55:34	Warning: 	Retry after error -2 (Receive Time Out) at link templatecycle.com/bootclassified/v4.2/dist/images/item/tp/Image00008.jpg (from templatecycle.com/bootclassified/v4.2/dist/seller-profile.html)
+07:55:34	Warning: 	Retry after error -2 (Receive Time Out) at link templatecycle.com/bootclassified/v4.2/dist/images/item/tp/Image00003.jpg (from templatecycle.com/bootclassified/v4.2/dist/seller-profile.html)
+07:55:34	Error: 	"Not Found" (404) at link templatecycle.com/bootclassified/v4.2/dist/job-account-home.html (from templatecycle.com/bootclassified/v4.2/dist/job-signup.html)
+07:55:34	Warning: 	Retry after error -2 (Receive Time Out) at link templatecycle.com/bootclassified/v4.2/dist/images/bg3.jpg (from templatecycle.com/bootclassified/v4.2/dist/index.html)
+07:55:34	Warning: 	File seems complete (same size), but there was a cache read error (4294967295): templatecycle.com/bootclassified/v4.2/dist/images/bg3.jpg
+07:55:34	Warning: 	File seems complete (same size), but there was a cache read error (4294967295): templatecycle.com/bootclassified/v4.2/dist/images/item/tp/Image00008.jpg
+07:56:08	Warning: 	Retry after error -2 (Receive Time Out) at link templatecycle.com/bootclassified/v4.2/dist/images/house/thumb/4.jpeg (from templatecycle.com/bootclassified/v4.2/dist/property-list.html)
+07:56:09	Warning: 	File seems complete (same size), but there was a cache read error (4294967295): templatecycle.com/bootclassified/v4.2/dist/images/house/thumb/4.jpeg
+07:57:54	Error: 	"Not Found" (404) at link templatecycle.com/bootclassified/v4.2/dist/ajax/ads-details.html (from templatecycle.com/bootclassified/v4.2/dist/ajax/1.html)
+07:57:54	Error: 	"Not Found" (404) at link templatecycle.com/bootclassified/v4.2/dist/ajax/images/item/tp/Image00015.jpg (from templatecycle.com/bootclassified/v4.2/dist/ajax/1.html)
+07:57:54	Error: 	"Not Found" (404) at link templatecycle.com/bootclassified/v4.2/dist/ajax/images/item/tp/Image00008.jpg (from templatecycle.com/bootclassified/v4.2/dist/ajax/1.html)
+07:57:54	Error: 	"Not Found" (404) at link templatecycle.com/bootclassified/v4.2/dist/ajax/images/item/tp/Image00014.jpg (from templatecycle.com/bootclassified/v4.2/dist/ajax/1.html)
+07:57:54	Error: 	"Not Found" (404) at link templatecycle.com/bootclassified/v4.2/dist/ajax/images/item/tp/Image00003.jpg (from templatecycle.com/bootclassified/v4.2/dist/ajax/1.html)
+07:57:54	Error: 	"Not Found" (404) at link templatecycle.com/bootclassified/v4.2/dist/ajax/images/item/tp/Image00022.jpg (from templatecycle.com/bootclassified/v4.2/dist/ajax/1.html)
+07:57:54	Error: 	"Not Found" (404) at link templatecycle.com/bootclassified/v4.2/dist/ajax/images/item/FreeGreatPicture.com-46405-google-drops-price-of-nexus-4-smartphone.jpg (from templatecycle.com/bootclassified/v4.2/dist/ajax/1.html)
+07:57:55	Error: 	"Not Found" (404) at link templatecycle.com/bootclassified/v4.2/dist/ajax/images/item/FreeGreatPicture.com-46404-google-drops-nexus-4-by-100-offers-15-day-price-protection-refund.jpg (from templatecycle.com/bootclassified/v4.2/dist/ajax/1.html)
+07:57:55	Warning: 	Retry after error -2 (Receive Time Out) at link templatecycle.com/bootclassified/v4.2/dist/images/item/tp/Image00008.jpg (from templatecycle.com/bootclassified/v4.2/dist/seller-profile.html)
+07:57:55	Warning: 	File seems complete (same size), but there was a cache read error (4294967295): templatecycle.com/bootclassified/v4.2/dist/images/item/tp/Image00008.jpg
+
+HTTrack Website Copier/3.49-2 mirror complete in 17 minutes 33 seconds : 735 links scanned, 713 files written (16895061 bytes overall) [14421598 bytes received at 13695 bytes/sec], 3586692 bytes transferred using HTTP compression in 79 files, ratio 18%, 15.6 requests per connection
+(11 errors, 19 warnings, 0 messages)
