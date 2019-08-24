@@ -295,6 +295,10 @@ class Web extends CI_Controller {
 
 		$data['web'] 		= $this->Mcrud->get_web_id(1);
 		$data['judul']	= 'Aplikasi | '.$data['web']->nama_web;
+		//meta
+		$data['meta_description'] = $this->Mcrud->get_web('meta_description');
+		$data['meta_keyword'] = $this->Mcrud->get_web('meta_keyword');
+
 											$this->db->order_by('id_app', 'DESC');
 		$data['app'] 		= $this->Mcrud->get_app()->result();
 
@@ -362,6 +366,10 @@ $data = array(
 		$data['download'] = $this->Mcrud->get_app_url($url)->row();
 		$data['web'] 		= $this->Mcrud->get_web_id(1);
 		$data['judul']	= $data['download']->nama_app.' | '.$data['web']->nama_web;
+		//meta
+		$data['meta_description'] = $data['download']->meta_description;
+		$data['meta_keyword'] = $data['download']->meta_keyword;
+
 		$data['jml_member'] 	= $this->Mcrud->get_user_by_level()->num_rows();
 		$data['jml_app'] 			= $this->Mcrud->get_app()->num_rows();
 		$data['app'] 		= $this->Mcrud->get_app()->result();

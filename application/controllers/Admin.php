@@ -297,6 +297,8 @@ class Admin extends CI_Controller {
 				 	 $kode  			= htmlentities(strip_tags($this->input->post('kode')));
 					 $nama  			= htmlentities(strip_tags($this->input->post('nama')));
 					 $id_kat  		= htmlentities(strip_tags($this->input->post('id_kat')));
+					 $meta_description  	= htmlentities(strip_tags($this->input->post('meta_description')));
+					 $meta_keyword  	= htmlentities(strip_tags($this->input->post('meta_keyword')));
 					 $developer  	= htmlentities(strip_tags($this->input->post('developer')));
 					 $harga  			= htmlentities(strip_tags($this->input->post('harga')));
 					 $url  			  = htmlentities(strip_tags($this->input->post('url')));
@@ -348,6 +350,8 @@ class Admin extends CI_Controller {
 							 'kode_app'			=> $kode,
 							 'nama_app'			=> $nama,
 							 'id_kat'				=> $id_kat,
+							 'meta_description'		=> $meta_description,
+							 'meta_keyword'		=> $meta_keyword,
 							 'developer'		=> $developer,
 							 'harga'				=> $harga,
 							 'img'	  			=> $gambar,
@@ -435,6 +439,8 @@ class Admin extends CI_Controller {
 						//$kode  			= htmlentities(strip_tags($this->input->post('kode')));
 						$nama  				= htmlentities(strip_tags($this->input->post('nama')));
 						$id_kat  			= htmlentities(strip_tags($this->input->post('id_kat')));
+						$meta_description  	= htmlentities(strip_tags($this->input->post('meta_description')));
+						$meta_keyword  	= htmlentities(strip_tags($this->input->post('meta_keyword')));
 						$developer  	= htmlentities(strip_tags($this->input->post('developer')));
 						$harga  			= htmlentities(strip_tags($this->input->post('harga')));
 						$url  			  = htmlentities(strip_tags($this->input->post('url')));
@@ -478,6 +484,8 @@ class Admin extends CI_Controller {
 								 $data = array(
 									 'nama_app'			=> $nama,
 									 'id_kat'				=> $id_kat,
+									 'meta_description'		=> $meta_description,
+									 'meta_keyword'		=> $meta_keyword,
 									 'developer'		=> $developer,
 									 'harga'				=> $harga,
 									 'img'	  			=> $gambar,
@@ -502,6 +510,8 @@ class Admin extends CI_Controller {
 							 $data = array(
 								 'nama_app'			=> $nama,
 								 'id_kat'				=> $id_kat,
+								 'meta_description'		=> $meta_description,
+								 'meta_keyword'		=> $meta_keyword,
 								 'developer'		=> $developer,
 								 'harga'				=> $harga,
 								 'keterangan'		=> $ket,

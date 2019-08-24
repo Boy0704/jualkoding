@@ -42,6 +42,18 @@
             </div>
           </div>
           <div class="control-group">
+              <label class="control-label">Meta Description :</label>
+              <div class="controls">
+                <textarea class="span11" name="meta_description" rows="6" placeholder="Meta Description ..." required><?php echo $app->meta_description; ?></textarea>
+              </div>
+            </div>
+            <div class="control-group">
+              <label class="control-label">Meta Keyword :</label>
+              <div class="controls">
+                <textarea class="span11" name="meta_keyword" rows="5" placeholder="Meta Keyword ..." required><?php echo $app->meta_keyword; ?></textarea>
+              </div>
+            </div>
+          <div class="control-group">
             <label class="control-label">Developer :</label>
             <div class="controls">
               <input type="text" class="span11" name="developer" placeholder="Developer" value="<?php echo $app->developer; ?>" required/>

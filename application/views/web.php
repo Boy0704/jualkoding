@@ -6,7 +6,7 @@
 						<div class="row row-featured">
 								<div class="col-xl-12  box-title " style="margin-bottom:10px;">
 										<div class="inner">
-											<h2><span>Produk Terbaru </span>
+											<h2><span>Aplikasi Terbaru </span>
 												<?php echo $this->Mcrud->nama_app(); ?>
 											</h2>
 										</div>
