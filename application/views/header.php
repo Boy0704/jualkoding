@@ -8,10 +8,8 @@ $url_3 = $this->uri->segment(3);
 <html lang="en">
 <meta http-equiv="content-type" content="text/html;charset=utf-8" />
 <head>
-   <meta name="description" content="Situs Gudang Download Source Code Aplikasi Terlengkap Download Aplikasi Script PHP, Download Sistem Pakar, Download Sistem Pendukung Keputusan, Download web Portal Berita,Download Source code Data Mining,Download Source Code  E-Learning, E-Discussion, Toko Online, Website, Bootstrap, Minimarket, Absensi, Aplikasi Penggajian, Download Sistem Informasi Akademik, Download aplikasi berbasis web, Download aplikasi Perpustakaan, Download aplikasi pendaftaran online  Jasa Pembuatan Website dan Jasa Pembuatan Program Aplikasi PHP, TA, Skripsi, Batam, Jambi, Medan, Padang, Pekanbaru, Jakarta, Bandung, Surabaya ">
-   <meta name="keywords" content="PHP,Download,Program,Script,Aplikasi, Jasa, Skripsi, Website,download code php, script php, belajar php, tutorial php, cara mudah belajar php, Download script php, Sistem Pakar, Sistem Pendukung Keputusan, Jasa Website, Bootstrap, Portal Berita, Data Mining, E-Learning, E-Discussion, Toko Online, Minimarket, Absensi, Aplikasi Penggajian, Sistem Informasi Akademik, Jasa Pembuatan Website di Batam, Jambi, Medan, Padang, Pekanbaru, Jakarta, Bandung, Surabaya, Jasa Pembauatn Program Aplikasi PHP, Tugas Akhir, Skripsi, Murah">
-   <meta name="description" content=" Situs Gudang Download Source Code Aplikasi Terlengkap gudang download aplikasi berbasis web gratis | member | premium tempatnya source code dari berbagai file hanya di jualkoding ...!!!">
-   <meta name="keywords" content=" Situs Gudang Download Source Code Aplikasi Terlengkap download aplikasi berbasis web | download aplikasi gratis |  HTML,CSS,XML,JavaScript | Download | Aplikasi | gratis " >
+   <meta name="description" content="<?php echo $meta_description; ?>">
+   <meta name="keywords" content="<?php echo $meta_keyword; ?>">
    <meta name="author" content="Admin <?php echo $this->Mcrud->get_web('nama_web'); ?>">
    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />

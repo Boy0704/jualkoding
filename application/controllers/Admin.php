@@ -83,6 +83,8 @@ class Admin extends CI_Controller {
  					 $no_hp  			= htmlentities(strip_tags($this->input->post('no_hp')));
  					 $email  			= htmlentities(strip_tags($this->input->post('email')));
  					 $alamat  		= htmlentities(strip_tags($this->input->post('alamat')));
+ 					 $meta_description  		= htmlentities(strip_tags($this->input->post('meta_description')));
+ 					 $meta_keyword  		= htmlentities(strip_tags($this->input->post('meta_keyword')));
  					 $map  			  = htmlentities(strip_tags($this->input->post('map')));
 
 					 date_default_timezone_set('Asia/Jakarta');
@@ -123,6 +125,8 @@ class Admin extends CI_Controller {
 				 							'no_hp'			=> $no_hp,
 				 							'email'			=> $email,
 				 							'alamat'		=> $alamat,
+				 							'meta_description'		=> $meta_description,
+				 							'meta_keyword'		=> $meta_keyword,
 				 							'map'	  		=> $map,
 											'favicon'		=> $gambar,
 				 							'tgl_diubah'=> $waktu
@@ -144,6 +148,8 @@ class Admin extends CI_Controller {
 									 'no_hp'			=> $no_hp,
 									 'email'			=> $email,
 									 'alamat'		=> $alamat,
+									 'meta_description'		=> $meta_description,
+				 							'meta_keyword'		=> $meta_keyword,
 									 'map'	  		=> $map,
 									 'tgl_diubah'=> $waktu
 								 );

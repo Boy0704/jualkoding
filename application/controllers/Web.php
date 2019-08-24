@@ -14,6 +14,9 @@ class Web extends CI_Controller {
 
 		$data['web'] 					= $this->Mcrud->get_web_id(1);
 		$data['judul']				= $this->Mcrud->get_web('nama_web').' : Situs Gudang Download Source Code Aplikasi Terlengkap dan Termurah Tersedia juga private belajar pemrograman';
+		//meta
+		$data['meta_description'] = $this->Mcrud->get_web('meta_description');
+		$data['meta_keyword'] = $this->Mcrud->get_web('meta_keyword');
 
 		$this->db->join('tbl_kat','tbl_kat.id_kat=tbl_app.id_kat');
 		$jml = $this->db->get('tbl_app');
@@ -261,7 +264,7 @@ class Web extends CI_Controller {
 							$this->session->set_flashdata('msg_download',
 							 '
 							 <div class="alert alert-danger" style="background-color:danger;">
-									 <strong> Maaf, Akun Anda '.$ceks.' PENDING SILAHKAN AKTIFKAN DI <a href="panduan">SINI</a> AKUN ANDA INFO  082377168756</strong>.
+									 <strong> Maaf, Akun Anda '.$ceks.' Jika anda mengalami masalah silahkan klik <a href="panduan">SINI</a> Atau Hubungi WA  085273171136</strong>.
 						   </div>'
 						 );
 						 redirect('panduan');

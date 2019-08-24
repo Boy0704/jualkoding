@@ -55,7 +55,19 @@
               </div>
             </div>
             <div class="control-group">
-              <label class="control-label">ALamat :</label>
+              <label class="control-label">Meta Description :</label>
+              <div class="controls">
+                <textarea class="span11" name="meta_description" rows="6" placeholder="Meta Description ..." required><?php echo $web->meta_description; ?></textarea>
+              </div>
+            </div>
+            <div class="control-group">
+              <label class="control-label">Meta Keyword :</label>
+              <div class="controls">
+                <textarea class="span11" name="meta_keyword" rows="5" placeholder="Meta Keyword ..." required><?php echo $web->meta_keyword; ?></textarea>
+              </div>
+            </div>
+            <div class="control-group">
+              <label class="control-label">Alamat :</label>
               <div class="controls">
                 <textarea class="span11" name="alamat" rows="6" placeholder="ALamat ..." required><?php echo $web->alamat; ?></textarea>
               </div>

@@ -54,9 +54,9 @@ $sub_menu = strtolower($this->uri->segment(2));
 <!--close-top-Header-menu-->
 
 <!--sidebar-menu-->
-<div id="sidebar"><a href="panel_ordodev" class="visible-phone"><i class="icon icon-home"></i> Dashboard</a>
+<div id="sidebar"><a href="panel_jualkoding" class="visible-phone"><i class="icon icon-home"></i> Dashboard</a>
   <ul>
-    <li class="<?php if ($menu == "panel_ordodev") { echo "active";} ?>"><a href="panel_ordodev"><i class="icon icon-home"></i> <span>Dashboard</span></a> </li>
+    <li class="<?php if ($menu == "panel_jualkoding") { echo "active";} ?>"><a href="panel_jualkoding"><i class="icon icon-home"></i> <span>Dashboard</span></a> </li>
     <li class="<?php if ($menu == "aplikasi" || $sub_menu == "edit_app" || $menu == "kategori") { echo "active";} ?>"> <a href="aplikasi"><i class="icon icon-inbox"></i> <span>Aplikasi</span></a> </li>
     <li class="<?php if ($menu == "data_member") { echo "active";} ?>"> <a href="data_member"><i class="icon icon-group"></i> <span>Data Member</span></a> </li>
     <li class="<?php if ($menu == "transaksi") { echo "active";} ?>"> <a href="transaksi"><i class="icon icon-credit-card"></i> <span>Transaksi</span></a></li>
