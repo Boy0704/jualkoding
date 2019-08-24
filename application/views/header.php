@@ -12,7 +12,7 @@ $url_3 = $this->uri->segment(3);
    <meta name="keywords" content="PHP,Download,Program,Script,Aplikasi, Jasa, Skripsi, Website,download code php, script php, belajar php, tutorial php, cara mudah belajar php, Download script php, Sistem Pakar, Sistem Pendukung Keputusan, Jasa Website, Bootstrap, Portal Berita, Data Mining, E-Learning, E-Discussion, Toko Online, Minimarket, Absensi, Aplikasi Penggajian, Sistem Informasi Akademik, Jasa Pembuatan Website di Batam, Jambi, Medan, Padang, Pekanbaru, Jakarta, Bandung, Surabaya, Jasa Pembauatn Program Aplikasi PHP, Tugas Akhir, Skripsi, Murah">
    <meta name="description" content=" Situs Gudang Download Source Code Aplikasi Terlengkap gudang download aplikasi berbasis web gratis | member | premium tempatnya source code dari berbagai file hanya di jualkoding ...!!!">
    <meta name="keywords" content=" Situs Gudang Download Source Code Aplikasi Terlengkap download aplikasi berbasis web | download aplikasi gratis |  HTML,CSS,XML,JavaScript | Download | Aplikasi | gratis " >
-   <meta name="author" content="Admin Jual Koding">
+   <meta name="author" content="Admin <?php echo $this->Mcrud->get_web('nama_web'); ?>">
    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
    <base href="<?php echo base_url();?>"/>

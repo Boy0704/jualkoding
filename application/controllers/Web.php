@@ -819,7 +819,9 @@ $data = array(
 
 	function error_not_found(){
 		$data['web'] 	 = $this->Mcrud->get_web_id(1);
-		$data['judul'] = '404 PAGE NOT FOUND | Ordodev : Situs Gudang Download Source Code Aplikasi Terlengkap';
+		$data['judul'] = '404 PAGE NOT FOUND | ';
+		$data['judul'] .= $this->Mcrud->get_web('nama_web').' : Situs Gudang Download Source Code Aplikasi Terlengkap dan Termurah Tersedia juga private belajar pemrograman';
+
 		$this->load->view('header', $data);
 		$this->load->view('404_content', $data);
 		$this->load->view('footer', $data);

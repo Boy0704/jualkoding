@@ -5,8 +5,10 @@
 				<div class="col-xl-12 ">
 						<div class="row row-featured">
 								<div class="col-xl-12  box-title " style="margin-bottom:10px;">
-										<div class="inner"><h2><span>Produk Terbaru </span>
-												<?php echo $this->Mcrud->nama_app(); ?> <a href="download" class="sell-your-item"> Tampilkan Semua <i class="  icon-th-list"></i> </a></h2>
+										<div class="inner">
+											<h2><span>Produk Terbaru </span>
+												<?php echo $this->Mcrud->nama_app(); ?>
+											</h2>
 										</div>
 								</div>
 
