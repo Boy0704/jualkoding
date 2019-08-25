@@ -88,7 +88,7 @@
           <div class="control-group">
             <label class="control-label">Keterangan :</label>
             <div class="controls">
-              <textarea class="textarea_editor span11" name="ket" rows="6" value="" placeholder="Keterangan ..." required></textarea>
+              <textarea class="textarea_editor span11" name="ket" rows="6" value="" placeholder="Keterangan ..."></textarea>
             </div>
           </div>
           <div class="form-actions">
@@ -131,7 +131,6 @@
                 <td><?php echo $i++; ?></td>
                 <td><img src="images/app/<?php echo $baris->img; ?>" alt="<?php echo $baris->img; ?>" width="100"></td>
                 <td><?php echo $baris->nama_app; ?></td>
-
                 <td><?php echo $baris->tanggal; ?></td>
                 <td style="text-align:center;"><span class="label label-info"><?php echo $baris->view; ?></span></td>
                 <td style="text-align:center;"><span class="label label-info"><?php echo $baris->download; ?></span></td>

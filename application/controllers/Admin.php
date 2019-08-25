@@ -518,7 +518,7 @@ class Admin extends CI_Controller {
 				foreach($matches[0] as $k=>$v ){
 					$str_new = substr($v,5);
 					$fix = substr($str_new,0,-1);
-					unlink("images/app_multi/images/app_multi/$fix");
+					unlink("$fix");
 				}
 				unlink("images/app/$cek->img");
 		}
@@ -741,8 +741,9 @@ class Admin extends CI_Controller {
 							 </div>'
 						 );
 					 }else{
-						 
-						 $filename = $_FILES['gambar']['name'];
+
+						 $uploadx = $this->upload->data();
+						 $filename = $uploadx['file_name'];
 						 $gambar = preg_replace('/ /', '_', $filename);
 
 						 $data = array(

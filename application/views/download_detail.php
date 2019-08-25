@@ -38,9 +38,7 @@
 													Rp.&nbsp;<?php echo number_format($download->harga,0,",","."); ?>
 												<?php } ?>
 												</h1>
-													<ul class="">
-															<li><img src="images/app/<?php echo $download->img; ?>" data-fancybox="<?php echo $download->url; ?>" data-caption="<?php echo $download->nama_app; ?>" alt="img" width="100%"/></li>
-													</ul>
+												<img src="images/app/<?php echo $download->img; ?>" class="img-responsive" data-fancybox="<?php echo $download->url; ?>" data-caption="<?php echo $download->nama_app; ?>" alt="<?php echo $download->nama_app; ?>" title="<?php echo $download->nama_app; ?>" width="100%"/>
 											</div>
 											<!--ads-image-->
 
@@ -52,7 +50,7 @@
 																	<p>
 																		<?php
 																		$str = $download->keterangan;
-																		$link_img = base_url().'images/app_multi/';
+																		$link_img = base_url().'';
 						                        $regex = '#<img([^>]*) src="([^"/]*/?[^".]*\.[^"]*)"([^>]*)>((?!</a>))#';
 						                        $replace = '<p style="text-align: left; padding-left: 40px;"><a href="'.$link_img.'$2" data-fancybox="'.$download->url.'" data-caption="'.$download->nama_app.'" id="a_"><img src="'.$link_img.'$2" class="img-responsive" id="img_" $3 title="'.ucwords($download->nama_app).'"></a><br>';
 						                        $Content = preg_replace($regex, $replace, $str);

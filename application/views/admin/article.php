@@ -31,7 +31,7 @@
           <div class="control-group">
             <label class="control-label">Isi :</label>
             <div class="controls">
-              <textarea class="textarea_editor span11" name="isi" rows="6" placeholder="Isi ..." required></textarea>
+              <textarea class="textarea_editor span11" name="isi" rows="6" placeholder="Isi ..."></textarea>
             </div>
           </div>
           <div class="form-actions">
