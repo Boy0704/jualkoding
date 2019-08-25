@@ -8,11 +8,22 @@ $url_3 = $this->uri->segment(3);
 <html lang="en">
 <meta http-equiv="content-type" content="text/html;charset=utf-8" />
 <head>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-146413049-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-146413049-1');
+  </script>
+
    <meta name="description" content="<?php if(!empty($meta_description)){echo $meta_description;}else{echo $this->Mcrud->get_web('meta_description');} ?>, <?php echo $judul; ?>, <?php echo $this->Mcrud->get_web('nama_web'); ?>">
    <meta name="keywords" content="<?php if(!empty($meta_keyword)){echo $meta_keyword;}else{echo $this->Mcrud->get_web('meta_keyword');} ?>, <?php echo $judul; ?>, <?php echo $this->Mcrud->get_web('nama_web'); ?>">
    <meta name="author" content="Admin <?php echo $this->Mcrud->get_web('nama_web'); ?>">
    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+   <meta name="google-site-verification" content="cEzuxFqyaRTvnOyWq5sGq_Mm72YNgfmkHkwi6Vw6x2w" />
    <base href="<?php echo base_url();?>"/>
    <title><?php echo $judul; ?></title>
    <link rel="icon" type="image/ico" href="images/<?php echo $web->favicon; ?>"/>
