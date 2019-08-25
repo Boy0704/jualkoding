@@ -43,7 +43,7 @@ $sub_menu = strtolower($this->uri->segment(2));
         ],
         toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image responsivefilemanager",
         images_upload_url: '<?php echo base_url() ?>admin/tinymce_upload',
-        images_upload_base_path: '<?php echo base_url() ?>iamges/app_multi',
+        images_upload_base_path: '<?php echo base_url() ?>',
         images_upload_credentials: true
    });
 </script>
