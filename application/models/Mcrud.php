@@ -34,7 +34,8 @@ class Mcrud extends CI_Model {
 		$config['wordwrap'] = TRUE;
 		//memanggil library email dan set konfigurasi untuk pengiriman email
 
-		$this->email->initialize($config);
+		$this->load->library('email', $config);
+		// $this->email->initialize($config);
 		//$ipaddress = get_real_ip(); //untuk mendeteksi alamat IP
 
 		date_default_timezone_set('Asia/Jakarta');
@@ -74,6 +75,14 @@ class Mcrud extends CI_Model {
 		$this->email->to("$email");
 		$this->email->subject($subject);
 		$this->email->message($pesan);
+		if($this->email->send()) {
+               echo 'Email berhasil dikirim';
+          }
+          else {
+               echo 'Email tidak berhasil dikirim';
+               echo '<br />';
+               echo $this->email->print_debugger();
+          }
 	}
 //End Sent mail
 
