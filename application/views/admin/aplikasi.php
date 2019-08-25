@@ -130,7 +130,7 @@
             foreach ($app as $baris) {?>
               <tr class="gradeX">
                 <td><?php echo $i++; ?></td>
-                <td><img src="images/app/<?php echo $baris->img; ?>" alt="<?php echo $baris->img; ?>" width="100"></td>
+                <td><img src="<?php echo $this->Mcrud->cek_filename("app/",$baris->img); ?>" alt="<?php echo $baris->img; ?>" width="100"></td>
                 <td><?php echo $baris->nama_app; ?></td>
                 <td><?php echo $baris->tanggal; ?></td>
                 <td style="text-align:center;"><span class="label label-info"><?php echo $baris->view; ?></span></td>

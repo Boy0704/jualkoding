@@ -461,4 +461,17 @@ public function get_kat_by_id($id)
 			return $web;
 		}
 
+		public function cek_filename($path,$file='')
+		{
+			$lokasi="images/";
+			if ($file=='') {
+				return $lokasi."logo.png";
+			}else{
+				if (file_exists("$lokasi$path$file")) {
+					return "$lokasi$path$file";
+				}else {
+					return $lokasi."logo.png";
+				}
+			}
+		}
 }

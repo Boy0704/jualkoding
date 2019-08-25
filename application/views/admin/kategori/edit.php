@@ -24,6 +24,12 @@
               <input type="text" class="span11" name="kat" placeholder="Nama Kategori Aplikasi" value="<?php echo $app->kat; ?>" required/>
             </div>
           </div>
+          <div class="control-group">
+            <label class="control-label">Gambar :</label>
+            <div class="controls">
+              <input type="file" class="span11" name="gambar" placeholder=""/>
+            </div>
+          </div>
           <div class="form-actions">
             <a href="kategori" class="btn btn-default">Kembali</a>
             <button type="submit" name="btnsave" class="btn btn-success" style="float:right;">Update</button>

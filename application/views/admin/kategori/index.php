@@ -23,6 +23,12 @@
               <input type="text" class="span11" name="kat" placeholder="Nama Kategori Aplikasi" required autofocus/>
             </div>
           </div>
+          <div class="control-group">
+            <label class="control-label">Gambar :</label>
+            <div class="controls">
+              <input type="file" class="span11" name="gambar" placeholder="" required/>
+            </div>
+          </div>
           <div class="form-actions">
             <a href="aplikasi" class="btn btn-primary"><i class="icon icon-inbox"></i> Aplikasi</a>
             <button type="submit" name="btnsave" class="btn btn-success" style="float:right;">Save</button>
@@ -47,6 +53,7 @@
           <thead>
             <tr>
               <th width="10">No</th>
+              <th width="100">Gambar</th>
               <th>Nama Kategori Aplikasi</th>
               <th width="150">Aksi</th>
             </tr>
@@ -57,6 +64,7 @@
             foreach ($app->result() as $baris) {?>
               <tr class="gradeX">
                 <td><?php echo $i++; ?></td>
+                <td><img src="<?php echo $this->Mcrud->cek_filename("kategori/",$baris->gambar); ?>" alt="<?php echo $baris->gambar; ?>" width="100"></td>
                 <td><?php echo $baris->kat; ?></td>
                 <td>
                   <a href="kategori/edit/<?php echo $baris->id_kat; ?>" class="btn btn-success">Edit</a>

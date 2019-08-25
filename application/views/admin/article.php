@@ -71,7 +71,7 @@
             foreach ($article as $baris) {?>
               <tr class="gradeX">
                 <td><?php echo $i; ?></td>
-                <td><img src="images/article/<?php echo $baris->gambar; ?>" alt="<?php echo $baris->gambar; ?>" width="100"></td>
+                <td><img src="<?php echo $this->Mcrud->cek_filename("article/",$baris->gambar); ?>" alt="<?php echo $baris->gambar; ?>" width="100"></td>
                 <td><?php echo $baris->judul; ?></td>
                 <td><?php echo $baris->isi; ?></td>
                 <td><?php echo $baris->tgl_article; ?></td>
