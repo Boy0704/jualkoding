@@ -1,7 +1,9 @@
 <style>
-	ol > li {margin-left: 20px;}
+	.ads-details-info > ol > li {margin-left: 20px;}
 </style>
-				<div class="container" style="margin-top:60px;">
+<div class="main-container">
+
+				<div class="container">
 					<?php
 					echo $this->session->flashdata('msg_download');?>
 						<div class="row">
@@ -154,5 +156,5 @@
 
 				</div>
 
-
+</div>
 				<?php $this->load->view('widget_bawah'); ?>

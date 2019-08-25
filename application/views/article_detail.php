@@ -1,5 +1,5 @@
-
-				<div class="container" style="margin-top:60px;">
+<div class="main-container">
+				<div class="container">
 
 						<div class="row">
 							<div class="col-md-9 page-content col-thin-right">
@@ -114,5 +114,5 @@
 
 				</div>
 
-
+</div>
 				<?php $this->load->view('widget_bawah'); ?>

@@ -1,5 +1,5 @@
-
-<div class="container" style="margin-top:70px;">
+<div class="main-container">
+<div class="container">
 	<?php
 	echo $this->session->flashdata('msg_download');?>
 		<div class="row">
@@ -25,6 +25,7 @@
 
 		</div>
 
+</div>
 </div>
 
 <?php $this->load->view('widget_bawah'); ?>

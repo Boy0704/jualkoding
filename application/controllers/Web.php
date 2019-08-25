@@ -62,6 +62,7 @@ class Web extends CI_Controller {
 		//meta
 		$data['meta_description'] = $this->Mcrud->get_web('meta_description');
 		$data['meta_keyword'] = $this->Mcrud->get_web('meta_keyword');
+		$data['breadcrumb'] = '<li class="breadcrumb-item active" aria-current="page">Panduan</li>';
 
 			$this->load->view('header', $data);
 			$this->load->view('panduan', $data);
@@ -217,6 +218,8 @@ class Web extends CI_Controller {
 		$data['judul']	= 'Download | '.$data['web']->nama_web;
 											$this->db->order_by('id_app', 'DESC');
 		$data['app'] 		= $this->Mcrud->get_app()->result();
+		$data['breadcrumb'] = '<li class="breadcrumb-item"><a href="kategori/p">Semua Kategori</a></li>';
+		$data['breadcrumb'] .= '<li class="breadcrumb-item active" aria-current="page">Download Source Code</li>';
 
 		if($url=='' || $url== 'page'){
 			$this->db->join('tbl_kat','tbl_kat.id_kat=tbl_app.id_kat');
@@ -308,6 +311,8 @@ class Web extends CI_Controller {
 
 											$this->db->order_by('id_app', 'DESC');
 		$data['app'] 		= $this->Mcrud->get_app()->result();
+		$data['breadcrumb'] = '<li class="breadcrumb-item"><a href="kategori/p">Semua Kategori</a></li>';
+		$data['breadcrumb'] .= '<li class="breadcrumb-item active" aria-current="page">Aplikasi</li>';
 
 		$this->db->join('tbl_kat','tbl_kat.id_kat=tbl_app.id_kat');
 		$jml = $this->db->get('tbl_app');
@@ -368,8 +373,8 @@ $data = array(
 	{
 		$ceks = $this->session->userdata('un_member');
 		if ($url == '') { redirect(''); }
-		$data['download'] = $this->Mcrud->get_app_url($url)->row();
-
+		$query = $this->Mcrud->get_app_url($url)->row();
+		$data['download'] = $query;
 		$data['web'] 		= $this->Mcrud->get_web_id(1);
 		$data['judul']	= $data['download']->nama_app.' | '.$data['web']->nama_web;
 		//meta
@@ -379,6 +384,9 @@ $data = array(
 		$data['jml_member'] 	= $this->Mcrud->get_user_by_level()->num_rows();
 		$data['jml_app'] 			= $this->Mcrud->get_app()->num_rows();
 		$data['app'] 		= $this->Mcrud->get_app()->result();
+
+		$data['breadcrumb'] = '<li class="breadcrumb-item"><a href="kategori/p/'.url_title($query->kat).'">'.$query->kat.'</a></li>';
+		$data['breadcrumb'] .= '<li class="breadcrumb-item active" aria-current="page">'.$query->nama_app.'</li>';
 
 			$this->load->view('header', $data);
 			$this->load->view('download_detail', $data);
@@ -399,6 +407,8 @@ $data = array(
 
 		$data['web'] 		= $this->Mcrud->get_web_id(1);
 		$data['judul']	= 'Judul TA | '.$data['web']->nama_web;
+		$data['breadcrumb'] = '<li class="breadcrumb-item active" aria-current="page">Judul TA</li>';
+
 			$this->load->view('header', $data);
 			$this->load->view('judul_ta', $data);
 			$this->load->view('footer', $data);
@@ -437,6 +447,7 @@ $data = array(
 				$data['jml_member'] 	= $this->Mcrud->get_user_by_level()->num_rows();
 				$data['jml_app'] 			= $this->Mcrud->get_app()->num_rows();
 				//$data['article'] 			= $this->Mcrud->get_article()->result();
+				$data['breadcrumb'] = '<li class="breadcrumb-item active" aria-current="page">Article</li>';
 
 				$jml = $this->db->get('tbl_article');
 
@@ -487,6 +498,8 @@ $data = array(
 			$data['jml_app'] 			= $this->Mcrud->get_app()->num_rows();
 			$data['article'] 			= $this->Mcrud->get_article_by_url($url)->row();
 			$data['judul']				= ucwords($data['article']->judul).' | '.$data['web']->nama_web;
+			$data['breadcrumb'] = '<li class="breadcrumb-item"><a href="article">Article</a></li>';
+			$data['breadcrumb'] .= '<li class="breadcrumb-item active" aria-current="page">'.$data['article']->judul.'</li>';
 
 				$this->load->view('header', $data);
 				$this->load->view('article_detail', $data);

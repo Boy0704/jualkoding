@@ -1,5 +1,5 @@
 <div class="main-container">
-		<div class="container" style="margin-top:40px;">
+		<div class="container">
 				<div class="row">
 						<div class="col-md-3 page-sidebar mobile-filter-sidebar">
 								<aside>

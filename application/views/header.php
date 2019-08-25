@@ -145,3 +145,20 @@ $url_3 = $this->uri->segment(3);
         </script>
       </div>
       <!-- /.header -->
+
+      <?php
+      $menu_bc = array('d','download','app','app_d','judul_ta','panduan','article','article_detail');
+      if (in_array($url_1,$menu_bc)): ?>
+        <div class="container" style="margin-top:60px;margin-bottom:-20px;">
+          <div class="row">
+            <div class="col-md-12">
+              <nav aria-label="breadcrumb" role="navigation" class="pull-left">
+                  <ol class="breadcrumb">
+                      <li class="breadcrumb-item"><a href="<?php echo base_url(); ?>"><i class="icon-home fa"></i></a></li>
+                      <?php if(!empty($breadcrumb)){echo $breadcrumb;} ?>
+                  </ol>
+              </nav>
+            </div>
+          </div>
+        </div>
+      <?php endif; ?>
