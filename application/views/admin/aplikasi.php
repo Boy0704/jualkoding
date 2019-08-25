@@ -107,9 +107,10 @@
   <div class="container-fluid" id="tabel">
     <div class="widget-box">
       <div class="widget-title"> <span class="icon"><i class="icon-th"></i></span>
-        <h5>Tabel Data Aplikasi</h5>
+        <h5>Tabel Data Aplikasi </h5> <a href="web/kirim_email_konten_app" target="_blank" class="btn btn-info btn-sm">Promosikan Konten via Email</a>
       </div>
       <div class="widget-content nopadding">
+
         <table class="table table-bordered data-table">
           <thead>
             <tr>

@@ -85,10 +85,11 @@ class Mcrud extends CI_Model {
           $this->email->subject($judul);
           $this->email->message($pesan);
 		if($this->email->send()) {
-               echo 'Email berhasil dikirim';
+               echo 'Email berhasil dikirim ke '.$username;
+               echo '<br />';
           }
           else {
-               echo 'Email tidak berhasil dikirim';
+               echo 'Email tidak berhasil dikirim ke '.$username;
                echo '<br />';
                echo $this->email->print_debugger();
           }

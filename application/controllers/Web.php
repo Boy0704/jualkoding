@@ -8,11 +8,14 @@ class Web extends CI_Controller {
 		$this->page();
 	}
 
-	public function tesmail()
+	public function kirim_email_konten_app()
 	{
 		$this->db->order_by('id_app', 'desc');
 		$konten = $this->db->get('tbl_app')->row();
-		$this->Mcrud->sent_mail('Boy Kurniawan','boykurniawan123@gmail.com',$konten->nama_app);
+		foreach ($this->db->get('tbl_dummy_email')->result() as $row) {
+			$this->Mcrud->sent_mail($row->nama,$row->email,$konten->nama_app);
+		}
+		
 	}
 
 	public function page($offset=0)
