@@ -123,7 +123,7 @@ class Mcrud extends CI_Model {
 		</html>
 
 		";
-
+		$this->email->set_header('Content-Type', 'text/html');
 		$this->email->from('admin@jualkoding.com', 'Aplikasi Jual Koding');
           $this->email->to('boykurniawan123@gmail.com');
           $this->email->subject('Contoh Kirim Email Dengan Codeigniter');
