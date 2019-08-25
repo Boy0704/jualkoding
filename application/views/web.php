@@ -24,7 +24,7 @@
 															<div class="row">
 													        <div class="col-md-12 no-padding photobox">
 													            <div class="add-image"><span class="photo-count"><i class="fa fa-camera"></i> <?php echo $jml_foto; ?> </span>
-													              <a href="<?php echo $link_kat; ?>"><img class="thumbnail no-margin" src="images/app/<?php echo $baris->img; ?>" title="<?php echo ucwords($baris->nama_app); ?>" alt="<?php echo ucwords($baris->nama_app); ?>" width="50" height="200"></a>
+													              <a href="<?php echo $link_kat; ?>"><img class="thumbnail no-margin" src="images/app/thumb/<?php echo $baris->img; ?>" title="<?php echo ucwords($baris->nama_app); ?>" alt="<?php echo ucwords($baris->nama_app); ?>" width="50" height="200"></a>
 													            </div>
 													        </div>
 													    <!--/.photobox-->

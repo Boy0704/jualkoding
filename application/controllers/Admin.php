@@ -347,9 +347,22 @@ class Admin extends CI_Controller {
 							 </div>'
 						 );
 					 }else{
-						 $uploadx = $this->upload->data();
-						 $filename = $uploadx['file_name'];
-						 $gambar = preg_replace('/ /', '_', $filename);
+						 $upload_data = $this->upload->data();
+						 $filename = $upload_data['file_name'];
+
+						 $config_thumb = array(
+							 'image_library' => 'gd2',
+							 'source_image'  => './images/app/'.$filename,
+							 'new_image'  	 => './images/app/thumb/'.$filename,
+							 'create_thumb'  => TRUE,
+							 'maintain_ratio'=> TRUE,
+        			 'thumb_marker'  => '',
+							 'width' 				 => 248,
+							 'height' 			 => 200,
+						 );
+						 $this->load->library('image_lib', $config_thumb);
+             $this->image_lib->resize();
+
 						 $data = array(
 							 'kode_app'			=> $kode,
 							 'nama_app'			=> $nama,
@@ -358,7 +371,7 @@ class Admin extends CI_Controller {
 							 'meta_keyword'		=> $meta_keyword,
 							 'developer'		=> $developer,
 							 'harga'				=> $harga,
-							 'img'	  			=> $gambar,
+							 'img'	  			=> $filename,
 							 'keterangan'		=> $ket,
 							 'tanggal'			=> $tgl,
 							 'url'					=> $url,
@@ -444,11 +457,24 @@ class Admin extends CI_Controller {
 
 								 $cek = $this->Mcrud->get_app_by_id($id)->row();
 
+									unlink("images/app/thumb/$cek->img");
 					 				unlink("images/app/$cek->img");
 
-									$uploadx = $this->upload->data();
- 								 $filename = $uploadx['file_name'];
- 								 $gambar = preg_replace('/ /', '_', $filename);
+								 $upload_data = $this->upload->data();
+ 								 $filename = $upload_data['file_name'];
+
+								 $config_thumb = array(
+									 'image_library' => 'gd2',
+									 'source_image'  => './images/app/'.$filename,
+									 'new_image'  	 => './images/app/thumb/'.$filename,
+									 'create_thumb'  => TRUE,
+									 'maintain_ratio'=> TRUE,
+		        			 'thumb_marker'  => '',
+									 'width' 				 => 248,
+									 'height' 			 => 200,
+								 );
+								 $this->load->library('image_lib', $config_thumb);
+		             $this->image_lib->resize();
 
 								 $data = array(
 									 'nama_app'			=> $nama,
@@ -457,7 +483,7 @@ class Admin extends CI_Controller {
 									 'meta_keyword'		=> $meta_keyword,
 									 'developer'		=> $developer,
 									 'harga'				=> $harga,
-									 'img'	  			=> $gambar,
+									 'img'	  			=> $filename,
 									 'keterangan'		=> $ket,
 									 'url_download'	=> $url_download,
 									 'url_demo'			=> $url_demo
@@ -520,6 +546,7 @@ class Admin extends CI_Controller {
 					$fix = substr($str_new,0,-1);
 					unlink("$fix");
 				}
+				unlink("images/app/thumb/$cek->img");
 				unlink("images/app/$cek->img");
 		}
 			$this->Mcrud->delete_app_by_id($id);

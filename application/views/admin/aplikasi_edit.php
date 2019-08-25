@@ -85,34 +85,6 @@
               <input type="file" name="gambar" class="span11" placeholder="Gambar"/>
             </div>
           </div>
-          <div class="control-group after-add">
-            <label class="control-label">Gambar Multi :</label>
-            <div class="controls">
-              <input type="file" name="gambar_multi[]" class="span11" placeholder="Gambar"/>
-              <button class="btn btn-success add" type="button"><i class="icon icon-plus"></i></button>
-              <hr style="padding:0px;margin:10px;">
-              <div class="span12">
-              <?php
-              $where=array('id_app'=>$app->id_app);
-          		$cek_multi = $this->db->get_where("tbl_img_multi",$where);
-          		foreach ($cek_multi->result() as $key => $value) { ?>
-                  <div class="span1">
-                    <img src="images/app_multi/<?php echo $value->img_file; ?>" alt="" width="50">
-                    <a href="admin/hapus_app1/<?php echo $value->id_img_multi; ?>" onclick="return confirm('Anda yakin?')">[Hapus]</a>
-                  </div>
-          		<?php
-              }?>
-              </div>
-            </div>
-          </div>
-          <div class="copy hide">
-            <div class="control-group">
-              <div class="controls">
-                <input type="file" name="gambar_multi[]" class="span11" placeholder="Gambar"/>
-                <button class="btn btn-danger remove" type="button"><i class="icon icon-remove"></i></button>
-              </div>
-            </div>
-          </div>
           <div class="control-group">
             <label class="control-label">Keterangan :</label>
             <div class="controls">
