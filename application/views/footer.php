@@ -69,16 +69,21 @@ for ($i = 0; $i <= 9; $i++){
           <div class="footer-col">
             <h4 class="footer-title" style="margin-bottom:-24px;"><?php echo "$totpengunjunggbr"; ?></h4>
 						 <hr style="margin-bottom:5px;">
-						<?php
-						echo "
-								<img src=\"$folder/hariini.png\"> Pengunjung hari ini : $pengunjung <br>
-								<img src=\"$folder/total.png\"> Total pengunjung    : $totpengunjung <br>
+						 <style>
+				 			#text-pengunjung{color:#2222;}
+				 			#hariini {width:14px; height:14px; background:url(<?php echo "$folder/icon_statistik.png"; ?>) 0 0px;}
+				 			#total {width:14px; height:14px; background:url(<?php echo "$folder/icon_statistik.png"; ?>) -15px;}
+				 			#online {width:14px; height:14px; background:url(<?php echo "$folder/icon_statistik.png"; ?>) -30px;}
+				 		</style>
+				 		<?php
+				 		echo "
+				 				<img id='hariini' src='$folder/n.gif'> <span id='text-pengunjung'>Pengunjung hari ini : $pengunjung </span> <br>
+				 				<img id='total' src='$folder/n.gif'> <span id='text-pengunjung'>Total pengunjung    : $totpengunjung </span> <br>
+				 				<img id='hariini' src='$folder/n.gif'> <span id='text-pengunjung'>Hits hari ini  :  $hits </span> <br>
+				 				<img id='total' src='$folder/n.gif'> <span id='text-pengunjung'>Total hits     :  $tothits </span> <br>
 
-								<img src=\"$folder/hariini.png\"> Hits hari ini  :  $hits <br>
-								<img src=\"$folder/total.png\"> Total hits     :  $tothits <br>
-
-								<img src=\"$folder/online.png\"> Pengunjung Online : $pengunjungonline";
-						 ?>
+				 				<img id='online' src='$folder/n.gif'> <span id='text-pengunjung'>Pengunjung Online : $pengunjungonline</span>";
+				 		 ?>
           </div>
         </div>
 
