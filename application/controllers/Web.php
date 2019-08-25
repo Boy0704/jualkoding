@@ -208,6 +208,8 @@ class Web extends CI_Controller {
 
 		$data['web'] 		= $this->Mcrud->get_web_id(1);
 		$data['judul']	= 'Download | '.$data['web']->nama_web;
+		$data['meta_description'] = $this->Mcrud->get_web('meta_description');
+		$data['meta_keyword'] = $this->Mcrud->get_web('meta_keyword');
 											$this->db->order_by('id_app', 'DESC');
 		$data['app'] 		= $this->Mcrud->get_app()->result();
 
@@ -394,6 +396,8 @@ $data = array(
 
 		$data['web'] 		= $this->Mcrud->get_web_id(1);
 		$data['judul']	= 'Judul TA | '.$data['web']->nama_web;
+		$data['meta_description'] = $this->Mcrud->get_web('meta_description');
+		$data['meta_keyword'] = $this->Mcrud->get_web('meta_keyword');
 			$this->load->view('header', $data);
 			$this->load->view('judul_ta', $data);
 			$this->load->view('footer', $data);
@@ -405,6 +409,8 @@ $data = array(
 
 		$data['web'] 		= $this->Mcrud->get_web_id(1);
 		$data['judul']	= 'Hubungi | '.$data['web']->nama_web;
+		$data['meta_description'] = $this->Mcrud->get_web('meta_description');
+		$data['meta_keyword'] = $this->Mcrud->get_web('meta_keyword');
 			$this->load->view('header', $data);
 			$this->load->view('hubungi', $data);
 			$this->load->view('footer', $data);
@@ -429,6 +435,8 @@ $data = array(
 
 				$data['web'] 		= $this->Mcrud->get_web_id(1);
 				$data['judul']	= 'Article | '.$data['web']->nama_web;
+				$data['meta_description'] = $this->Mcrud->get_web('meta_description');
+				$data['meta_keyword'] = $this->Mcrud->get_web('meta_keyword');
 				$data['jml_member'] 	= $this->Mcrud->get_user_by_level()->num_rows();
 				$data['jml_app'] 			= $this->Mcrud->get_app()->num_rows();
 				//$data['article'] 			= $this->Mcrud->get_article()->result();
@@ -538,6 +546,8 @@ $data = array(
 			}else {
 				$data['web'] 		= $this->Mcrud->get_web_id(1);
 				$data['judul']	= 'Hubungi | '.$data['web']->nama_web;
+				$data['meta_description'] = $this->Mcrud->get_web('meta_description');
+				$data['meta_keyword'] = $this->Mcrud->get_web('meta_keyword');
 				if (isset($ceks)) {
 					$data['ceks'] 	= $ceks;
 					$data['user'] 	= $this->Mcrud->get_user_by_un($ceks)->row();
@@ -561,6 +571,8 @@ $data = array(
 
 		$data['web'] 		= $this->Mcrud->get_web_id(1);
 		$data['judul']	= 'Login | '.$data['web']->nama_web;
+		$data['meta_description'] = $this->Mcrud->get_web('meta_description');
+		$data['meta_keyword'] = $this->Mcrud->get_web('meta_keyword');
 		$data['jml_member'] 	= $this->Mcrud->get_user_by_level()->num_rows();
 		$data['jml_app'] 			= $this->Mcrud->get_app()->num_rows();
 			$this->load->view('header', $data);
@@ -643,6 +655,8 @@ $data = array(
 		}
 			$data['web'] 		= $this->Mcrud->get_web_id(1);
 			$data['judul']	= 'Lupa Password | '.$data['web']->nama_web;
+			$data['meta_description'] = $this->Mcrud->get_web('meta_description');
+			$data['meta_keyword'] = $this->Mcrud->get_web('meta_keyword');
 			$data['jml_member'] 	= $this->Mcrud->get_user_by_level()->num_rows();
 			$data['jml_app'] 			= $this->Mcrud->get_app()->num_rows();
 				$this->load->view('header', $data);
@@ -695,6 +709,8 @@ $data = array(
 			 if ($id == $cek_id) {
 				 	$data['web'] 		= $this->Mcrud->get_web_id(1);
 		 			$data['judul']	= 'Password Baru | '.$data['web']->nama_web;
+		 			$data['meta_description'] = $this->Mcrud->get_web('meta_description');
+					$data['meta_keyword'] = $this->Mcrud->get_web('meta_keyword');
 		 			$data['jml_member'] 	= $this->Mcrud->get_user_by_level()->num_rows();
 		 			$data['jml_app'] 			= $this->Mcrud->get_app()->num_rows();
 		 				$this->load->view('header', $data);
@@ -760,6 +776,8 @@ $data = array(
 		}
 		$data['web'] 		= $this->Mcrud->get_web_id(1);
 		$data['judul']	= $ceks.' | '.$data['web']->nama_web;
+		$data['meta_description'] = $this->Mcrud->get_web('meta_description');
+		$data['meta_keyword'] = $this->Mcrud->get_web('meta_keyword');
 		$data['jml_member'] 	= $this->Mcrud->get_user_by_level()->num_rows();
 		$data['jml_app'] 			= $this->Mcrud->get_app()->num_rows();
 		$data['member'] 	= $this->Mcrud->get_user_by_un($ceks)->row();
@@ -832,6 +850,8 @@ $data = array(
 		$data['web'] 	 = $this->Mcrud->get_web_id(1);
 		$data['judul'] = '404 PAGE NOT FOUND | ';
 		$data['judul'] .= $this->Mcrud->get_web('nama_web').' : Situs Gudang Download Source Code Aplikasi Terlengkap dan Termurah Tersedia juga private belajar pemrograman';
+		$data['meta_description'] = $this->Mcrud->get_web('meta_description');
+		$data['meta_keyword'] = $this->Mcrud->get_web('meta_keyword');
 
 		$this->load->view('header', $data);
 		$this->load->view('404_content', $data);
