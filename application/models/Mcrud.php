@@ -38,43 +38,47 @@ class Mcrud extends CI_Model {
 		// $this->email->initialize($config);
 		//$ipaddress = get_real_ip(); //untuk mendeteksi alamat IP
 
-		date_default_timezone_set('Asia/Jakarta');
-		$waktu 	  = date('Y-m-d H:i:s');
-		$tgl 			= date('Y-m-d');
+		// date_default_timezone_set('Asia/Jakarta');
+		// $waktu 	  = date('Y-m-d H:i:s');
+		// $tgl 			= date('Y-m-d');
 
-		$id = md5("$email * $tgl");
+		// $id = md5("$email * $tgl");
 
-		if ($aksi == 'reg') {
-				$link			= base_url().'verify';
-				$pesan    = "Hello $username,
-											<br /><br />
-											Welcome to Jualkoding.com!<br/>
-											Untuk melengkapi registrasi Anda, silahkan klik link berikut<br/>
-											<br /><br />
-											<b><a href='$link/$id/$email'>Klik Aktivasi disini :)</a></b>
-											<br /><br />
-											Terimakasih ^_^,
-											";
-				$subject = 'Aktivasi Akun | Ordodev';
+		// if ($aksi == 'reg') {
+		// 		$link			= base_url().'verify';
+		// 		$pesan    = "Hello $username,
+		// 									<br /><br />
+		// 									Welcome to Jualkoding.com!<br/>
+		// 									Untuk melengkapi registrasi Anda, silahkan klik link berikut<br/>
+		// 									<br /><br />
+		// 									<b><a href='$link/$id/$email'>Klik Aktivasi disini :)</a></b>
+		// 									<br /><br />
+		// 									Terimakasih ^_^,
+		// 									";
+		// 		$subject = 'Aktivasi Akun | Ordodev';
 
-		}elseif ($aksi == 'lp') {
-				$link			= base_url().'konfirm_pass';
-				$pesan    = "Hello $username,
-											<br /><br />
-											Welcome to Jualkoding.com!<br/>
-											Untuk membuat password baru, silahkan klik link berikut<br/>
-											<br /><br />
-											<b><a href='$link/$id/$email'>Klik disini :)</a></b>
-											<br /><br />
-											Terimakasih ^_^,
-											";
-				 $subject = 'Lupa Password | Ordodev';
-		}
+		// }elseif ($aksi == 'lp') {
+		// 		$link			= base_url().'konfirm_pass';
+		// 		$pesan    = "Hello $username,
+		// 									<br /><br />
+		// 									Welcome to Jualkoding.com!<br/>
+		// 									Untuk membuat password baru, silahkan klik link berikut<br/>
+		// 									<br /><br />
+		// 									<b><a href='$link/$id/$email'>Klik disini :)</a></b>
+		// 									<br /><br />
+		// 									Terimakasih ^_^,
+		// 									";
+		// 		 $subject = 'Lupa Password | Ordodev';
+		// }
 
-		$this->email->from("$email_saya");
-		$this->email->to("$email");
-		$this->email->subject($subject);
-		$this->email->message($pesan);
+		// $this->email->from("$email_saya");
+		// $this->email->to("$email");
+		// $this->email->subject($subject);
+		// $this->email->message($pesan);
+		$this->email->from('admin@jualkoding.com', 'Aplikasi Jual Koding');
+          $this->email->to('admin@bahasaweb.com');
+          $this->email->subject('Contoh Kirim Email Dengan Codeigniter');
+          $this->email->message('Contoh pesan yang dikirim dengan codeigniter');
 		if($this->email->send()) {
                echo 'Email berhasil dikirim';
           }
