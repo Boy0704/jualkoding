@@ -75,8 +75,10 @@ class Mcrud extends CI_Model {
 		// $this->email->to("$email");
 		// $this->email->subject($subject);
 		// $this->email->message($pesan);
-
-		$pesan = $this->load->view('notif_email_ke_member', true);
+		$data = array(
+			'artikel' => 'artkel'
+		);
+		$pesan = $this->load->view('notif_email_ke_member', $data,TRUE);
 		$this->email->set_header('Content-Type', 'text/html');
 		$this->email->from('admin@jualkoding.com', 'Aplikasi Jual Koding');
           $this->email->to('boykurniawan123@gmail.com');
