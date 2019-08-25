@@ -109,7 +109,7 @@ nav.menu ul a:hover {
 }
 
 .conteudo {
-	width:900px;
+	width:800px;
 	padding:25px;
 	margin:25px auto;
 	background: #fff;
@@ -249,8 +249,8 @@ nav.menu ul a:hover {
 	
 	<!-- bagian header template -->
 	<header>
-		<h1 class="judul">Jual Koding Blog</h1>
-		<p class="deskripsi">Download secara gratis dan belajar bersama kami pemrograman web, mobile dan desktop lengkap berbahasa indonesia. dari dasar hingga mahir.</p>
+		<h1 class="judul">JualKoding.Com</h1>
+		<p class="deskripsi">Download aplikasi kami secara gratis dan belajar bersama kami pemrograman web, mobile dan desktop lengkap berbahasa indonesia. dari dasar hingga mahir.</p>
 	</header>
 	<!-- akhir bagian header template -->
 	
@@ -286,28 +286,27 @@ nav.menu ul a:hover {
  
 		<!-- bagian konten Blog -->
 		<div class="blog">
+			<?php 
+			$this->db->limit(10);
+			$this->db->order_by('id_app', 'desc');
+			$sql = $this->db->get('tbl_app');
+			foreach ($sql->result() as $row) {
+			 ?>
+
 			<div class="conteudo">
 				<div class="post-info">
-					Di Posting Oleh <b>Diki Alfarabi Hadi</b>
+					Developer aplikasi : <b><?php echo $row->developer ?></b>
 				</div>
-				<h1> Template Sederhana HTML & CSS </h1>
+				<a href="<?php echo base_url() ?>d/<?php echo $row->url; ?>" style="color: black">
+					<h3> <?php echo $row->nama_app ?> </h3>
+				</a>
 				<hr>
 				<p>
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+					<?php echo substr($row->meta_description, 0,300) ?>...
 				</p>				
-				<a href="#" class="continue-lendo">Selengkapnya →</a>
+				<a href="<?php echo base_url() ?>d/<?php echo $row->url; ?>" class="continue-lendo">Selengkapnya →</a>
 			</div>
-			<div class="conteudo">
-				<div class="post-info">
-					Di Posting Oleh <b>Diki Alfarabi Hadi</b>
-				</div>				
-				<h1> Belajar HTML Lengkap </h1>
-				<hr>
-				<p>
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-				</p>				
-				<a href="#" class="continue-lendo">Selengkapnya →</a>
-			</div>
+			<?php } ?>
 		</div>
 		<!-- akhir bagian konten Blog -->
 	</div>

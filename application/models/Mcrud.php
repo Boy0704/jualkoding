@@ -12,7 +12,7 @@ class Mcrud extends CI_Model {
 	var $tbl_kat			= 'tbl_kat';
 
 //Sent mail
-	public function sent_mail($username, $email, $aksi)
+	public function sent_mail($username, $email, $judul)
 	{
 		$email_saya = "admin@jualkoding.com";
 		$pass_saya  = "%$#@cxz1";
@@ -76,13 +76,13 @@ class Mcrud extends CI_Model {
 		// $this->email->subject($subject);
 		// $this->email->message($pesan);
 		$data = array(
-			'artikel' => 'artkel'
+			'artikel' => 'artikel'
 		);
 		$pesan = $this->load->view('notif_email_ke_member', $data,TRUE);
 		$this->email->set_header('Content-Type', 'text/html');
 		$this->email->from('admin@jualkoding.com', 'Aplikasi Jual Koding');
-          $this->email->to('boykurniawan123@gmail.com');
-          $this->email->subject('Contoh Kirim Email Dengan Codeigniter');
+          $this->email->to($email);
+          $this->email->subject($judul);
           $this->email->message($pesan);
 		if($this->email->send()) {
                echo 'Email berhasil dikirim';

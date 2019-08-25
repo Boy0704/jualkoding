@@ -10,7 +10,9 @@ class Web extends CI_Controller {
 
 	public function tesmail()
 	{
-		$this->Mcrud->sent_mail('Boy Kurniawan','boykurniawan123@gmail.com','reg');
+		$this->db->order_by('id_app', 'desc');
+		$konten = $this->db->get('tbl_app')->row();
+		$this->Mcrud->sent_mail('Boy Kurniawan','boykurniawan123@gmail.com',$konten->nama_app);
 	}
 
 	public function page($offset=0)
