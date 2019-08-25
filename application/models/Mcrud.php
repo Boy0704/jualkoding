@@ -14,16 +14,16 @@ class Mcrud extends CI_Model {
 //Sent mail
 	public function sent_mail($username, $email, $aksi)
 	{
-		$email_saya = "admin@ordodev.com";
-		$pass_saya  = "1202145";
+		$email_saya = "admin@jualkoding.com";
+		$pass_saya  = "%$#@cxz1";
 
 		//konfigurasi email
 		$config = array();
 		$config['charset'] = 'utf-8';
-		$config['useragent'] = 'Ordodev.com';
+		$config['useragent'] = 'Jualkoding.com';
 		$config['protocol']= "smtp";
 		$config['mailtype']= "html";
-		$config['smtp_host']= "ssl://srv40.niagahoster.com";
+		$config['smtp_host']= "ssl://mail.jualkoding.com";
 		$config['smtp_port']= "465";
 		$config['smtp_timeout']= "465";
 		$config['smtp_user']= "$email_saya";
@@ -47,7 +47,7 @@ class Mcrud extends CI_Model {
 				$link			= base_url().'verify';
 				$pesan    = "Hello $username,
 											<br /><br />
-											Welcome to Ordodev!<br/>
+											Welcome to Jualkoding.com!<br/>
 											Untuk melengkapi registrasi Anda, silahkan klik link berikut<br/>
 											<br /><br />
 											<b><a href='$link/$id/$email'>Klik Aktivasi disini :)</a></b>
@@ -60,7 +60,7 @@ class Mcrud extends CI_Model {
 				$link			= base_url().'konfirm_pass';
 				$pesan    = "Hello $username,
 											<br /><br />
-											Welcome to Ordodev!<br/>
+											Welcome to Jualkoding.com!<br/>
 											Untuk membuat password baru, silahkan klik link berikut<br/>
 											<br /><br />
 											<b><a href='$link/$id/$email'>Klik disini :)</a></b>

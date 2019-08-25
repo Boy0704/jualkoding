@@ -8,6 +8,11 @@ class Web extends CI_Controller {
 		$this->page();
 	}
 
+	public function tesmail()
+	{
+		$this->Mcrud->sent_mail('Boy Kurniawan','boykurniawan123@gmail.com','reg');
+	}
+
 	public function page($offset=0)
 	{
 		$ceks = $this->session->userdata('un_member');
