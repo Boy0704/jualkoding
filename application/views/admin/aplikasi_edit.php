@@ -66,13 +66,6 @@
             </div>
           </div>
           <div class="control-group">
-            <label class="control-label">URL :</label>
-            <div class="controls">
-              <input type="text" class="span11" name="url" placeholder="URL ..." value="<?php echo $app->url; ?>" required/>
-              <!--<span class="help-block">URL Article</span>-->
-            </div>
-          </div>
-          <div class="control-group">
             <label class="control-label">URL Download:</label>
             <div class="controls">
               <input type="text" class="span11" name="url_download" placeholder="URL Download..." value="<?php echo $app->url_download; ?>" required/>

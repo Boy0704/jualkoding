@@ -23,13 +23,6 @@
             </div>
           </div>
           <div class="control-group">
-            <label class="control-label">URL :</label>
-            <div class="controls">
-              <input type="text" class="span11" name="url" placeholder="URL Article" required/>
-              <!--<span class="help-block">URL Article</span>-->
-            </div>
-          </div>
-          <div class="control-group">
             <label class="control-label">Gambar :</label>
             <div class="controls">
               <input type="file" name="gambar" class="span11" placeholder="Gambar" required/>

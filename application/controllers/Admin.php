@@ -711,19 +711,24 @@ class Admin extends CI_Controller {
 
 			 if (isset($_POST['btnsave'])) {
 				 	 $judul			= htmlentities(strip_tags($this->input->post('judul')));
-					 $url  			= htmlentities(strip_tags($this->input->post('url')));
+					 $url  			  = url_title($judul);
+					 if ($this->db->get_where('tbl_article', array('url'=>$url))->num_rows()!=0) {
+					 	 $url = $url."-".date('ymdhis');
+					 }
 					 $isi   	  = $_POST['isi'];
 
 					 date_default_timezone_set('Asia/Jakarta');
 					 $waktu	 = date('Y-m-d H:i:s');
 
 					 $file_size = 1024 * 2; // 2 MB
-					 $this->upload->initialize(array(
-						 "file_type"     => "image/jpeg",
-						 "upload_path"   => "./images/article",
-						 "allowed_types" => "jpg|jpeg|png|gif|bmp",
-						 "max_size" => "$file_size"
-					 ));
+ 					 $this->upload->initialize(array(
+ 						 "file_type"     => "image/jpeg",
+ 						 "upload_path"   => "./images/article",
+ 						 "allowed_types" => "jpg|jpeg|png|gif|bmp",
+ 						 "max_size" => "$file_size",
+						 "remove_spaces" => TRUE,
+						 "encrypt_name" => TRUE,
+ 					 ));
 
 					 if ( ! $this->upload->do_upload('gambar'))
 					 {
@@ -736,21 +741,7 @@ class Admin extends CI_Controller {
 							 </div>'
 						 );
 					 }else{
-
-						 /* kita buat thumbnailnya */
-						 $conf['image_library'] = 'gd2';
-						 $conf['source_image'] = 'images/article/'.$_FILES['gambar']['name'];
-						 $conf['new_image'] = 'images/article/thumbnails/'.$_FILES['gambar']['name'];
-						 // $conf['create_thumb'] = TRUE;
-						 $conf['create'] = TRUE;
-						 $conf['maintain_ratio'] = FALSE;
-						 $conf['width'] = 300;
-						 $conf['height'] = 300;
-
-						 $this->load->library('image_lib', $conf);
-						 $this->image_lib->initialize($conf);
-						 $this->image_lib->resize();
-
+						 
 						 $filename = $_FILES['gambar']['name'];
 						 $gambar = preg_replace('/ /', '_', $filename);
 
@@ -799,7 +790,6 @@ class Admin extends CI_Controller {
 
 				if (isset($_POST['btnsave'])) {
  				 	 $judul			= htmlentities(strip_tags($this->input->post('judul')));
- 					 $url  			= htmlentities(strip_tags($this->input->post('url')));
  					 $isi   	  = $_POST['isi'];
 
  					 $file_size = 1024 * 2; // 2 MB
@@ -807,7 +797,9 @@ class Admin extends CI_Controller {
  						 "file_type"     => "image/jpeg",
  						 "upload_path"   => "./images/article",
  						 "allowed_types" => "jpg|jpeg|png|gif|bmp",
- 						 "max_size" => "$file_size"
+ 						 "max_size" => "$file_size",
+						 "remove_spaces" => TRUE,
+						 "encrypt_name" => TRUE,
  					 ));
 
 					 if ($_FILES['gambar']['error'] <> 4) {
@@ -827,21 +819,6 @@ class Admin extends CI_Controller {
 								 $cek = $this->Mcrud->get_article_by_id($id)->row();
 
 					 				unlink("images/article/$cek->gambar");
-									unlink("images/article/thumbnails/$cek->gambar");
-
-									/* kita buat thumbnailnya */
-									$conf['image_library'] = 'gd2';
-									$conf['source_image'] = 'images/article/'.$_FILES['gambar']['name'];
-									$conf['new_image'] = 'images/article/thumbnails/'.$_FILES['gambar']['name'];
-									// $conf['create_thumb'] = TRUE;
-									$conf['create'] = TRUE;
-									$conf['maintain_ratio'] = FALSE;
-									$conf['width'] = 300;
-									$conf['height'] = 300;
-
-									$this->load->library('image_lib', $conf);
-			 						$this->image_lib->initialize($conf);
-			 						$this->image_lib->resize();
 
 		 						 $filename = $_FILES['gambar']['name'];
 		 						 $gambar = preg_replace('/ /', '_', $filename);
@@ -849,7 +826,6 @@ class Admin extends CI_Controller {
 		 						 $data = array(
 		 							 'gambar'				=> $gambar,
 		 							 'judul'				=> $judul,
-		 							 'url'					=> $url,
 		 							 'isi'					=> $isi
 		 						 );
 								 $this->Mcrud->update_article(array('id_article' => $id), $data);
@@ -867,7 +843,6 @@ class Admin extends CI_Controller {
 
 							 $data = array(
 								 'judul'				=> $judul,
-								 'url'					=> $url,
 								 'isi'					=> $isi
 							 );
 							 $this->Mcrud->update_article(array('id_article' => $id), $data);
@@ -896,7 +871,6 @@ class Admin extends CI_Controller {
 			$cek = $this->Mcrud->get_article_by_id($id)->row();
 
 			unlink("images/article/$cek->gambar");
-			unlink("images/article/thumbnails/$cek->gambar");
 			$this->Mcrud->delete_article_by_id($id);
 			$this->session->set_flashdata('msg',
 			 '
