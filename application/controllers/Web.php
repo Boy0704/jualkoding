@@ -59,6 +59,9 @@ class Web extends CI_Controller {
 
 		$data['web'] 		= $this->Mcrud->get_web_id(1);
 		$data['judul']	= 'Panduan | '.$data['web']->nama_web;
+		//meta
+		$data['meta_description'] = $this->Mcrud->get_web('meta_description');
+		$data['meta_keyword'] = $this->Mcrud->get_web('meta_keyword');
 			$this->load->view('header', $data);
 			$this->load->view('panduan', $data);
 			$this->load->view('footer', $data);
@@ -72,6 +75,9 @@ class Web extends CI_Controller {
 		}
 		$data['web'] 		= $this->Mcrud->get_web_id(1);
 		$data['judul']	= 'Registrasi | '.$data['web']->nama_web;
+		//meta
+		$data['meta_description'] = $this->Mcrud->get_web('meta_description');
+		$data['meta_keyword'] = $this->Mcrud->get_web('meta_keyword');
 		$data['jml_member'] 	= $this->Mcrud->get_user_by_level()->num_rows();
 		$data['jml_app'] 			= $this->Mcrud->get_app()->num_rows();
 			$this->load->view('header', $data);
