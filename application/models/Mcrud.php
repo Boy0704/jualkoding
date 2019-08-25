@@ -76,7 +76,7 @@ class Mcrud extends CI_Model {
 		// $this->email->subject($subject);
 		// $this->email->message($pesan);
 		$this->email->from('admin@jualkoding.com', 'Aplikasi Jual Koding');
-          $this->email->to('admin@bahasaweb.com');
+          $this->email->to('boykurniawan123@gmail.com');
           $this->email->subject('Contoh Kirim Email Dengan Codeigniter');
           $this->email->message('Contoh pesan yang dikirim dengan codeigniter');
 		if($this->email->send()) {
