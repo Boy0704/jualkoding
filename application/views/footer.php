@@ -107,6 +107,7 @@ $ceks = $this->session->userdata('un_member'); ?>
   <!-- Placed at the end of the document so the pages load faster -->
 
   <script src="assets/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script type="text/javascript" src="assets/fancybox/jquery.fancybox.js"></script>
   <script src="assets/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
   <script src="assets/bootstrap/js/bootstrap.min.js"></script>
   <script src="assets/js/vendors.min.js"></script>

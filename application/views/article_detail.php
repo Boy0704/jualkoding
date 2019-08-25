@@ -70,7 +70,7 @@
 									                $v_list = $this->db->get('tbl_app');
 																	foreach ($v_list->result() as $key => $value): ?>
 																		<li>
-																			<a href="d/<?php echo $value->url; ?>"><strong><?php echo $value->nama_app; ?></strong>
+																			<a href="d/<?php echo $value->url; ?>.html"><strong><?php echo $value->nama_app; ?></strong>
 																				(<span class="count"><?php echo $value->view; ?></span>)
 																			</a>
 																			<hr>
@@ -94,7 +94,7 @@
 									                $v_list = $this->db->get('tbl_article');
 																	foreach ($v_list->result() as $key => $value): ?>
 																		<li>
-																			<a href="article_detail/<?php echo $value->url; ?>"><strong><?php echo $value->judul; ?></strong>
+																			<a href="article_detail/<?php echo $value->url; ?>.html"><strong><?php echo $value->judul; ?></strong>
 																				(<span class="count"><?php echo $value->dibaca; ?></span>)
 																			</a>
 																			<hr>

@@ -273,10 +273,10 @@ class Admin extends CI_Controller {
 
 			 $cek_app = $this->db->query("SELECT * FROM tbl_app ORDER BY kode_app DESC LIMIT 1");
 			 if ($cek_app->num_rows() == 0) {
-			 		$kode_app = "AP001";
+			 		$kode_app = "JK0001";
 			 }else{
 				 	$ambil_kode = $cek_app->row()->kode_app;
-					$kode_angka = substr($ambil_kode, 2, 3) + 1;
+					$kode_angka = substr($ambil_kode, 2, 4) + 1;
 					if ($kode_angka > "009") {
 							$kode_app = "0".$kode_angka;
 					}elseif ($kode_angka > "099") {
@@ -285,7 +285,7 @@ class Admin extends CI_Controller {
 							$kode_angka = "00".$kode_angka;
 					}
 
-					$kode_app = "PS".$kode_angka;
+					$kode_app = "JK".$kode_angka;
 			 }
 			 $data['kode_app'] 			= $kode_app;
 
@@ -301,10 +301,14 @@ class Admin extends CI_Controller {
 					 $meta_keyword  	= htmlentities(strip_tags($this->input->post('meta_keyword')));
 					 $developer  	= htmlentities(strip_tags($this->input->post('developer')));
 					 $harga  			= htmlentities(strip_tags($this->input->post('harga')));
-					 $url  			  = htmlentities(strip_tags($this->input->post('url')));
+					 $url  			  = url_title($nama);
 					 $url_download = htmlentities(strip_tags($this->input->post('url_download')));
 					 $url_demo 		= htmlentities(strip_tags($this->input->post('url_demo')));
 					 $ket   	    = $_POST['ket'];
+
+					 if ($this->db->get_where('tbl_app', array('url'=>$url))->num_rows()!=0) {
+					 	 $url = $url."-".date('ymdhis');
+					 }
 
 					 $app_kode = $this->Mcrud->get_app_by_kode($kode)->num_rows();
 					 if ($app_kode != 0) {
@@ -366,39 +370,6 @@ class Admin extends CI_Controller {
 						 $this->Mcrud->save_app($data);
 
 						 $id_new = $this->db->insert_id();
-						 $files = $_FILES;
-						 $filename = array();
-						 $cpt = count($_FILES['gambar_multi']['name']);
-						 for($i=0; $i<$cpt; $i++){
-							 $_FILES['gambar_multi']['name']     = $files['gambar_multi']['name'][$i];
-							 $_FILES['gambar_multi']['type']     = $files['gambar_multi']['type'][$i];
-							 $_FILES['gambar_multi']['tmp_name'] = $files['gambar_multi']['tmp_name'][$i];
-							 $_FILES['gambar_multi']['error']    = $files['gambar_multi']['error'][$i];
-							 $_FILES['gambar_multi']['size']     = $files['gambar_multi']['size'][$i];
-							 if ($_FILES['gambar_multi']['error'] <> 4) {
-									 $file_name = $_FILES['gambar_multi']['name'][$i];
-									 $this->upload->initialize(array(
-										 "file_type"     => "image/jpeg",
-										 "upload_path"   => "./images/app_multi",
-										 "allowed_types" => "jpg|jpeg|png|gif|bmp",
-										 "max_size" => "$file_size",
-										 "remove_spaces" => TRUE,
-										 "encrypt_name" => TRUE,
-									 ));
-									 if ( $this->upload->do_upload("gambar_multi"))
-									 {
-												 $uploadData = $this->upload->data();
-												 $filename = $uploadData['file_name'];
-												 $foto_multi = preg_replace('/ /', '_', $filename);
-												 $data2 = array(
-													 'id_app' 			 => $id_new,
-													 'img_file' 		 => $foto_multi,
-													 'tgl_img_multi' => date('Y-m-d H:i:s')
-												 );
-												 $this->db->insert("tbl_img_multi",$data2);
-									 }
-							 }
-						 }
 
 						 $this->session->set_flashdata('msg',
 							'
@@ -443,7 +414,6 @@ class Admin extends CI_Controller {
 						$meta_keyword  	= htmlentities(strip_tags($this->input->post('meta_keyword')));
 						$developer  	= htmlentities(strip_tags($this->input->post('developer')));
 						$harga  			= htmlentities(strip_tags($this->input->post('harga')));
-						$url  			  = htmlentities(strip_tags($this->input->post('url')));
 						$url_download = htmlentities(strip_tags($this->input->post('url_download')));
  					  $url_demo 		= htmlentities(strip_tags($this->input->post('url_demo')));
 						$ket   	    = $_POST['ket'];
@@ -475,7 +445,6 @@ class Admin extends CI_Controller {
 								 $cek = $this->Mcrud->get_app_by_id($id)->row();
 
 					 				unlink("images/app/$cek->img");
-									unlink("images/app/thumbnails/$cek->img");
 
 									$uploadx = $this->upload->data();
  								 $filename = $uploadx['file_name'];
@@ -490,7 +459,6 @@ class Admin extends CI_Controller {
 									 'harga'				=> $harga,
 									 'img'	  			=> $gambar,
 									 'keterangan'		=> $ket,
-									 'url'					=> $url,
 									 'url_download'	=> $url_download,
 									 'url_demo'			=> $url_demo
 								 );
@@ -515,7 +483,6 @@ class Admin extends CI_Controller {
 								 'developer'		=> $developer,
 								 'harga'				=> $harga,
 								 'keterangan'		=> $ket,
-								 'url'					=> $url,
 								 'url_download'	=> $url_download,
 								 'url_demo'			=> $url_demo
 							 );
@@ -528,41 +495,6 @@ class Admin extends CI_Controller {
 								</div>'
 							);
 							// redirect('aplikasi#tabel');
-					 }
-
-					 $id_new = $id;
-					 $files = $_FILES;
-					 $filename = array();
-					 $cpt = count($_FILES['gambar_multi']['name']);
-					 for($i=0; $i<$cpt; $i++){
-						 $_FILES['gambar_multi']['name']     = $files['gambar_multi']['name'][$i];
-						 $_FILES['gambar_multi']['type']     = $files['gambar_multi']['type'][$i];
-						 $_FILES['gambar_multi']['tmp_name'] = $files['gambar_multi']['tmp_name'][$i];
-						 $_FILES['gambar_multi']['error']    = $files['gambar_multi']['error'][$i];
-						 $_FILES['gambar_multi']['size']     = $files['gambar_multi']['size'][$i];
-						 if ($_FILES['gambar_multi']['error'] <> 4) {
-								 $file_name = $_FILES['gambar_multi']['name'][$i];
-								 $this->upload->initialize(array(
-									 "file_type"     => "image/jpeg",
-									 "upload_path"   => "./images/app_multi",
-									 "allowed_types" => "jpg|jpeg|png|gif|bmp",
-									 "max_size" => "$file_size",
-									 "remove_spaces" => TRUE,
-									 "encrypt_name" => TRUE,
-								 ));
-								 if ( $this->upload->do_upload("gambar_multi"))
-								 {
-											 $uploadData = $this->upload->data();
-											 $filename = $uploadData['file_name'];
-											 $foto_multi = preg_replace('/ /', '_', $filename);
-											 $data2 = array(
-												 'id_app' 			 => $id_new,
-												 'img_file' 		 => $foto_multi,
-												 'tgl_img_multi' => date('Y-m-d H:i:s')
-											 );
-											 $this->db->insert("tbl_img_multi",$data2);
-								 }
-						 }
 					 }
 					 redirect('aplikasi#tabel');
 
@@ -579,15 +511,17 @@ class Admin extends CI_Controller {
 			redirect('aplikasi');
 		}
 		$where=array('id_app'=>$id);
-		$cek_multi = $this->db->get_where("tbl_img_multi",$where);
-		foreach ($cek_multi->result() as $key => $value) {
-			unlink("images/app_multi/$value->img_file");
+		$cek_app = $this->db->get_where("tbl_app",$where);
+		if ($cek_app->num_rows()!=0) {
+			$cek = $cek_app->row();
+			$img = preg_match_all ( "/src=\"(\S)*\"/", $cek->keterangan, $matches );
+				foreach($matches[0] as $k=>$v ){
+					$str_new = substr($v,5);
+					$fix = substr($str_new,0,-1);
+					unlink("images/app_multi/images/app_multi/$fix");
+				}
+				unlink("images/app/$cek->img");
 		}
-		$this->db->delete("tbl_img_multi",$where);
-			$cek = $this->Mcrud->get_app_by_id($id)->row();
-
-			unlink("images/app/$cek->img");
-			unlink("images/app/thumbnails/$cek->img");
 			$this->Mcrud->delete_app_by_id($id);
 			$this->session->set_flashdata('msg',
 			 '

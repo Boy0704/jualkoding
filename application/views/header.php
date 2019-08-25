@@ -8,8 +8,8 @@ $url_3 = $this->uri->segment(3);
 <html lang="en">
 <meta http-equiv="content-type" content="text/html;charset=utf-8" />
 <head>
-   <meta name="description" content="<?php echo $meta_description; ?>">
-   <meta name="keywords" content="<?php echo $meta_keyword; ?>">
+   <meta name="description" content="<?php if(!empty($meta_description)){echo $meta_description;}else{echo $this->Mcrud->get_web('meta_description');} ?>, <?php echo $judul; ?>, <?php echo $this->Mcrud->get_web('nama_web'); ?>">
+   <meta name="keywords" content="<?php if(!empty($meta_keyword)){echo $meta_keyword;}else{echo $this->Mcrud->get_web('meta_keyword');} ?>, <?php echo $judul; ?>, <?php echo $this->Mcrud->get_web('nama_web'); ?>">
    <meta name="author" content="Admin <?php echo $this->Mcrud->get_web('nama_web'); ?>">
    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
@@ -24,6 +24,8 @@ $url_3 = $this->uri->segment(3);
    <link href="assets/plugins/owl-carousel/owl.theme.css" rel="stylesheet">
    <!-- bxSlider CSS file -->
    <link href="assets/plugins/bxslider/jquery.bxslider.css" rel="stylesheet"/>
+
+   <link rel="stylesheet" type="text/css" href="assets/fancybox/jquery.fancybox.css">
 
     <!-- Just for debugging purposes. -->
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->

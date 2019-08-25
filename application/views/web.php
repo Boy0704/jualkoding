@@ -16,7 +16,7 @@
 
 												<?php
 												foreach ($v_data->result() as $key => $baris):
-													$link_kat = 'd/'.$baris->url;
+													$link_kat = 'd/'.$baris->url.".html";
 													$toko = '';
 													$jml_foto = '';?>
 													<div class="col-md-3">

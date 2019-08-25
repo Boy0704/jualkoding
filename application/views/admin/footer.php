@@ -6,7 +6,7 @@ $sub_menu = strtolower($this->uri->segment(2));
 <!--Footer-part-->
 
 <div class="row-fluid">
-  <div id="footer" class="span12"> 2017 &copy; <?php echo $judul ?>.</div>
+  <div id="footer" class="span12"> 2019 &copy; <?php echo $judul ?>.</div>
 </div>
 
 <!--end-Footer-part-->
@@ -72,17 +72,6 @@ function resetMenu() {
    document.gomenu.selector.selectedIndex = 2;
 }
 
-<?php if($menu=='aplikasi' || $sub_menu=='edit_app'){ ?>
-$(document).ready(function() {
-   $(".add").click(function(){
-       var html = $(".copy").html();
-       $(".after-add").after(html);
-   });
-   $("body").on("click",".remove",function(){
-       $(this).parents(".control-group").remove();
-   });
- });
-<?php } ?>
 </script>
 </body>
 </html>

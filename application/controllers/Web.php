@@ -62,6 +62,7 @@ class Web extends CI_Controller {
 		//meta
 		$data['meta_description'] = $this->Mcrud->get_web('meta_description');
 		$data['meta_keyword'] = $this->Mcrud->get_web('meta_keyword');
+
 			$this->load->view('header', $data);
 			$this->load->view('panduan', $data);
 			$this->load->view('footer', $data);
@@ -214,8 +215,6 @@ class Web extends CI_Controller {
 
 		$data['web'] 		= $this->Mcrud->get_web_id(1);
 		$data['judul']	= 'Download | '.$data['web']->nama_web;
-		$data['meta_description'] = $this->Mcrud->get_web('meta_description');
-		$data['meta_keyword'] = $this->Mcrud->get_web('meta_keyword');
 											$this->db->order_by('id_app', 'DESC');
 		$data['app'] 		= $this->Mcrud->get_app()->result();
 
@@ -368,10 +367,9 @@ $data = array(
 	public function d($url='')
 	{
 		$ceks = $this->session->userdata('un_member');
-		if ($url == '') {
-			redirect('');
-		}
+		if ($url == '') { redirect(''); }
 		$data['download'] = $this->Mcrud->get_app_url($url)->row();
+
 		$data['web'] 		= $this->Mcrud->get_web_id(1);
 		$data['judul']	= $data['download']->nama_app.' | '.$data['web']->nama_web;
 		//meta
@@ -386,13 +384,12 @@ $data = array(
 			$this->load->view('download_detail', $data);
 			$this->load->view('footer', $data);
 
-		if ($data['download'] == "") {
-			redirect('error_not_found');
-		}
-			$data = array(
-				'view'				=> $data['download']->view+1
-			);
-			$this->Mcrud->update_app(array('url' => $url), $data);
+			if ($data['download']=='') { redirect('error_not_found'); }else{
+					$datax = array(
+						'view' => $data['download']->view+1
+					);
+					$this->Mcrud->update_app(array('url' => $url), $datax);
+			}
 
 	}
 
@@ -402,8 +399,6 @@ $data = array(
 
 		$data['web'] 		= $this->Mcrud->get_web_id(1);
 		$data['judul']	= 'Judul TA | '.$data['web']->nama_web;
-		$data['meta_description'] = $this->Mcrud->get_web('meta_description');
-		$data['meta_keyword'] = $this->Mcrud->get_web('meta_keyword');
 			$this->load->view('header', $data);
 			$this->load->view('judul_ta', $data);
 			$this->load->view('footer', $data);
@@ -415,8 +410,6 @@ $data = array(
 
 		$data['web'] 		= $this->Mcrud->get_web_id(1);
 		$data['judul']	= 'Hubungi | '.$data['web']->nama_web;
-		$data['meta_description'] = $this->Mcrud->get_web('meta_description');
-		$data['meta_keyword'] = $this->Mcrud->get_web('meta_keyword');
 			$this->load->view('header', $data);
 			$this->load->view('hubungi', $data);
 			$this->load->view('footer', $data);
@@ -441,8 +434,6 @@ $data = array(
 
 				$data['web'] 		= $this->Mcrud->get_web_id(1);
 				$data['judul']	= 'Article | '.$data['web']->nama_web;
-				$data['meta_description'] = $this->Mcrud->get_web('meta_description');
-				$data['meta_keyword'] = $this->Mcrud->get_web('meta_keyword');
 				$data['jml_member'] 	= $this->Mcrud->get_user_by_level()->num_rows();
 				$data['jml_app'] 			= $this->Mcrud->get_app()->num_rows();
 				//$data['article'] 			= $this->Mcrud->get_article()->result();
@@ -552,8 +543,6 @@ $data = array(
 			}else {
 				$data['web'] 		= $this->Mcrud->get_web_id(1);
 				$data['judul']	= 'Hubungi | '.$data['web']->nama_web;
-				$data['meta_description'] = $this->Mcrud->get_web('meta_description');
-				$data['meta_keyword'] = $this->Mcrud->get_web('meta_keyword');
 				if (isset($ceks)) {
 					$data['ceks'] 	= $ceks;
 					$data['user'] 	= $this->Mcrud->get_user_by_un($ceks)->row();
@@ -577,8 +566,6 @@ $data = array(
 
 		$data['web'] 		= $this->Mcrud->get_web_id(1);
 		$data['judul']	= 'Login | '.$data['web']->nama_web;
-		$data['meta_description'] = $this->Mcrud->get_web('meta_description');
-		$data['meta_keyword'] = $this->Mcrud->get_web('meta_keyword');
 		$data['jml_member'] 	= $this->Mcrud->get_user_by_level()->num_rows();
 		$data['jml_app'] 			= $this->Mcrud->get_app()->num_rows();
 			$this->load->view('header', $data);
@@ -661,8 +648,6 @@ $data = array(
 		}
 			$data['web'] 		= $this->Mcrud->get_web_id(1);
 			$data['judul']	= 'Lupa Password | '.$data['web']->nama_web;
-			$data['meta_description'] = $this->Mcrud->get_web('meta_description');
-			$data['meta_keyword'] = $this->Mcrud->get_web('meta_keyword');
 			$data['jml_member'] 	= $this->Mcrud->get_user_by_level()->num_rows();
 			$data['jml_app'] 			= $this->Mcrud->get_app()->num_rows();
 				$this->load->view('header', $data);
@@ -715,8 +700,6 @@ $data = array(
 			 if ($id == $cek_id) {
 				 	$data['web'] 		= $this->Mcrud->get_web_id(1);
 		 			$data['judul']	= 'Password Baru | '.$data['web']->nama_web;
-		 			$data['meta_description'] = $this->Mcrud->get_web('meta_description');
-					$data['meta_keyword'] = $this->Mcrud->get_web('meta_keyword');
 		 			$data['jml_member'] 	= $this->Mcrud->get_user_by_level()->num_rows();
 		 			$data['jml_app'] 			= $this->Mcrud->get_app()->num_rows();
 		 				$this->load->view('header', $data);
@@ -782,8 +765,6 @@ $data = array(
 		}
 		$data['web'] 		= $this->Mcrud->get_web_id(1);
 		$data['judul']	= $ceks.' | '.$data['web']->nama_web;
-		$data['meta_description'] = $this->Mcrud->get_web('meta_description');
-		$data['meta_keyword'] = $this->Mcrud->get_web('meta_keyword');
 		$data['jml_member'] 	= $this->Mcrud->get_user_by_level()->num_rows();
 		$data['jml_app'] 			= $this->Mcrud->get_app()->num_rows();
 		$data['member'] 	= $this->Mcrud->get_user_by_un($ceks)->row();
@@ -856,9 +837,8 @@ $data = array(
 		$data['web'] 	 = $this->Mcrud->get_web_id(1);
 		$data['judul'] = '404 PAGE NOT FOUND | ';
 		$data['judul'] .= $this->Mcrud->get_web('nama_web').' : Situs Gudang Download Source Code Aplikasi Terlengkap dan Termurah Tersedia juga private belajar pemrograman';
-		$data['meta_description'] = $this->Mcrud->get_web('meta_description');
-		$data['meta_keyword'] = $this->Mcrud->get_web('meta_keyword');
-
+		$data['meta_description'] = $data['judul'];
+		$data['meta_keyword']			= $data['judul'];
 		$this->load->view('header', $data);
 		$this->load->view('404_content', $data);
 		$this->load->view('footer', $data);

@@ -92,21 +92,6 @@
               <input type="file" name="gambar" class="span11" placeholder="Gambar" required/>
             </div>
           </div>
-          <div class="control-group after-add">
-            <label class="control-label">Gambar Multi :</label>
-            <div class="controls">
-              <input type="file" name="gambar_multi[]" class="span11" placeholder="Gambar"/>
-              <button class="btn btn-success add" type="button"><i class="icon icon-plus"></i></button>
-            </div>
-          </div>
-          <div class="copy hide">
-            <div class="control-group">
-              <div class="controls">
-                <input type="file" name="gambar_multi[]" class="span11" placeholder="Gambar"/>
-                <button class="btn btn-danger remove" type="button"><i class="icon icon-remove"></i></button>
-              </div>
-            </div>
-          </div>
           <div class="control-group">
             <label class="control-label">Keterangan :</label>
             <div class="controls">

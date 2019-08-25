@@ -6,7 +6,7 @@
 							<div class="row">
 											<?php
 											foreach ($v_data as $key => $baris):
-												$link_kat = 'article_detail/'.$baris->url;
+												$link_kat = 'article_detail/'.$baris->url.".html";
 												$toko = '';
 												$jml_foto = '';?>
 												<div class="col-md-12">

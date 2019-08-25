@@ -1,4 +1,6 @@
-
+<style>
+	ol > li {margin-left: 20px;}
+</style>
 				<div class="container" style="margin-top:60px;">
 					<?php
 					echo $this->session->flashdata('msg_download');?>
@@ -24,7 +26,8 @@
 											</h2>
 											<span class="info-row">
 												<span class="date"><i class=" icon-clock"> </i> <?php echo date('d F Y',strtotime($download->tanggal)); ?> </span>
-												- <span class="category"><?php echo $download->kat; ?> </span>
+												<!-- - <span class="category">Kategori: <?php echo $download->kat; ?> </span> -->
+												- <span class="category"><i class="fa fa-user"></i> <?php echo $download->developer; ?> </span>
 											</span>
 
 											<div class="ads-image">
@@ -33,38 +36,28 @@
 													Free
 												<?php }else{ ?>
 													Rp.&nbsp;<?php echo number_format($download->harga,0,",","."); ?>
-												<?php }
-												$get_img = $this->db->get_where('tbl_img_multi', array('id_app'=>$download->id_app));
-												?>
+												<?php } ?>
 												</h1>
-													<ul class="bxslider">
-															<li><img src="images/app/<?php echo $download->img; ?>" alt="img" width="100%"/></li>
-															<?php foreach ($get_img->result() as $key => $value): ?>
-																<li><img src="images/app_multi/<?php echo $value->img_file; ?>" alt="img" width="100%"/></li>
-															<?php endforeach; ?>
+													<ul class="">
+															<li><img src="images/app/<?php echo $download->img; ?>" data-fancybox="<?php echo $download->url; ?>" data-caption="<?php echo $download->nama_app; ?>" alt="img" width="100%"/></li>
 													</ul>
-													<div id="bx-pager">
-														<?php if ($get_img->num_rows()!=0): ?>
-															<a class="thumb-item-link" data-slide-index="0" href="#">
-																<img src="images/app/<?php echo $download->img; ?>" alt="img"/>
-															</a>
-														<?php endif; ?>
-															<?php $i=1; foreach ($get_img->result() as $key => $value): ?>
-															<a class="thumb-item-link" data-slide-index="<?php echo $i; ?>" href="#">
-																	<img src="images/app_multi/<?php echo $value->img_file; ?>" alt="img"/>
-															</a>
-															<?php $i++; endforeach; ?>
-													</div>
 											</div>
 											<!--ads-image-->
 
 											<div class="Ads-Details">
-													<h5 class="list-title"><strong>Keterangan</strong></h5>
+													<h5 class="list-title"><strong>Deskripsi</strong></h5>
 
 													<div class="row">
 															<div class="ads-details-info col-md-12">
 																	<p>
-																		<?php echo $download->keterangan; ?>
+																		<?php
+																		$str = $download->keterangan;
+																		$link_img = base_url().'images/app_multi/';
+						                        $regex = '#<img([^>]*) src="([^"/]*/?[^".]*\.[^"]*)"([^>]*)>((?!</a>))#';
+						                        $replace = '<p style="text-align: left; padding-left: 40px;"><a href="'.$link_img.'$2" data-fancybox="'.$download->url.'" data-caption="'.$download->nama_app.'" id="a_"><img src="'.$link_img.'$2" class="img-responsive" id="img_" $3 title="'.ucwords($download->nama_app).'"></a><br>';
+						                        $Content = preg_replace($regex, $replace, $str);
+																		echo $Content;
+																		?>
 																	</p>
 															</div>
 													</div>
@@ -119,7 +112,7 @@
 									                $v_list = $this->db->get('tbl_app');
 																	foreach ($v_list->result() as $key => $value): ?>
 																		<li>
-																			<a href="d/<?php echo $value->url; ?>"><strong><?php echo $value->nama_app; ?></strong>
+																			<a href="d/<?php echo $value->url; ?>.html"><strong><?php echo $value->nama_app; ?></strong>
 																				(<span class="count"><?php echo $value->view; ?></span>)
 																			</a>
 																			<hr>
@@ -143,7 +136,7 @@
 									                $v_list = $this->db->get('tbl_article');
 																	foreach ($v_list->result() as $key => $value): ?>
 																		<li>
-																			<a href="article_detail/<?php echo $value->url; ?>"><strong><?php echo $value->judul; ?></strong>
+																			<a href="article_detail/<?php echo $value->url; ?>.html"><strong><?php echo $value->judul; ?></strong>
 																				(<span class="count"><?php echo $value->dibaca; ?></span>)
 																			</a>
 																			<hr>
