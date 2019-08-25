@@ -43,11 +43,11 @@ $ext    = ".png";     // ekstension file gambar
 // ubah digit angka menjadi enam digit
 $totpengunjunggbr = sprintf("%06d", $totpengunjung);
 // ganti angka teks dengan angka gambar
-$awal=0;
+$awal=0; $awal2=0;
 for ($i = 0; $i <= 9; $i++){ ?>
- <style>#v_counter_<?php echo $i; ?>{width:30px; height:30px; background:url(<?php echo $folder; ?>/counter.png) -<?php echo $awal; ?>px;margin-left: -6px;margin-top: -6px;}</style>
+ <style>#v_counter_<?php echo $i; ?>{width:30px; height:30px; background:url(<?php echo $folder; ?>/counter.png) -<?php echo $awal; ?>px;margin-left:-<?php if($i!==0){echo $awal2+10;}else{echo 10;} ?>px;margin-top: -6px;}</style>
  <?php
- $awal=$awal+35;
+ $awal=$awal+20;
  $img_new="<img src=\"$folder/n.gif\" alt=\"$i\" id='v_counter_$i'>";
  $totpengunjunggbr = str_replace($i, $img_new, $totpengunjunggbr);
 }
@@ -72,7 +72,7 @@ for ($i = 0; $i <= 9; $i++){ ?>
 
         <div class=" col-xl-3  ">
           <div class="footer-col">
-            <h4 class="footer-title" style="margin-bottom:-24px;"><?php echo "$totpengunjunggbr"; ?></h4>
+            <h4 class="footer-title" style="margin-bottom:-24px;margin-left:8px;"><?php echo "$totpengunjunggbr"; ?></h4>
 						 <hr style="margin-bottom:5px;">
 						 <style>
 				 			#text-pengunjung{color:#222;}
