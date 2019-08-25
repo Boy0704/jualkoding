@@ -75,7 +75,8 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'localhost',
+	// 'hostname' => 'localhost',
+	'hostname' => 'stikeskeluargabunda.ac.id',
 	'username' => 'u6115584_admin2019',
 	'password' => 'admin2019',
 	'database' => 'u6115584_jualkoding',
