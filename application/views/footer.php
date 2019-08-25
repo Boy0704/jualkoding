@@ -70,7 +70,7 @@ for ($i = 0; $i <= 9; $i++){
             <h4 class="footer-title" style="margin-bottom:-24px;"><?php echo "$totpengunjunggbr"; ?></h4>
 						 <hr style="margin-bottom:5px;">
 						 <style>
-				 			#text-pengunjung{color:#2222;}
+				 			#text-pengunjung{color:#222;}
 				 			#hariini {width:14px; height:14px; background:url(<?php echo "$folder/icon_statistik.png"; ?>) 0 0px;}
 				 			#total {width:14px; height:14px; background:url(<?php echo "$folder/icon_statistik.png"; ?>) -15px;}
 				 			#online {width:14px; height:14px; background:url(<?php echo "$folder/icon_statistik.png"; ?>) -30px;}
