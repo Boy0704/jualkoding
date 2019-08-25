@@ -11,7 +11,7 @@
     <div class="quick-actions_homepage">
       <ul class="quick-actions">
         <!--
-        <li class="bg_lb"> <a href="panel_ordodev"> <i class="icon-dashboard"></i> <span class="label label-important">7</span> My Dashboard </a> </li>
+        <li class="bg_lb"> <a href="panel_jualkoding"> <i class="icon-dashboard"></i> <span class="label label-important">7</span> My Dashboard </a> </li>
       -->
         <li class="bg_lg"> <a href="aplikasi"> <i class="icon-inbox"></i><span class="label label-warning"><?php echo $jml_app; ?></span> Aplikasi</a> </li>
         <li class="bg_ly"> <a href="data_member"> <i class="icon-group"></i><span class="label label-success"><?php echo $jml_member; ?></span> Data Member </a> </li>
