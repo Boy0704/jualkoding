@@ -769,12 +769,24 @@ class Admin extends CI_Controller {
 						 );
 					 }else{
 
-						 $uploadx = $this->upload->data();
-						 $filename = $uploadx['file_name'];
-						 $gambar = preg_replace('/ /', '_', $filename);
+						 $upload_data = $this->upload->data();
+						 $filename = $upload_data['file_name'];
+
+						 $config_thumb = array(
+							 'image_library' => 'gd2',
+							 'source_image'  => './images/article/'.$filename,
+							 'new_image'  	 => './images/article/thumb/'.$filename,
+							 'create_thumb'  => TRUE,
+							 'maintain_ratio'=> TRUE,
+        			 'thumb_marker'  => '',
+							 'width' 				 => 248,
+							 'height' 			 => 200,
+						 );
+						 $this->load->library('image_lib', $config_thumb);
+             $this->image_lib->resize();
 
 						 $data = array(
-							 'gambar'				=> $gambar,
+							 'gambar'				=> $filename,
 							 'judul'				=> $judul,
 							 'url'					=> $url,
 							 'isi'					=> $isi,
@@ -846,13 +858,27 @@ class Admin extends CI_Controller {
 
 								 $cek = $this->Mcrud->get_article_by_id($id)->row();
 
-					 				unlink("images/article/$cek->gambar");
+					 				unlink("images/article/thumb/$cek->gambar");
+									unlink("images/article/$cek->gambar");
 
-		 						 $filename = $_FILES['gambar']['name'];
-		 						 $gambar = preg_replace('/ /', '_', $filename);
+								 $upload_data = $this->upload->data();
+ 								 $filename = $upload_data['file_name'];
+
+ 								 $config_thumb = array(
+ 									 'image_library' => 'gd2',
+ 									 'source_image'  => './images/article/'.$filename,
+ 									 'new_image'  	 => './images/article/thumb/'.$filename,
+ 									 'create_thumb'  => TRUE,
+ 									 'maintain_ratio'=> TRUE,
+ 		        			 'thumb_marker'  => '',
+ 									 'width' 				 => 248,
+ 									 'height' 			 => 200,
+ 								 );
+ 								 $this->load->library('image_lib', $config_thumb);
+ 		             $this->image_lib->resize();
 
 		 						 $data = array(
-		 							 'gambar'				=> $gambar,
+		 							 'gambar'				=> $filename,
 		 							 'judul'				=> $judul,
 		 							 'isi'					=> $isi
 		 						 );
@@ -897,7 +923,7 @@ class Admin extends CI_Controller {
 			redirect('data_article');
 		}
 			$cek = $this->Mcrud->get_article_by_id($id)->row();
-
+			unlink("images/article/thumb/$cek->gambar");
 			unlink("images/article/$cek->gambar");
 			$this->Mcrud->delete_article_by_id($id);
 			$this->session->set_flashdata('msg',
