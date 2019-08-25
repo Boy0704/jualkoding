@@ -43,8 +43,13 @@ $ext    = ".png";     // ekstension file gambar
 // ubah digit angka menjadi enam digit
 $totpengunjunggbr = sprintf("%06d", $totpengunjung);
 // ganti angka teks dengan angka gambar
-for ($i = 0; $i <= 9; $i++){
- $totpengunjunggbr = str_replace($i, "<img src=\"$folder/$i$ext\" alt=\"$i\">", $totpengunjunggbr);
+$awal=0;
+for ($i = 0; $i <= 9; $i++){ ?>
+ <style>#v_counter_<?php echo $i; ?>{width:30px; height:30px; background:url(<?php echo $folder; ?>/counter.png) -<?php echo $awal; ?>px;margin-left: -6px;margin-top: -6px;}</style>
+ <?php
+ $awal=$awal+35;
+ $img_new="<img src=\"$folder/n.gif\" alt=\"$i\" id='v_counter_$i'>";
+ $totpengunjunggbr = str_replace($i, $img_new, $totpengunjunggbr);
 }
 ?>
 
