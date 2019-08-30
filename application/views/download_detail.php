@@ -17,9 +17,16 @@
 											<div class="col-md-3">
 												<a href="download/<?php echo $download->id_app; ?>" class="btn  btn-danger btn-block" target="_blank"><i class=" fa fa-cloud-download"></i> DOWNLOAD </a>
 											</div>
+											<?php 
+											//cek apakah demo aktif
+											if ($download->demo == 0) {
+												# code...
+											} else {
+											 ?>
 											<div class="col-md-3">
 												<a href="<?php echo $download->url_demo; ?>" class="btn  btn-primary btn-block" target="_blank"><i class=" fa fa-desktop"></i> DEMO </a>
 											</div>
+											<?php } ?>
 										</div>
 									</div>
 									<div class="inner inner-box ads-details-wrapper">
@@ -73,9 +80,16 @@
 															<div class="col-md-3">
 																<a href="download/<?php echo $download->id_app; ?>" class="btn  btn-danger btn-block" target="_blank"><i class=" fa fa-cloud-download"></i> DOWNLOAD </a>
 															</div>
+															<?php 
+															//cek apakah demo aktif
+															if ($download->demo == 0) {
+																# code...
+															} else {
+															 ?>
 															<div class="col-md-3">
 																<a href="<?php echo $download->url_demo; ?>" class="btn  btn-primary btn-block" target="_blank"><i class=" fa fa-desktop"></i> DEMO </a>
 															</div>
+															<?php } ?>
 														</div>
 													</div>
 											</div>

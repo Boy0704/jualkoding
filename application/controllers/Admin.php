@@ -1012,6 +1012,13 @@ class Admin extends CI_Controller {
 			 $this->load->view('admin/footer', $data);
   }
 
+  	public function status_demo($id_app, $n)
+  	{
+  		$this->db->where('id_app',$id_app);
+  		$this->db->update('tbl_app', array('demo' => $n));
+  		redirect('aplikasi','refresh');
+  	}
+
 	public function logout() {
      if ($this->session->has_userdata('un_admin')) {
          $this->session->sess_destroy();

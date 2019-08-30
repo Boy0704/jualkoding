@@ -120,6 +120,7 @@
 
               <th width="150">Tanggal</th>
               <th width="50">View</th>
+              <th width="50">Demo</th>
               <th width="50">Download</th>
               <th width="150">Aksi</th>
             </tr>
@@ -134,6 +135,16 @@
                 <td><?php echo $baris->nama_app; ?></td>
                 <td><?php echo $baris->tanggal; ?></td>
                 <td style="text-align:center;"><span class="label label-info"><?php echo $baris->view; ?></span></td>
+                <td style="text-align:center;">
+                  <?php 
+                  if ($baris->demo == 0) {
+                   ?>
+                  <a href="admin/status_demo/<?php echo $baris->id_app ?>/1" title="klik disini untuk merubah"><span class="label label-danger">tidak aktif</span></a>
+                <?php }else{ ?>
+                  <a href="admin/status_demo/<?php echo $baris->id_app ?>/0" title="klik disini untuk merubah"><span class="label label-success">aktif</span></a>
+                <?php } ?>
+                </td>
+                <td>
                 <td style="text-align:center;"><span class="label label-info"><?php echo $baris->download; ?></span></td>
                 <td>
                   <a href="admin/edit_app/<?php echo $baris->id_app; ?>" class="btn btn-success">Edit</a>
