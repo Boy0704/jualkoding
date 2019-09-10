@@ -91,6 +91,7 @@ for ($i = 0; $i <= 9; $i++){ ?>
 				 				<img id='online' src='$folder/n.gif'> <span id='text-pengunjung'>Pengunjung Online : $pengunjungonline</span>";
 				 		 ?>
           </div>
+          <br><br>
 
           <!-- Histats.com  (div with counter) --><div id="histats_counter"></div>
             <!-- Histats.com  START  (aync)-->
@@ -105,7 +106,7 @@ for ($i = 0; $i <= 9; $i++){ ?>
             })();</script>
             <noscript><a href="/" target="_blank"><img  src="//sstatic1.histats.com/0.gif?4308939&101" alt="invisible hit counter" border="0"></a></noscript>
             <!-- Histats.com  END  -->
-          
+
         </div>
 
         <div class=" col-xl-3 ">
