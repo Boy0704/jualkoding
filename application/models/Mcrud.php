@@ -427,9 +427,12 @@ public function get_kat_by_id($id)
 	   return $base64;
 	}
 
-	function view_app($num, $offset, $stt='')
+	function view_app($num, $offset, $stt='', $id_kat='')
 	{
 		$this->db->join('tbl_kat','tbl_kat.id_kat=tbl_app.id_kat');
+		if ($id_kat!='') {
+			$this->db->where('tbl_kat.id_kat',$id_kat);
+		}
 		if ($stt=='RANDOM') {
 			$this->db->order_by('id_app', $stt);
 		}else {

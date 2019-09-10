@@ -131,10 +131,7 @@ for ($i = 0; $i <= 9; $i++){ ?>
             <ul class="list-unstyled footer-nav">
               <?php if(isset($ceks)){?>
               <li>
-                <a href="users"> Panel</a>
-              </li>
-              <li>
-                <a href="data_toko/view"> Toko</a>
+                <a href="member"> Panel</a>
               </li>
               <li>
                 <a href="logout"> logout</a>
@@ -194,6 +191,7 @@ for ($i = 0; $i <= 9; $i++){ ?>
   <!-- Placed at the end of the document so the pages load faster -->
 
   <script src="assets/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script type="text/javascript" src="assets/js/jquery.dataTables.min.js"></script>
 	<script type="text/javascript" src="assets/fancybox/jquery.fancybox.js"></script>
   <script src="assets/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
   <script src="assets/bootstrap/js/bootstrap.min.js"></script>
@@ -208,6 +206,44 @@ for ($i = 0; $i <= 9; $i++){ ?>
 	        pagerCustom: '#bx-pager'
 	    });
 
+			function convertToSlug(Text)
+			{
+			    return Text
+			        .toLowerCase()
+			        .replace(/[^\w ]+/g,'')
+			        .replace(/ +/g,'-')
+			        ;
+			}
+
+	function cari_app() {
+	  window.location.href='app?p='+convertToSlug($('[name="txtcari"]').val());
+	}
+
+	$(document).ready(function() {
+		 //datatables
+		 table = $('#myTable').DataTable({
+			 	 "pageLength": 50,
+				 "processing": true, //Feature control the processing indicator.
+				 "serverSide": true, //Feature control DataTables' server-side processing mode.
+				 "order": [], //Initial no order.
+
+				 // Load data for the table's content from an Ajax source
+				 "ajax": {
+						 "url": "<?php echo site_url('member/ajax_list')?>",
+						 "type": "POST"
+				 },
+
+				 //Set column definition initialisation properties.
+				 "columnDefs": [
+				 {
+						 "targets": [ 0 ], //first column / numbering column
+						 "orderable": false, //set not orderable
+				 },
+				 ],
+
+		 });
+
+	});
 	</script>
 
 </html>

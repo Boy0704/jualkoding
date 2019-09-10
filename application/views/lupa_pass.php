@@ -1,112 +1,105 @@
+<div class="container">
+		<div class="row">
+				<div class="col-md-12"> <br>
+					<nav aria-label="breadcrumb" role="navigation" class="pull-left">
+							<ol class="breadcrumb">
+									<li class="breadcrumb-item"><a href="<?php echo base_url(); ?>"><i class="icon-home fa"></i></a></li>
+									<li class="breadcrumb-item active" aria-current="page">Lupa Password</li>
+							</ol>
+					</nav>
+				</div>
+		</div>
+</div>
 
+<div class="container">
+	<?php
+	echo $this->session->flashdata('msg_download');?>
+	<div class="row">
+    <div class="col-md-3 page-sidebar mobile-filter-sidebar">
+        <aside>
+            <div class="inner-box">
+                <div class="categories-list  list-filter">
+                    <h5 class="list-title"><strong><a href="kategori/p">Semua Kategori</a></strong></h5>
+                    <ul class=" list-unstyled">
+                        <?php
+                        $this->db->order_by('kat','ASC');
+                        $v_kat = $this->db->get('tbl_kat');
+                        foreach ($v_kat->result() as $key => $value): ?>
+                          <li>
+                            <a href="kategori/p/<?php echo url_title($value->kat); ?>">
+                              <span class="title"><?php echo $value->kat; ?></span><span class="count">&nbsp; <?php echo $this->db->get_where('tbl_app', array('id_kat'=>$value->id_kat))->num_rows(); ?></span>
+                            </a>
+                          </li>
+                        <?php endforeach; ?>
+                    </ul>
+                </div>
+                <!--/.categories-list-->
 
+                <div style="clear:both"></div>
+            </div>
 
-				<div class="container">
+            <!--/.categories-list-->
+        </aside>
 
-						<div class="page-header">
-								<div class="wrap-title">
-										<div class="icon">
-												<span class="ico-arrow-right"></span>
-										</div>
-										<h1>Lupa Password <small><a href="<?php echo base_url(); ?>">Home</a> / Lupa Password</small></h1>
-								</div>
-								<!--
-								<ul class="breadcrumb">
-										<li class="active">Home</li>
-								</ul>-->
-								<div class="clear"></div>
-						</div>
+        <!-- IKLAN -->
 
-						<div class="row">
-							<div class="row-fluid">
-									<div class="span12">
-											<div class="block">
-													<article class="container_12">
+        <aside>
+            <div class="inner-box">
+                <div class="locations-list  list-filter">
+                    <h5 class="list-title"><strong><a href="javascript:void(0);">List Judul Aplikasi</a></strong></h5>
+                    <ul class="browse-list list-unstyled long-list">
+                        <?php
+                        $this->db->order_by('id', 'RANDOM');
+                        $this->db->limit(5);
+                        $v_list = $this->db->get('tbl_app');
+                        foreach ($v_list->result() as $key => $value): ?>
+                          <li>
+                            <a href="d/<?php echo $value->url; ?>"><strong><?php echo $value->nama_app; ?></strong>
+                              (<span class="count"><?php echo $value->view; ?></span>)
+                            </a>
+                            <hr>
+                          </li>
+                        <?php endforeach; ?>
+                    </ul>
+                </div>
+                <div style="clear:both"></div>
+            </div>
+
+            <!--/.categories-list-->
+        </aside>
+    </div>
+
+		<div class="col-md-6 page-content col-thin-right">
+				<div class="inner inner-box ads-details-wrapper">
 
 															<?php
 															echo $this->session->flashdata('msg');
 															?>
-														<div class="col-md-8">
 
 															<div class="alert alert-info">
 																	<strong>Catatan:</strong> Kirim email akun Anda yang valid untuk konfirmasi lupa password.
-															</div><br>
+															</div>
 
-															<div class="panel panel-default">
-																<div class="panel-body">
-																	<br>
 																		<form method="post" action="" class="form-horizontal" role="form">
 																		  <div class="form-group">
 																		    <label for="email" class="col-sm-2 control-label">Email</label>
-																		    <div class="col-sm-10">
-																		      <input type="email" name="email" class="form-control" id="email" placeholder="Email" required>
+																		    <div class="col-sm-12">
+																		      <input type="email" name="email" class="form-control" id="email" placeholder="Email" required autofocus>
 																		    </div>
 																		  </div>
 																		  <div class="form-group">
-																		    <div class="col-sm-offset-2 col-sm-10">
-																		      <button type="submit" name="kirim" class="btn btn-default" style="float:right;">Kirim</button>
-																		    </div>
+																		    <div class="col-sm-offset-2 col-sm-12">
+																		      <button type="submit" name="kirim" class="btn btn-primary" style="float:right;">Kirim</button>
+																					<a href="login">Sudah punya akun? silahkan login disini!</a>
+																				</div>
 																		  </div>
 																		</form>
-															  </div>
-															</div>
-														</div>
-														<div class="col-md-4">
-															<a class="swidget blue">
-																<?php
-																if ($jml_member > 999 & $jml_member <= 9999) {
-																	$font = "font-size:50px;";
-																}elseif ($jml_member > 99999) {
-																	$font = "font-size:20px;";
-																}else{
-																	$font = "";
-																} ?>
-																	<div class="value" style="<?php echo $font; ?>">
-																			<?php echo number_format($jml_member, 0, ",","."); ?>
-																	</div>
-																	<div class="bottom">
-																			<div class="text">Member</div>
-																			<div class="value"><span class="ico-user"></span></div>
-																	</div>
-															</a>
-
-															<a class="swidget green">
-																<?php
-																if ($jml_app > 999 & $jml_app <= 9999) {
-																	$font2 = "font-size:50px;";
-																}elseif ($jml_app > 99999) {
-																	$font2 = "font-size:20px;";
-																}else{
-																	$font2 = "";
-																} ?>
-																	<div class="value" style="<?php echo $font2; ?>">
-																			<?php echo number_format($jml_app, 0, ",","."); ?>
-																	</div>
-																	<div class="bottom">
-																			<div class="text">Aplikasi</div>
-																			<div class="value"><span class="ico-box"></span></div>
-																	</div>
-															</a>
-
-															<hr>
-
-															<p>
-															IKLAN</p>
-
+																		<br><br>
 														</div>
 
-														<div class="col-md-12">
-															<div class="panel panel-default">
-															  <div class="panel-body">
-															    Keterangan
-															  </div>
-															</div>
-														</div>
-													</article>
 											</div>
+
+											<?php $this->load->view('widget_jml_member'); ?>
+
 									</div>
 							</div>
-
-						</div>
-
-				</div>

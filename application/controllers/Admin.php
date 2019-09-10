@@ -110,7 +110,7 @@ class Admin extends CI_Controller {
  		 									<strong>Gagal Upload!</strong> '.$error.'.
  		 							 </div>'
  		 						 );
- 								 redirect('panel_jualkoding');
+ 								 redirect('404');
  		 					 }else{
 
  								 $cek = $this->Mcrud->get_web_id(1);
@@ -164,7 +164,7 @@ class Admin extends CI_Controller {
 
  					 }
 
-					 redirect('panel_jualkoding');
+					 redirect('404');
 				}
 		}
 	}
@@ -260,7 +260,7 @@ class Admin extends CI_Controller {
 	public function aplikasi() {
 		$ceks = $this->session->userdata('un_admin');
 		if (!isset($ceks)) {
-			redirect('panel_jualkoding');
+			redirect('404');
 		}
 
 		 	 $data['web'] 					= $this->Mcrud->get_web_id(1);
@@ -401,7 +401,7 @@ class Admin extends CI_Controller {
 	public function edit_app($id) {
 		$ceks = $this->session->userdata('un_admin');
 		if (!isset($ceks)) {
-			redirect('panel_jualkoding');
+			redirect('404');
 		}
 		if ($id == '') {
 			redirect('aplikasi');
@@ -531,7 +531,7 @@ class Admin extends CI_Controller {
 	public function hapus_app($id) {
 		$ceks = $this->session->userdata('un_admin');
 		if (!isset($ceks)) {
-			redirect('panel_jualkoding');
+			redirect('404');
 		}
 		if ($id == '') {
 			redirect('aplikasi');
@@ -563,7 +563,7 @@ class Admin extends CI_Controller {
 	public function hapus_app1($id) {
 		$ceks = $this->session->userdata('un_admin');
 		if (!isset($ceks)) {
-			redirect('panel_jualkoding');
+			redirect('404');
 		}
 		if ($id == '') {
 			redirect('aplikasi');
@@ -587,7 +587,7 @@ class Admin extends CI_Controller {
 	public function member($id='', $bln_thn='') {
 		$ceks = $this->session->userdata('un_admin');
 		if (!isset($ceks)) {
-			redirect('panel_jualkoding');
+			redirect('404');
 		}
 
 		if ($id == '' or $id == 'tgl') {
@@ -644,7 +644,7 @@ class Admin extends CI_Controller {
 	public function transaksi($aksi='',$bln_thn='') {
 		$ceks = $this->session->userdata('un_admin');
 		if (!isset($ceks)) {
-			redirect('panel_jualkoding');
+			redirect('404');
 		}
 		if ($bln_thn == '') {
 			$bln = date('m');
@@ -701,7 +701,7 @@ class Admin extends CI_Controller {
 	public function hapus_transaksi($id) {
 		$ceks = $this->session->userdata('un_admin');
 		if (!isset($ceks)) {
-			redirect('panel_jualkoding');
+			redirect('404');
 		}
 		if ($id == '') {
 			redirect('transaksi');
@@ -721,7 +721,7 @@ class Admin extends CI_Controller {
 	public function article() {
 		$ceks = $this->session->userdata('un_admin');
 		if (!isset($ceks)) {
-			redirect('panel_jualkoding');
+			redirect('404');
 		}
 
 		 	 $data['web'] 					= $this->Mcrud->get_web_id(1);
@@ -810,7 +810,7 @@ class Admin extends CI_Controller {
 	public function edit_article($id) {
 		$ceks = $this->session->userdata('un_admin');
 		if (!isset($ceks)) {
-			redirect('panel_jualkoding');
+			redirect('404');
 		}
 		if ($id == '') {
 			redirect('data_article');
@@ -917,7 +917,7 @@ class Admin extends CI_Controller {
 	public function hapus_article($id) {
 		$ceks = $this->session->userdata('un_admin');
 		if (!isset($ceks)) {
-			redirect('panel_jualkoding');
+			redirect('404');
 		}
 		if ($id == '') {
 			redirect('data_article');
@@ -996,7 +996,7 @@ class Admin extends CI_Controller {
 	public function kontak() {
 		$ceks = $this->session->userdata('un_admin');
 		if (!isset($ceks)) {
-			redirect('panel_jualkoding');
+			redirect('404');
 		}
 
 		 	 $data['web'] 					= $this->Mcrud->get_web_id(1);
@@ -1022,8 +1022,8 @@ class Admin extends CI_Controller {
 	public function logout() {
      if ($this->session->has_userdata('un_admin')) {
          $this->session->sess_destroy();
-         redirect('panel_jualkoding');
+         redirect('404');
      }
-     redirect('panel_jualkoding');
+     redirect('404');
   }
 }

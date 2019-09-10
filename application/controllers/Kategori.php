@@ -6,7 +6,7 @@ class Kategori extends CI_Controller {
 	public function index() {
 		$ceks = $this->session->userdata('un_admin');
 		if (!isset($ceks)) {
-			redirect('panel_ordodev');
+			redirect('404');
 		}
 
 		 	 $data['web'] 	= $this->Mcrud->get_web_id(1);
@@ -81,7 +81,7 @@ class Kategori extends CI_Controller {
 	public function edit($id='') {
 		$ceks = $this->session->userdata('un_admin');
 		if (!isset($ceks)) {
-			redirect('panel_ordodev');
+			redirect('404');
 		}
 		if ($id == '') {
 			redirect('aplikasi');
@@ -171,7 +171,7 @@ class Kategori extends CI_Controller {
 	public function hapus($id='') {
 		$ceks = $this->session->userdata('un_admin');
 		if (!isset($ceks)) {
-			redirect('panel_ordodev');
+			redirect('404');
 		}
 		if ($id == '') {
 			redirect('kategori');
@@ -189,6 +189,66 @@ class Kategori extends CI_Controller {
 			 </div>'
 		 );
 		 redirect('kategori#tabel');
+	}
+
+
+	public function p($url='',$d='')
+	{
+		$ceks = $this->session->userdata('ordodev@2017');
+
+		$data['web'] 		= $this->Mcrud->get_web_id(1);
+		$data['judul']	= 'Kategori | '.$data['web']->nama_web;
+
+		if ($url=='') {
+			$data['breadcrumb'] = '<li class="breadcrumb-item active" aria-current="page">Semua Kategori</li>';
+
+			$this->db->order_by('kat','kat');
+			$data['v_kat'] = $this->db->get('tbl_kat');
+			$p = 'kategori/index';
+		}else {
+			$nama_kat = $this->db->get_where('tbl_kat', array('id_kat'=>$url))->row()->kat;
+			$data['breadcrumb'] = '<li class="breadcrumb-item"><a href="kategori/p.html">Semua Kategori</a></li>';
+			$data['breadcrumb'] .= '<li class="breadcrumb-item active" aria-current="page">'.ucwords($nama_kat).'</li>';
+
+			$this->db->where('id_kat',$url);
+			$jml = $this->db->get('tbl_app');
+			if ($jml->num_rows()==0) {
+				// redirect('kategori/p');
+			}
+			$config['base_url'] = base_url().'kategori/p/'.$url.'/';
+
+			$config['total_rows'] = $jml->num_rows();
+			$config['per_page'] = 20; /*Jumlah data yang dipanggil perhalaman*/
+			$config['uri_segment'] = 4; /*data selanjutnya di parse diurisegmen 2*/
+
+			/*Class bootstrap pagination yang digunakan*/
+			$config['full_tag_open'] = "<div class='center'><ul class='pagination'>";
+			$config['full_tag_close'] ="</ul></div>";
+			$config['num_tag_open'] = '';
+			$config['num_tag_close'] = '';
+			$config['cur_tag_open'] = "<a class='disabled active'>";
+			$config['cur_tag_close'] = "</a>";
+			$config['next_tag_open'] = "";
+			$config['next_tagl_close'] = "";
+			$config['prev_tag_open'] = "";
+			$config['prev_tagl_close'] = "";
+			$config['first_tag_open'] = "";
+			$config['first_tagl_close'] = "";
+			$config['last_tag_open'] = "";
+			$config['last_tagl_close'] = "";
+
+			$this->pagination->initialize($config);
+
+			$data['offset'] = $d;
+			$data['v_data'] = $this->Mcrud->view_app($config['per_page'], $d, '', $url);
+			$data['halaman']  = $this->pagination->create_links();
+			$data['path'] = "d";
+			$p = 'download';
+		}
+
+			$this->load->view('header', $data);
+			$this->load->view($p, $data);
+			$this->load->view('footer', $data);
 	}
 
 }

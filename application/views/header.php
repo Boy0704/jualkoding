@@ -37,6 +37,7 @@ $url_3 = $this->uri->segment(3);
    <link href="assets/plugins/bxslider/jquery.bxslider.css" rel="stylesheet"/>
 
    <link rel="stylesheet" type="text/css" href="assets/fancybox/jquery.fancybox.css">
+   <link rel="stylesheet" href="assets/css/jquery.dataTables.min.css">
 
     <!-- Just for debugging purposes. -->
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -88,34 +89,30 @@ $url_3 = $this->uri->segment(3);
                   <a href="kategori/p" class="nav-link"><i class="icon-th-thumb"></i> Semua Kategori</a>
       					</li>
                 <li class="postadd"></li>
-        <?php if (isset($ceks)){ ?>
-      					<li class="dropdown no-arrow nav-item">
-                  <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown" style="color:#222;">
-                    <span><?php echo ucwords($this->db->get_where('tbl_akun', "username='$ceks'")->row()->nama); ?></span>
-                    <i class="icon-user fa"></i> <i class=" icon-down-open-big fa"></i>
-                  </a>
-      						<ul class="dropdown-menu user-menu dropdown-menu-right">
-      							<li class="active dropdown-item">
-                      <a href="users" style="color:#222;"><i class="icon-home"></i> Panel</a>
-      							</li>
-      							<li class="dropdown-item">
-                      <a href="logout" style="color:#222;"><i class=" icon-logout "></i> Logout </a>
-      							</li>
-      						</ul>
-      					</li>
-        <?php }else{?>
-          <style>
-            .btn-login.btn-secondary:hover{background:#f1f1f1;}
-          </style>
-      					<li class="lang-menu nav-item">
-  								<a class="btn btn-block btn-border btn-login btn-secondary nav-link" href="login" style="color:#222;">Login</a>
-      					</li>
-                <li class="lang-menu nav-item">
-      						<a class="btn btn-block btn-border btn-post btn-danger nav-link" href="registrasi" style="color:#f1f1f1;">
-      							Pendaftaran
-      						</a>
-      					</li>
-        <?php } ?>
+                <?php if (isset($ceks)){
+                        $cek_akun = $this->db->get_where('tbl_user', "username='$ceks'")->row();?>
+              					<li>
+                          <a href="member" class="nav-link" style="color:#222;">
+                            <span><?php echo ucwords($cek_akun->nama); ?></span>
+                            <i class="icon-user fa"></i>
+                          </a>
+              					</li>
+                        <li class="postadd"></li>
+                        <li class="lang-menu nav-item">
+              						<a class="btn btn-block btn-border btn-post btn-danger nav-link" href="logout" style="color:#f1f1f1;">
+              							Logout
+              						</a>
+              					</li>
+                <?php }else{?>
+              					<li class="no-arrow nav-item">
+          								<a class="btn btn-block btn-border btn-post btn-secondary nav-link" href="login" style="color:#222;">Login</a>
+              					</li>
+                        <li class="lang-menu nav-item">
+              						<a class="btn btn-block btn-border btn-post btn-danger nav-link" href="registrasi" style="color:#f1f1f1;">
+              							Pendaftaran
+              						</a>
+              					</li>
+                <?php } ?>
       				</ul>
       			</div>
       			<!--/.nav-collapse -->
@@ -143,7 +140,19 @@ $url_3 = $this->uri->segment(3);
             </div> -->
             <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="myFunction()">&#9776;</a>
           </div>
+          <?php if (!empty($cek_akun)): ?>
+            <?php if ($cek_akun->aktif=='no'): ?>
+              <div class="alert alert-danger" style="margin:0px;border-radius:0px;">
+                  <strong>Akun Member Belum Aktif!</strong> Silahkan hubungi kami, terimakasih.
+              </div>
+            <?php endif; ?>
+          <?php endif; ?>
         </nav>
+        <?php if (!empty($cek_akun)): ?>
+          <?php if ($cek_akun->aktif=='no'): ?>
+            <div style="padding-bottom:50px;"></div>
+          <?php endif; ?>
+        <?php endif; ?>
         <script>
         function myFunction() {
           var x = document.getElementById("myTopnav");
@@ -158,7 +167,7 @@ $url_3 = $this->uri->segment(3);
       <!-- /.header -->
 
       <?php
-      $menu_bc = array('d','download','app','app_d','judul_ta','panduan','article','article_detail');
+      $menu_bc = array('d','download','app','app_d','judul_ta','panduan','article','article_detail','kategori');
       if (in_array($url_1,$menu_bc)): ?>
         <div class="container" style="margin-top:60px;margin-bottom:-20px;">
           <div class="row">

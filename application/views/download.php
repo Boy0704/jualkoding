@@ -1,3 +1,4 @@
+
 <div class="main-container">
 		<div class="container">
 				<div class="row">
@@ -59,6 +60,14 @@
 
 						<div class="col-md-9">
 							<div class="row">
+								<?php if ($v_data->num_rows()==0): ?>
+									<div class="col-md-12">
+										<div class="alert alert-danger" style="margin:0px;border-radius:0px;">
+												<strong>Aplikasi</strong> Tidak ditemukan!, silahkan <a href="hubungi.html"><b>kontak</b></a> kami terimakasih :D.
+										</div>
+									</div>
+								<?php endif; ?>
+
 											<?php
 											foreach ($v_data->result() as $key => $baris):
 												$link_kat = $path.'/'.$baris->url.".html";
@@ -69,7 +78,7 @@
 														<div class="row">
 																<div class="col-md-12 no-padding photobox">
 																		<div class="add-image"><span class="photo-count"><i class="fa fa-camera"></i> <?php echo $jml_foto; ?> </span>
-																			<a href="<?php echo $link_kat; ?>"><img class="thumbnail no-margin" src="images/app/thumb/<?php echo $baris->img; ?>" title="<?php echo ucwords($baris->nama_app); ?>" alt="<?php echo ucwords($baris->nama_app); ?>" width="50" height="200"></a>
+																			<a href="<?php echo $link_kat; ?>"><img class="thumbnail no-margin" src="<?php echo $this->Mcrud->cek_filename("app/thumb/",$baris->img); ?>" title="<?php echo ucwords($baris->nama_app); ?>" alt="<?php echo ucwords($baris->nama_app); ?>" width="50" height="200"></a>
 																		</div>
 																</div>
 														<!--/.photobox-->

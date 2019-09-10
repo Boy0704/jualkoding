@@ -13,16 +13,13 @@
 											<div class="col-md-3">
 												<a href="tel:<?php echo $web->no_hp; ?>" class="btn  btn-info btn-block"><i class=" fa fa-phone"></i> <?php echo $web->no_hp; ?> </a>
 											</div>
-											<div class="col-md-3"></div>
+											<div class="col-md-<?php if ($download->demo == 0) {echo "6";}else{echo "3";} ?>"></div>
 											<div class="col-md-3">
 												<a href="download/<?php echo $download->id_app; ?>" class="btn  btn-danger btn-block" target="_blank"><i class=" fa fa-cloud-download"></i> DOWNLOAD </a>
 											</div>
-											<?php 
+											<?php
 											//cek apakah demo aktif
-											if ($download->demo == 0) {
-												# code...
-											} else {
-											 ?>
+											if ($download->demo != 0) { ?>
 											<div class="col-md-3">
 												<a href="<?php echo $download->url_demo; ?>" class="btn  btn-primary btn-block" target="_blank"><i class=" fa fa-desktop"></i> DEMO </a>
 											</div>
@@ -47,7 +44,7 @@
 													Rp.&nbsp;<?php echo number_format($download->harga,0,",","."); ?>
 												<?php } ?>
 												</h1>
-												<img src="images/app/<?php echo $download->img; ?>" class="img-responsive" data-fancybox="<?php echo $download->url; ?>" data-caption="<?php echo $download->nama_app; ?>" alt="<?php echo $download->nama_app; ?>" title="<?php echo $download->nama_app; ?>" width="100%"/>
+												<img src="<?php echo $this->Mcrud->cek_filename("app/",$download->img); ?>" class="img-responsive" data-fancybox="<?php echo $download->url; ?>" data-caption="<?php echo $download->nama_app; ?>" alt="<?php echo $download->nama_app; ?>" title="<?php echo $download->nama_app; ?>" width="100%"/>
 											</div>
 											<!--ads-image-->
 
@@ -76,16 +73,13 @@
 															<div class="col-md-3">
 																<a href="tel:<?php echo $web->no_hp; ?>" class="btn  btn-info btn-block"><i class=" fa fa-phone"></i> <?php echo $web->no_hp; ?> </a>
 															</div>
-															<div class="col-md-3"></div>
+															<div class="col-md-<?php if ($download->demo == 0) {echo "6";}else{echo "3";} ?>"></div>
 															<div class="col-md-3">
 																<a href="download/<?php echo $download->id_app; ?>" class="btn  btn-danger btn-block" target="_blank"><i class=" fa fa-cloud-download"></i> DOWNLOAD </a>
 															</div>
-															<?php 
+															<?php
 															//cek apakah demo aktif
-															if ($download->demo == 0) {
-																# code...
-															} else {
-															 ?>
+															if ($download->demo != 0) { ?>
 															<div class="col-md-3">
 																<a href="<?php echo $download->url_demo; ?>" class="btn  btn-primary btn-block" target="_blank"><i class=" fa fa-desktop"></i> DEMO </a>
 															</div>

@@ -15,7 +15,7 @@ class Web extends CI_Controller {
 		foreach ($this->db->get('tbl_dummy_email')->result() as $row) {
 			$this->Mcrud->sent_mail($row->nama,$row->email,$konten->nama_app);
 		}
-		
+
 	}
 
 	public function page($offset=0)
@@ -132,9 +132,9 @@ class Web extends CI_Controller {
 												</div>'
 											);
 									}else{
-												$this->Mcrud->sent_mail($username,$email,'reg');
+												// $this->Mcrud->sent_mail($username,$email,'reg');
 
-												if ($this->email->send()){
+												// if ($this->email->send()){
 
 														$data = array(
 															'username'				=> $username,
@@ -157,18 +157,18 @@ class Web extends CI_Controller {
 														);
 														$this->session->set_userdata('un_member', "$username");
 														if ($this->db->get_where('tbl_user', "username='$username'")->row()->aktif == 'no') {
-															redirect('panduan');
+															redirect('member');
 														}else {
 															redirect('');
 														}
-												}else{
-													$this->session->set_flashdata('msg',
-														'
-														<div class="alert alert-error">
-																<strong>Error!</strong> Gagal Kirim ke email, silahkan cek internet anda atau hubungi kami [<a href="hubungi">klik disini</a>].
-														</div>'
-													);
-												}
+												// }else{
+												// 	$this->session->set_flashdata('msg',
+												// 		'
+												// 		<div class="alert alert-error">
+												// 				<strong>Error!</strong> Gagal Kirim ke email, silahkan cek internet anda atau hubungi kami [<a href="hubungi">klik disini</a>].
+												// 		</div>'
+												// 	);
+												// }
 									}
 							}
 					}
@@ -311,6 +311,7 @@ class Web extends CI_Controller {
 
 	public function aplikasi($url='', $d='')
 	{
+		if (empty($_GET['p'])) { $cari=''; }else{ $cari = preg_replace('/[-]/',' ',$_GET['p']); }
 		$ceks = $this->session->userdata('un_member');
 
 		$data['web'] 		= $this->Mcrud->get_web_id(1);
@@ -319,6 +320,7 @@ class Web extends CI_Controller {
 		$data['meta_description'] = $this->Mcrud->get_web('meta_description');
 		$data['meta_keyword'] = $this->Mcrud->get_web('meta_keyword');
 
+											$this->db->like('nama_app',$cari);
 											$this->db->order_by('id_app', 'DESC');
 		$data['app'] 		= $this->Mcrud->get_app()->result();
 		$data['breadcrumb'] = '<li class="breadcrumb-item"><a href="kategori/p">Semua Kategori</a></li>';
@@ -351,6 +353,7 @@ class Web extends CI_Controller {
 			$this->pagination->initialize($config);
 
 			$data['offset'] = $d;
+			$this->db->like('nama_app',$cari);
 			$data['v_data'] = $this->Mcrud->view_app($config['per_page'], $d, 'RANDOM');
 			$data['halaman']  = $this->pagination->create_links();
 			$data['path'] = "app_d";
@@ -366,7 +369,7 @@ class Web extends CI_Controller {
 		if($ceks){
 				$download 	= $this->Mcrud->get_app_by_id($url)->row();
 
-$data = array(
+						$data = array(
 							'download'				=> $download->download+1
 						);
 						$this->Mcrud->update_app(array('id_app' => $url), $data);
@@ -866,4 +869,5 @@ $data = array(
 		$this->load->view('404_content', $data);
 		$this->load->view('footer', $data);
 	}
+	
 }

@@ -4,7 +4,7 @@
 					<nav aria-label="breadcrumb" role="navigation" class="pull-left">
 							<ol class="breadcrumb">
 									<li class="breadcrumb-item"><a href="<?php echo base_url(); ?>"><i class="icon-home fa"></i></a></li>
-									<li class="breadcrumb-item active" aria-current="page">Password Baru</li>
+									<li class="breadcrumb-item active" aria-current="page">Form Login</li>
 							</ol>
 					</nav>
 				</div>
@@ -71,32 +71,40 @@
 
 		<div class="col-md-6 page-content col-thin-right">
 				<div class="inner inner-box ads-details-wrapper">
+					<?php
+					echo $this->session->flashdata('msg');
+					?>
 
+																	<br>
 																		<form method="post" action="" class="form-horizontal" role="form">
-																			<div class="form-group">
-																		    <label for="password" class="col-sm-4 control-label">Password Baru</label>
+																		 	<div class="form-group">
+																		    <label for="username" class="col-sm-2 control-label">Username</label>
 																		    <div class="col-sm-12">
-																		      <input type="password" name="password" class="form-control" id="password" placeholder="Password Baru" required>
+																		      <input type="text" name="username" class="form-control" id="username" placeholder="Username" required autofocus>
 																		    </div>
 																		  </div>
-																			<div class="form-group">
-																		    <label for="re-password" class="col-sm-4 control-label">Re-Password Baru</label>
+																		  <div class="form-group">
+																		    <label for="password" class="col-sm-2 control-label">Password</label>
 																		    <div class="col-sm-12">
-																		      <input type="password" name="password2" class="form-control" id="re-password" placeholder="Re-Password Baru" required>
+																		      <input type="password" name="password" class="form-control" id="password" placeholder="Password" required>
 																		    </div>
 																		  </div>
 																		  <div class="form-group">
 																		    <div class="col-sm-offset-2 col-sm-12">
-																		      <button type="submit" name="kirim" class="btn btn-primary" style="float:right;">Simpan</button>
+																					<hr>
+																		      <button type="submit" name="btnlogin" class="btn btn-primary" style="float:right;">Login</button>
+																					<a href="lp">Lupa Password?</a> <br>
+																		      <a href="registrasi">Belum punya akun? silahkan daftar disini!</a>
 																		    </div>
 																		  </div>
 																		</form>
-																		<br><br>
-															  </div>
-															</div>
+																		<br><br><br>
 
-															<?php $this->load->view('widget_jml_member'); ?>
+						</div>
+				</div>
 
-														</div>
+				<?php $this->load->view('widget_jml_member'); ?>
 
-											</div>
+		</div>
+
+</div>

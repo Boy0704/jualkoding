@@ -3,6 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 $route['default_controller'] = 'web';
 $route['404_override'] = 'web/error_not_found';
+$route['web/i']        = 'web/index';
 $route['panduan']      = 'web/panduan';
 $route['registrasi']   = 'web/registrasi';
 $route['verify/(:any)/(:any)']= 'web/verify/$1/$2';
@@ -19,7 +20,6 @@ $route['article']      = 'web/article';
 $route['article/(:any)'] = 'web/article/$1';
 $route['article_detail/(:any)'] = 'web/article_detail/$1';
 $route['article/(:any)/(:any)'] = 'web/article/$1/$2';
-$route['member']       = 'web/member';
 $route['app']          = 'web/aplikasi';
 $route['app/(:any)']   = 'web/aplikasi/$1';
 $route['app/(:any)/(:any)']= 'web/aplikasi/$1/$2';
