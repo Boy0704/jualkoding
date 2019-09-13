@@ -206,11 +206,18 @@ class Kategori extends CI_Controller {
 			$data['v_kat'] = $this->db->get('tbl_kat');
 			$p = 'kategori/index';
 		}else {
-			$nama_kat = $this->db->get_where('tbl_kat', array('id_kat'=>$url))->row()->kat;
+			$url = preg_replace('/[-]/',' ',$url);
+			$data_kat = $this->db->get_where('tbl_kat', array('kat'=>$url));
+			if ($data_kat->num_rows()==0) {
+				$id_kat = ''; $nama_kat = '';
+			}else {
+				$id_kat   = $data_kat->row()->id_kat;
+				$nama_kat = $data_kat->row()->kat;
+			}
 			$data['breadcrumb'] = '<li class="breadcrumb-item"><a href="kategori/p.html">Semua Kategori</a></li>';
 			$data['breadcrumb'] .= '<li class="breadcrumb-item active" aria-current="page">'.ucwords($nama_kat).'</li>';
 
-			$this->db->where('id_kat',$url);
+			$this->db->where('id_kat',$id_kat);
 			$jml = $this->db->get('tbl_app');
 			if ($jml->num_rows()==0) {
 				// redirect('kategori/p');
@@ -240,7 +247,7 @@ class Kategori extends CI_Controller {
 			$this->pagination->initialize($config);
 
 			$data['offset'] = $d;
-			$data['v_data'] = $this->Mcrud->view_app($config['per_page'], $d, '', $url);
+			$data['v_data'] = $this->Mcrud->view_app($config['per_page'], $d, '', $id_kat);
 			$data['halaman']  = $this->pagination->create_links();
 			$data['path'] = "d";
 			$p = 'download';
