@@ -1,3 +1,4 @@
+<base href="">
 <style>
 	.ads-details-info > ol > li {margin-left: 20px;}
 </style>
@@ -11,7 +12,7 @@
 									<div class="content-footer text-left">
 										<div class="row">
 											<div class="col-md-3">
-												<a href="tel:<?php echo $web->no_hp; ?>" class="btn  btn-info btn-block"><i class=" fa fa-phone"></i> <?php echo $web->no_hp; ?> </a>
+												<a href="https://wa.me/<?php echo $web->no_hp; ?>" class="btn  btn-info btn-block"><i class=" fa fa-phone"></i> <?php echo $web->no_hp; ?> </a>
 											</div>
 											<div class="col-md-<?php if ($download->demo == 0) {echo "6";}else{echo "3";} ?>"></div>
 											<div class="col-md-3">
@@ -58,7 +59,8 @@
 																		$str = $download->keterangan;
 																		$link_img = base_url().'';
 						                        $regex = '#<img([^>]*) src="([^"/]*/?[^".]*\.[^"]*)"([^>]*)>((?!</a>))#';
-						                        $replace = '<p style="text-align: left; padding-left: 40px;"><a href="'.$link_img.'$2" data-fancybox="'.$download->url.'" data-caption="'.$download->nama_app.'" id="a_"><img src="'.$link_img.'$2" class="img-responsive" id="img_" $3 title="'.ucwords($download->nama_app).'"></a><br>';
+						                        // $replace = '<p style="text-align: left; padding-left: 40px;"><a href="'.$link_img.'$2" data-fancybox="'.$download->url.'" data-caption="'.$download->nama_app.'" id="a_"><img src="'.$link_img.'$2" class="img-responsive" id="img_" $3 title="'.ucwords($download->nama_app).'"></a><br>';
+						                        $replace = '<p style="text-align: left; padding-left: 40px;"><a href="'.$link_img.'$2" data-fancybox="'.$download->url.'" data-caption="'.$download->nama_app.'" id="a_"><img src="$2" class="img-responsive" id="img_" $3 title="'.ucwords($download->nama_app).'"></a><br>';
 						                        $Content = preg_replace($regex, $replace, $str);
 																		echo $Content;
 																		?>
@@ -71,7 +73,7 @@
 													<div class="content-footer text-left" style="overflow:hidden">
 														<div class="row">
 															<div class="col-md-3">
-																<a href="tel:<?php echo $web->no_hp; ?>" class="btn  btn-info btn-block"><i class=" fa fa-phone"></i> <?php echo $web->no_hp; ?> </a>
+																<a href="https://wa.me/<?php echo $web->no_hp; ?>" class="btn  btn-info btn-block"><i class=" fa fa-phone"></i> <?php echo $web->no_hp; ?> </a>
 															</div>
 															<div class="col-md-<?php if ($download->demo == 0) {echo "6";}else{echo "3";} ?>"></div>
 															<div class="col-md-3">
