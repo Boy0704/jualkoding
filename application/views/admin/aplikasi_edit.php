@@ -112,7 +112,7 @@
           selector: ".textarea_editor",
           plugins: [
                "advlist autolink link image lists charmap print preview hr anchor pagebreak",
-               "searchreplace wordcount visualblocks visualchars insertdatetime media nonbreaking",
+               "searchreplace wordcount visualblocks visualchars insertdatetime media nonbreaking fullscreen",
                "table contextmenu directionality emoticons paste textcolor responsivefilemanager code"
          ],
          toolbar1: "undo redo | bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | styleselect",
