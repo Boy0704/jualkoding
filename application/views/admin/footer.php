@@ -20,7 +20,7 @@ $sub_menu = strtolower($this->uri->segment(2));
   <script src="assets/admin/js/matrix.tables.js"></script>
   <!-- <script src="assets/admin/js/wysihtml5-0.3.0.js"></script>
   <script src="assets/admin/js/bootstrap-wysihtml5.js"></script> -->
-  <script src="https://cdn.tiny.cloud/1/4mo39ri6dgnfnyfqwhr6nhicdjgg3nckwd3ruoyr8sa3d5z7/tinymce/5/tinymce.min.js"></script>
+  <!-- <script src="https://cdn.tiny.cloud/1/4mo39ri6dgnfnyfqwhr6nhicdjgg3nckwd3ruoyr8sa3d5z7/tinymce/5/tinymce.min.js"></script> -->
   <!-- <script>
   	$('.textarea_editor').wysihtml5();
   </script> -->
@@ -32,7 +32,7 @@ $sub_menu = strtolower($this->uri->segment(2));
   });
 
   </script> -->
-  <script type="text/javascript">
+  <!-- <script type="text/javascript">
     tinymce.init({
         selector: ".textarea_editor",
         plugins: [
@@ -46,7 +46,7 @@ $sub_menu = strtolower($this->uri->segment(2));
         images_upload_base_path: '<?php echo base_url() ?>',
         images_upload_credentials: true
    });
-</script>
+</script> -->
 
 <script type="text/javascript">
   // This function is called from the pop-up menus to transfer to
