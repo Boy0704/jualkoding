@@ -43,7 +43,7 @@
 													        <div class="col-md-12 text-right  price-box">
 													            <h4 class="item-price text-center" style="font-weight:bold"> Rp. <?php echo number_format($baris->harga,0,",","."); ?> </h4>
 													        </div>
-																	<a href="<?php echo $link_kat; ?>" class="btn btn-danger  btn-block make-favorite " style="border-radius:0px;" title="<?php echo ucwords($baris->nama_app); ?>"> <i class="fa fa-cloud-download"></i> <b>Download</b> </a>
+																	<a href="<?php echo $link_kat; ?>" class="btn btn-danger  btn-block make-favorite " style="border-radius:0px;" title="<?php echo ucwords($baris->nama_app); ?>"> <i class="fa fa-cloud-download"></i> <b>Unduh</b> </a>
 															<!--/.add-desc-box-->
 													      </div>
 														</div>
